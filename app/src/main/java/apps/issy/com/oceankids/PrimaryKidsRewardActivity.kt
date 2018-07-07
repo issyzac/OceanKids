@@ -196,6 +196,9 @@ class PrimaryKidsRewardActivity : BaseActivity() {
     private fun resetDetailsView(){
         primary_details_scroll_view.fullScroll(View.FOCUS_UP)
         primary_details_scroll_view.pageScroll(View.FOCUS_UP)
+
+        candy_wrap.visibility = View.GONE
+
         setViewVisibility(attended_check, false)
         setViewVisibility(bible_check, false)
         setViewVisibility(verse_check, false)

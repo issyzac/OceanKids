@@ -39,7 +39,6 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_margin="2dp"
-                app:cardCornerRadius="10dp"
                 app:cardBackgroundColor="@color/light_blue_050"
                 android:layout_height="wrap_content"
                 android:onClick="loadRewardChart">
@@ -55,7 +54,7 @@
                         android:gravity="center_horizontal"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:fontFamily="@font/avenir_light"
+                        android:fontFamily="@font/google_sans_regular"
                         android:text="Reward Chart"
                         android:textStyle="bold"
                         android:textColor="@color/card_title_text"
@@ -75,7 +74,7 @@
                 android:layout_weight="1"
                 android:layout_margin="2dp"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10sp"
+                android:onClick="loadBirthdays"
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
@@ -88,7 +87,7 @@
                         android:gravity="center_horizontal"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:fontFamily="@font/avenir_light"
+                        android:fontFamily="@font/google_sans_regular"
                         android:text="Birthdays"
                         android:textStyle="bold"
                         android:textColor="@color/card_title_text"
@@ -108,7 +107,6 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
-                app:cardCornerRadius="10dp"
                 app:cardBackgroundColor="@color/white">
 
                 <RelativeLayout
@@ -120,7 +118,7 @@
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:fontFamily="@font/avenir_light"
+                        android:fontFamily="@font/google_sans_regular"
                         android:gravity="center_horizontal"
                         android:text="Prayers"
                         android:textColor="@color/card_title_text"

@@ -21,8 +21,12 @@ import apps.issy.com.oceankids.Base.BaseActivity
     }
 
     fun loadRewardChart(view : View) {
-        Log.d("tag", "Loading reward chart")
         val intent = Intent(this@PrimaryKidsActivity, PrimaryKidsRewardActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun loadBirthdays(view : View) {
+        val intent = Intent(this@PrimaryKidsActivity, PrimaryBirthdayActivity::class.java)
         startActivity(intent)
     }
 

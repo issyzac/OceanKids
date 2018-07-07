@@ -67,6 +67,10 @@
             android:parentActivityName=".PrimaryKidsActivity"
             android:theme="@style/AppThemePrimary"/>
 
+        <activity android:name=".PrimaryBirthdayActivity"
+            android:parentActivityName=".PrimaryKidsActivity"
+            android:theme="@style/AppThemePrimary"/>
+
     </application>
 
 </manifest>
