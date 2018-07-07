@@ -130,7 +130,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/yellow_700"
+                    android:background="@color/green_600"
                     android:alpha="0.6"/>
 
                 <ImageView
