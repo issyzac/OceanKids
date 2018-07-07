@@ -23,6 +23,7 @@ open class BaseActivity : AppCompatActivity() {
      var childReference : DatabaseReference? = null
      var userReference : DatabaseReference? = null
      var attendanceReference : DatabaseReference? = null
+     var parentsReference : DatabaseReference? = null
 
      var nurseryKidsReference : DatabaseReference? = null
      var primaryKidsReference : DatabaseReference? = null
@@ -37,6 +38,7 @@ open class BaseActivity : AppCompatActivity() {
         childReference = FirebaseDatabase.getInstance().getReference("kids").child("kids_list")
         userReference = FirebaseDatabase.getInstance().getReference("users")
         attendanceReference = FirebaseDatabase.getInstance().getReference("attendance")
+        parentsReference = FirebaseDatabase.getInstance().getReference("parents")
 
         nurseryKidsReference = FirebaseDatabase.getInstance().getReference("kids").child("kids_list").child("nursery")
         primaryKidsReference = FirebaseDatabase.getInstance().getReference("kids").child("kids_list").child("preschool")

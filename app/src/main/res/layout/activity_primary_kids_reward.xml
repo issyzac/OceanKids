@@ -55,12 +55,25 @@
                 android:layout_weight="0.3"
                 android:layout_height="match_parent">
 
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/et_background"
+                    android:drawableRight="@mipmap/ic_search"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="16dp"
+                    android:textColor="@color/card_title_text"
+                    android:fontFamily="@font/google_sans_medium"
+                    android:id="@+id/primary_kids_search_et"/>
+
                 <android.support.v7.widget.RecyclerView
                     android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/card_separator_sec"
                     android:scrollbars="vertical"
+                    android:layout_below="@id/primary_kids_search_et"
                     android:id="@+id/primary_kids_list_recycler"/>
 
                 <TextView
@@ -79,7 +92,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="0.6"
                 android:id="@+id/primary_details_scroll_view"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:scrollbars="none">
 
                 <RelativeLayout
@@ -103,7 +116,7 @@
                             android:layout_marginStart="16dp"
                             android:textSize="48dp"
                             android:fontFamily="@font/google_sans_bold"
-                            android:text="Name Of Child"
+                            android:text=""
                             android:textColor="@color/light_blue_600"/>
 
                         <TextView
@@ -167,7 +180,7 @@
                             android:fontFamily="@font/google_sans_regular"
                             android:textStyle="bold"
                             android:layout_marginTop="4dp"
-                            android:text="Juma Nkamia"
+                            android:text=""
                             app:layout_constraintTop_toBottomOf="@id/parent_name_title"
                             app:layout_constraintLeft_toRightOf="@id/parent_name_icon"
                             android:layout_marginLeft="32dp"/>
@@ -206,7 +219,7 @@
                             android:textStyle="bold"
                             android:textSize="20sp"
                             android:textColor="@color/card_grid_text"
-                            android:text="0683321768"
+                            android:text=""
                             android:fontFamily="@font/google_sans_regular"/>
 
                         <LinearLayout
@@ -690,8 +703,7 @@
 
                             <View
                                 android:layout_width="1dp"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"/>
+                                android:layout_height="16dp"/>
 
                             <RelativeLayout
                                 android:layout_width="wrap_content"
@@ -732,6 +744,7 @@
                         android:id="@+id/progress_view"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
+                        android:layout_marginTop="300dp"
                         android:layout_centerInParent="true"
                         app:cpv_animAutostart="true"
                         app:cpv_indeterminate="true"

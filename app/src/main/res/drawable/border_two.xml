@@ -3,6 +3,6 @@
     <gradient android:startColor="@color/card_separator_sec"
         android:endColor="@color/card_separator_sec"
         android:angle="270" />
-    <corners android:radius="0dp" />
+    <corners android:radius="5dp" />
     <stroke android:width="1px" android:color="@color/card_light_text" />
 </shape>

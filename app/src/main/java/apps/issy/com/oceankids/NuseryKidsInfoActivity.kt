@@ -7,11 +7,15 @@ import android.view.View
 import apps.issy.com.oceankids.Base.BaseActivity
 import apps.issy.com.oceankids.adapters.NurseryListAdapter
 import apps.issy.com.oceankids.data.Child
+import apps.issy.com.oceankids.data.Parent
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
+import com.mcxiaoke.koi.ext.onTextChange
 import kotlinx.android.synthetic.main.activity_nursery_info.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  *  Created by issy on 12/06/2018.
@@ -71,26 +75,7 @@ class NuseryKidsInfoActivity : BaseActivity(){
                 }
 
                 kidsList  = toReturn
-                if (kidsList.size > 0){
-
-                    selectedPosition = 0
-
-                    message_text.visibility = View.GONE
-                    nursery_kids_list_recycler.visibility = View.VISIBLE
-                    child_info_details_container.visibility = View.VISIBLE
-                    progress_view.visibility = View.GONE
-
-                    setupAdapter(kidsList)
-                    var child : Child = kidsList.get(0)
-
-                    nusery_details_kid_names.text = child.firstName+" "+child.lastName
-                    nursery_allergies_value.text = child.allergies
-
-                }else{
-
-                    //TODO Display the appropriate message indicating the list is empty
-
-                }
+                accommodateItemSizeChanges(kidsList)
 
             }
 
@@ -104,6 +89,10 @@ class NuseryKidsInfoActivity : BaseActivity(){
         nursery_kids_list_recycler.addOnItemClickListener(object: NuseryKidsInfoActivity.OnItemClickListener {
             override fun onItemClicked(position: Int, view: View) {
                 if (kidsList.size > 0){
+
+                    parent_name_value.text = ""
+                    phone_value.text = ""
+
                     selectedPosition = position
                     adapter.notifyDataSetChanged()
 
@@ -112,14 +101,73 @@ class NuseryKidsInfoActivity : BaseActivity(){
                     nusery_details_kid_names.text = child.firstName+" "+child.lastName
                     nursery_allergies_value.text = child.allergies
 
-                    /*
-                    TODO
-                    Call the parent details here and display them accordingly
-                     */
+                    getParentDetails(child.parents)
                 }
             }
         } )
 
+        nursery_kids_search_et.onTextChange { text, start, before, count ->
+            val res = kidsList
+                    .filter { it.firstName!!.startsWith(text, ignoreCase = true) }
+            val result : ArrayList<Child> = ArrayList(res)
+            accommodateItemSizeChanges(result)
+        }
+
+    }
+
+    private fun accommodateItemSizeChanges(items : ArrayList<Child>){
+
+        if (items.size > 0){
+
+            selectedPosition = 0
+
+            message_text.visibility = View.GONE
+            nursery_kids_list_recycler.visibility = View.VISIBLE
+            child_info_details_container.visibility = View.VISIBLE
+            progress_view.visibility = View.GONE
+
+            setupAdapter(items)
+            val child : Child = items[0]
+
+            nusery_details_kid_names.text = child.firstName+" "+child.lastName
+            nursery_allergies_value.text = child.allergies
+
+            getParentDetails(child.parents)
+
+        }else{
+
+            message_text.visibility = View.VISIBLE
+            nursery_kids_list_recycler.visibility = View.GONE
+            child_info_details_container.visibility = View.GONE
+            progress_view.visibility = View.GONE
+
+            message_text.text = "No Child Available"
+
+        }
+    }
+
+    private fun getParentDetails(parents : ArrayList<Child.Parent>){
+        var currentChildParentReference : DatabaseReference? = parentsReference
+        for (parent in parents){
+
+            val parentId = parent.id
+            currentChildParentReference = currentChildParentReference!!.child(parentId)
+
+            val parentValueListener = object : ValueEventListener {
+                override fun onDataChange(p0: DataSnapshot) {
+                    val currentParent = p0.getValue<Parent>(Parent::class.java)
+                    parent_name_value.text = currentParent?.firstName + " " + currentParent?.lastName
+                    phone_value.text = currentParent!!.phoneNumber
+                }
+
+                override fun onCancelled(p0: DatabaseError) {
+
+                }
+
+            }
+            currentChildParentReference.addListenerForSingleValueEvent(parentValueListener)
+
+        }
     }
 
     private fun setupAdapter(data: ArrayList<Child>){

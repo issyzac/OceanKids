@@ -45,7 +45,8 @@
 
         <activity android:name=".PreSchoolInfoActivity"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppThemePreSchool"/>
+            android:theme="@style/AppThemePreSchool"
+            android:windowSoftInputMode="stateHidden"/>
 
         <activity android:name=".NurseryKidsActivity"
             android:parentActivityName=".MainActivity"
@@ -53,7 +54,8 @@
 
         <activity android:name=".NuseryKidsInfoActivity"
             android:parentActivityName=".NurseryKidsActivity"
-            android:theme="@style/AppThemeNursery"/>
+            android:theme="@style/AppThemeNursery"
+            android:windowSoftInputMode="stateHidden"/>
 
         <activity android:name=".BirthdaysActivity"
             android:parentActivityName=".NurseryKidsActivity"
@@ -65,7 +67,8 @@
 
         <activity android:name=".PrimaryKidsRewardActivity"
             android:parentActivityName=".PrimaryKidsActivity"
-            android:theme="@style/AppThemePrimary"/>
+            android:theme="@style/AppThemePrimary"
+            android:windowSoftInputMode="stateHidden"/>
 
         <activity android:name=".PrimaryBirthdayActivity"
             android:parentActivityName=".PrimaryKidsActivity"

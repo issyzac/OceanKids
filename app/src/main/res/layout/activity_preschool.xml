@@ -53,13 +53,26 @@
                 android:layout_weight="0.3"
                 android:layout_height="match_parent">
 
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/et_background"
+                    android:drawableRight="@mipmap/ic_search"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="16dp"
+                    android:textColor="@color/card_title_text"
+                    android:fontFamily="@font/google_sans_medium"
+                    android:id="@+id/preschool_kids_search_et"/>
+
                 <android.support.v7.widget.RecyclerView
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/card_separator_sec"
                     android:scrollbars="vertical"
-                    android:id="@+id/preschool_kids_list_recycler"/>
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/preschool_kids_list_recycler"
+                    android:layout_below="@id/preschool_kids_search_et"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -106,7 +119,7 @@
                         android:layout_marginTop="16dp"
                         android:text="Allergies"
                         android:textSize="18sp"
-                        android:fontFamily="@font/opensans_regular"
+                        android:fontFamily="@font/google_sans_medium"
                         android:textColor="@color/card_title_text"/>
 
                     <TextView
@@ -146,6 +159,7 @@
                         android:layout_marginTop="32dp"
                         android:layout_marginLeft="16dp"
                         android:textSize="18sp"
+                        android:fontFamily="@font/google_sans_medium"
                         android:textColor="@color/card_title_text"/>
 
                     <TextView
@@ -154,10 +168,10 @@
                         android:textSize="24sp"
                         android:id="@+id/parent_name_value"
                         android:textColor="@color/card_grid_text"
-                        android:fontFamily="@font/opensans_regular"
+                        android:fontFamily="@font/google_sans_regular"
                         android:textStyle="bold"
                         android:layout_marginTop="8dp"
-                        android:text="Juma Nkamia"
+                        android:text=""
                         app:layout_constraintTop_toBottomOf="@id/parent_name_title"
                         app:layout_constraintLeft_toRightOf="@id/parent_name_icon"
                         android:layout_marginLeft="16dp"/>
@@ -181,10 +195,10 @@
                         android:layout_marginTop="16dp"
                         app:layout_constraintLeft_toRightOf="@id/parent_phone_icon"
                         android:layout_marginLeft="16dp"
-                        android:text="Parent Phone"
+                        android:text="Phone"
                         android:textColor="@color/card_title_text"
                         android:textSize="18sp"
-                        android:fontFamily="@font/opensans_regular"/>
+                        android:fontFamily="@font/google_sans_medium"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -196,8 +210,8 @@
                         android:textStyle="bold"
                         android:textSize="24sp"
                         android:textColor="@color/card_grid_text"
-                        android:text="0683321768"
-                        android:fontFamily="@font/opensans_regular"/>
+                        android:text=""
+                        android:fontFamily="@font/google_sans_regular"/>
 
 
                 </android.support.constraint.ConstraintLayout>

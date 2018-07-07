@@ -9,10 +9,8 @@ import android.view.View
 import apps.issy.com.oceankids.Base.BaseActivity
 import apps.issy.com.oceankids.adapters.PrimaryKidsListAdapter
 import apps.issy.com.oceankids.data.Child
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import apps.issy.com.oceankids.data.Parent
+import com.google.firebase.database.*
 import com.irozon.alertview.AlertActionStyle
 import com.irozon.alertview.AlertStyle
 import com.irozon.alertview.AlertView
@@ -20,8 +18,10 @@ import com.irozon.alertview.objects.AlertAction
 import com.mcxiaoke.koi.ext.asString
 import com.mcxiaoke.koi.ext.dateNow
 import com.mcxiaoke.koi.ext.dateParse
+import com.mcxiaoke.koi.ext.onTextChange
 import kotlinx.android.synthetic.main.activity_primary_kids_reward.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  *  Created by issy on 05/07/2018.
@@ -106,41 +106,7 @@ class PrimaryKidsRewardActivity : BaseActivity() {
                 }
 
                 kidsList  = toReturn
-                if (kidsList.size > 0){
-                    selectedPosition = 0
-
-                    primary_list_message.visibility = View.GONE
-                    primary_kids_list_recycler.visibility = View.VISIBLE
-                    child_info_details_container.visibility = View.VISIBLE
-                    progress_view.visibility = View.GONE
-
-                    setupAdapter(kidsList)
-                    //Getting the first child in the list so as to display his/her information in details
-                    val child  = kidsList[0]
-                    currentChild = child
-                    primary_details_kid_names.text = child.firstName+" "+child.lastName
-                    primary_allergies_value.text = child.allergies
-
-                    //Reward System points
-                    aggregatePoints = currentChild.aggregatePoints
-                    tillNextCandy = 10 - (aggregatePoints % 10)
-                    points_till_candy.text = tillNextCandy.toString()
-                    aggregate_points.text = child.aggregatePoints.toString()
-
-                    /*
-                    TODO : Call this child's parent and set the values accordingly
-                     */
-
-                }else{
-
-                    primary_list_message.visibility = View.VISIBLE
-                    primary_kids_list_recycler.visibility = View.GONE
-                    child_info_details_container.visibility = View.GONE
-                    progress_view.visibility = View.GONE
-
-                    primary_list_message.text = "No Child available"
-
-                }
+                accomodateItemsListChanges(kidsList)
 
             }
 
@@ -188,9 +154,89 @@ class PrimaryKidsRewardActivity : BaseActivity() {
                     tillNextCandy = 10 - (aggregatePoints % 10)
                     points_till_candy.text = tillNextCandy.toString()
                     aggregate_points.text = child.aggregatePoints.toString()
+
+                    //Getting parent details
+                    getParentDetails(child.parents)
                 }
             }
         } )
+
+        primary_kids_search_et.onTextChange { text, start, before, count ->
+            val res = kidsList
+                    .filter { it.firstName!!.startsWith(text, ignoreCase = true) }
+            val result : ArrayList<Child> = ArrayList(res)
+            accomodateItemsListChanges(result)
+        }
+    }
+
+    private fun accomodateItemsListChanges(items : ArrayList<Child>){
+
+        if (items.size > 0){
+            selectedPosition = 0
+
+            primary_list_message.visibility = View.GONE
+            primary_kids_list_recycler.visibility = View.VISIBLE
+            child_info_details_container.visibility = View.VISIBLE
+            progress_view.visibility = View.GONE
+
+            setupAdapter(items)
+
+            //Getting the first child in the list so as to display his/her information in details
+            val child  = items[0]
+            currentChild = child
+            primary_details_kid_names.text = child.firstName+" "+child.lastName
+            primary_allergies_value.text = child.allergies
+
+            //Reward System points
+            aggregatePoints = currentChild.aggregatePoints
+            tillNextCandy = 10 - (aggregatePoints % 10)
+            points_till_candy.text = tillNextCandy.toString()
+            aggregate_points.text = child.aggregatePoints.toString()
+
+            //Getting parent details for this child
+            getParentDetails(child.parents)
+
+        }else{
+
+            primary_list_message.visibility = View.VISIBLE
+            primary_kids_list_recycler.visibility = View.GONE
+            child_info_details_container.visibility = View.GONE
+            progress_view.visibility = View.GONE
+
+            primary_list_message.text = "No Child available"
+
+        }
+    }
+
+    /**
+     * Get the details of the parent of a child from the parent Node
+     *
+     * receives a Child.parent object that contains
+     *      relationship and Parent ID
+     *
+     */
+    private fun getParentDetails(parents : ArrayList<Child.Parent>){
+        var currentChildParentReference : DatabaseReference? = parentsReference
+        for (parent in parents){
+
+            val parentId = parent.id
+            currentChildParentReference = currentChildParentReference!!.child(parentId)
+
+            val parentValueListener = object : ValueEventListener {
+                override fun onDataChange(p0: DataSnapshot) {
+                    val currentParent = p0.getValue<Parent>(Parent::class.java)
+                    parent_name_value.text = currentParent?.firstName + " " + currentParent?.lastName
+                    phone_value.text = currentParent!!.phoneNumber
+                }
+
+                override fun onCancelled(p0: DatabaseError) {
+
+                }
+
+            }
+            currentChildParentReference.addListenerForSingleValueEvent(parentValueListener)
+
+        }
     }
 
     private fun resetDetailsView(){
@@ -207,6 +253,8 @@ class PrimaryKidsRewardActivity : BaseActivity() {
         setViewVisibility(bonus_check, false)
         total_points.text = ""
         points_till_candy.text = ""
+        parent_name_value.text = ""
+        phone_value.text = ""
 
         totalPoints = 0
         aggregatePoints = 0
