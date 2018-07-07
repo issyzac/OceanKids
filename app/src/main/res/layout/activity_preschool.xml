@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/container"
+        android:background="@color/white">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/toolbar">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/card_title_text"
+                        android:textSize="20sp"
+                        android:text="Pre-School Kids"
+                        android:id="@+id/app_title"
+                        android:fontFamily="@font/opensans_bold"/>
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_below="@id/app_bar_layout">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/card_separator_sec"
+                    android:scrollbars="vertical"
+                    android:id="@+id/preschool_kids_list_recycler"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textColor="@color/yellow_900"
+                    android:id="@+id/preschool_list_message"
+                    android:text="Loading list..."/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.6"
+                android:layout_height="match_parent">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/child_info_details_container"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/preschool_details_kid_names"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:textSize="48dp"
+                        android:fontFamily="@font/opensans_extrabold"
+                        android:text=""
+                        android:textColor="@color/yellow_900"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/preschool_allergies_title"
+                        app:layout_constraintTop_toBottomOf="@id/preschool_details_kid_names"
+                        app:layout_constraintLeft_toLeftOf="@id/preschool_details_kid_names"
+                        android:layout_marginTop="16dp"
+                        android:text="Allergies"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textColor="@color/card_title_text"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="100dp"
+                        android:id="@+id/preschool_allergies_value"
+                        app:layout_constraintTop_toBottomOf="@id/preschool_allergies_title"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="8dp"
+                        android:textSize="18sp"
+                        android:padding="16dp"
+                        android:textColor="@color/card_grid_text"
+                        android:text=""
+                        android:background="@drawable/border_two"
+                        android:fontFamily="@font/opensans_regular"/>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/preschool_allergies_value"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginLeft="16dp"
+                        android:src="@mipmap/ic_parent"
+                        android:id="@+id/parent_name_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/parent_name_title"
+                        android:text="Parent Name"
+                        app:layout_constraintLeft_toRightOf="@id/parent_name_icon"
+                        app:layout_constraintTop_toBottomOf="@id/preschool_allergies_value"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginLeft="16dp"
+                        android:textSize="18sp"
+                        android:textColor="@color/card_title_text"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:id="@+id/parent_name_value"
+                        android:textColor="@color/card_grid_text"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp"
+                        android:text="Juma Nkamia"
+                        app:layout_constraintTop_toBottomOf="@id/parent_name_title"
+                        app:layout_constraintLeft_toRightOf="@id/parent_name_icon"
+                        android:layout_marginLeft="16dp"/>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/parent_name_value"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:src="@mipmap/ic_phone_white"
+                        android:backgroundTint="@color/purple_400"
+                        android:id="@+id/parent_phone_icon"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/preschool_phone_title"
+                        app:layout_constraintTop_toBottomOf="@id/parent_name_value"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintLeft_toRightOf="@id/parent_phone_icon"
+                        android:layout_marginLeft="16dp"
+                        android:text="Parent Phone"
+                        android:textColor="@color/card_title_text"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/opensans_regular"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/phone_value"
+                        app:layout_constraintTop_toBottomOf="@id/preschool_phone_title"
+                        app:layout_constraintLeft_toLeftOf="@id/preschool_phone_title"
+                        android:layout_marginTop="8dp"
+                        android:textStyle="bold"
+                        android:textSize="24sp"
+                        android:textColor="@color/card_grid_text"
+                        android:text="0683321768"
+                        android:fontFamily="@font/opensans_regular"/>
+
+
+                </android.support.constraint.ConstraintLayout>
+
+                <com.github.rahatarmanahmed.cpv.CircularProgressView
+                    android:id="@+id/progress_view"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_centerInParent="true"
+                    app:cpv_animAutostart="true"
+                    app:cpv_indeterminate="true"
+                    app:cpv_color="@color/yellow_900" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

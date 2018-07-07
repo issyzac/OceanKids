@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">OceanKids</string>
+
+    <string name="message">This is my first Kotlin App</string>
+    <string name="prayer_thanks_giving_title"><![CDATA[Prayer & Thanks Giving]]></string>
+    <string name="dummy_content">This is intended to be the content of either a prayer a thanks giving or anything really that this person is praying for today that has to be visible and all be able to read easily without one more click from the user so yah</string>
+
+    <string name="checkinout">Check-in\nCheck-out</string>
+
+    <string name="signed_in">User signed In</string>
+    <string name="sign_in_cancelled">Sign in Cancelled</string>
+    <string name="no_internet_connection">Problem with the internet</string>
+    <string name="unknown_sign_in_response">Error signing in</string>
+    <string name="unknown_error">Unknown Error</string>
+
+</resources>

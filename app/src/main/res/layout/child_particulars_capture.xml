@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="apps.issy.com.oceankids.MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/white"
+                    android:text="Ocean Kids"
+                    android:fontFamily="@font/avenir_light"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/card_separator_third"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.6"
+                android:orientation="vertical"
+                android:background="@color/card_separator_third"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/card_separator"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/reward_card">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:id="@+id/profile_container"
+                        android:background="@color/card_separator"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="180dp"
+                            android:layout_height="180dp"
+                            android:layout_margin="16dp"
+                            android:padding="10dp"
+                            android:scaleType="centerInside"
+                            android:background="@drawable/border_five"
+                            android:src="@drawable/profile_picture"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/child_names"
+                            android:layout_marginTop="16dp"
+                            android:textSize="24sp"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/avenir_light"
+                            android:text="Kato Clemence"
+                            android:textStyle="bold"
+                            android:textColor="@color/teal_500"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/date_title"
+                            android:layout_marginTop="1dp"
+                            android:textSize="14sp"
+                            android:layout_marginBottom="16dp"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/avenir_light"
+                            android:text="Sunday 4th March, 2018"
+                            android:textColor="@color/teal_500"/>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/profile_arrow_right"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/arrow_right"
+                        android:layout_marginRight="20dp"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/card_separator"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:id="@+id/prayer_container">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="32dp"
+                        android:textSize="18sp"
+                        android:id="@+id/prayer_menu_text"
+                        android:fontFamily="@font/avenir_light"
+                        android:text="Prayer Points"
+                        android:textColor="@color/card_title_text"/>
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/prayer_arrow_right"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/arrow_right"
+                        android:layout_marginRight="20dp"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/card_separator"/>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:id="@+id/profile_contents_container">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_margin="1dp"
+                            android:id="@+id/attendance_card"
+                            android:background="@color/teal_500">
+
+                            <ImageView
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_centerHorizontal="true"
+                                android:src="@mipmap/ic_kid_present"
+                                android:id="@+id/attended_icon"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/avenir_light"
+                                android:text="Attended"
+                                android:textColor="@color/white"
+                                android:layout_below="@id/attended_icon"
+                                android:layout_centerHorizontal="true"/>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/attended_check"
+                                android:visibility="gone">
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="#000000"
+                                    android:alpha="0.5"/>
+
+                                <ImageView
+                                    android:layout_centerInParent="true"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@mipmap/ic_check"/>
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_margin="1dp"
+                            android:id="@+id/has_bible_card"
+                            android:background="@color/teal_500">
+
+                            <ImageView
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_centerHorizontal="true"
+                                android:src="@mipmap/ic_bible"
+                                android:id="@+id/bible_icon"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/avenir_light"
+                                android:text="Has Bible"
+                                android:textColor="@color/white"
+                                android:layout_below="@id/bible_icon"
+                                android:layout_centerHorizontal="true"/>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/bible_check"
+                                android:visibility="gone">
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="#000000"
+                                    android:alpha="0.5"/>
+
+                                <ImageView
+                                    android:layout_centerInParent="true"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@mipmap/ic_check"/>
+
+                            </RelativeLayout>
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_margin="1dp"
+                            android:id="@+id/knows_memory_verse_card"
+                            android:background="@color/teal_500">
+
+                            <ImageView
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_centerHorizontal="true"
+                                android:src="@mipmap/ic_verse"
+                                android:id="@+id/verse_icon"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/avenir_light"
+                                android:text="Memory Verse"
+                                android:textColor="@color/white"
+                                android:layout_below="@id/verse_icon"
+                                android:layout_centerHorizontal="true"/>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/verse_check"
+                                android:visibility="gone">
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="#000000"
+                                    android:alpha="0.5"/>
+
+                                <ImageView
+                                    android:layout_centerInParent="true"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@mipmap/ic_check"/>
+
+                            </RelativeLayout>
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_margin="1dp"
+                            android:id="@+id/has_offering_card"
+                            android:background="@color/teal_500">
+
+                            <ImageView
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_centerHorizontal="true"
+                                android:src="@mipmap/ic_offering"
+                                android:id="@+id/offering_icon"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/avenir_light"
+                                android:text="Offering"
+                                android:textColor="@color/white"
+                                android:layout_below="@id/offering_icon"
+                                android:layout_centerHorizontal="true"/>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/offering_check"
+                                android:visibility="gone">
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="#000000"
+                                    android:alpha="0.5"/>
+
+                                <ImageView
+                                    android:layout_centerInParent="true"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@mipmap/ic_check"/>
+
+                            </RelativeLayout>
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_margin="1dp"
+                            android:id="@+id/brought_a_friend_card"
+                            android:background="@color/teal_500">
+
+                            <ImageView
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_centerHorizontal="true"
+                                android:src="@mipmap/ic_friend"
+                                android:id="@+id/brought_friend_icon"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/avenir_light"
+                                android:text="Brought Friend"
+                                android:textColor="@color/white"
+                                android:layout_below="@id/brought_friend_icon"
+                                android:layout_centerHorizontal="true"/>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/friend_check"
+                                android:visibility="gone">
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="#000000"
+                                    android:alpha="0.5"/>
+
+                                <ImageView
+                                    android:layout_centerInParent="true"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@mipmap/ic_check"/>
+
+                            </RelativeLayout>
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/bonus_card"
+                            android:layout_margin="1dp"
+                            android:background="@color/teal_500">
+
+                            <ImageView
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_centerHorizontal="true"
+                                android:src="@mipmap/ic_bonus"
+                                android:id="@+id/bonus_icon"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/avenir_light"
+                                android:text="Bonus"
+                                android:textColor="@color/white"
+                                android:layout_below="@id/bonus_icon"
+                                android:layout_centerHorizontal="true"/>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/bonus_check"
+                                android:visibility="gone">
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="#000000"
+                                    android:alpha="0.5"/>
+
+                                <ImageView
+                                    android:layout_centerInParent="true"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@mipmap/ic_check"/>
+
+                            </RelativeLayout>
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@color/white"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginTop="8dp"
+                            android:gravity="right"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/border_two">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/avenir_light"
+                                    android:textColor="@color/card_grid_text"
+                                    android:textSize="16sp"
+                                    android:layout_marginLeft="8dp"
+                                    android:text="Aggregate Points"
+                                    android:layout_height="wrap_content" />
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@color/card_light_text"/>
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0.3"
+                                    android:id="@+id/aggregate_points"
+                                    android:gravity="left"
+                                    android:layout_marginLeft="8dp"
+                                    android:fontFamily="@font/avenir_light"
+                                    android:textColor="@color/card_grid_text"
+                                    android:textSize="16sp"
+                                    android:layout_height="wrap_content" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/border_two">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/avenir_light"
+                                    android:textColor="@color/card_grid_text"
+                                    android:textSize="16sp"
+                                    android:layout_marginLeft="8dp"
+                                    android:text="Today's Points"
+                                    android:layout_height="wrap_content" />
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@color/card_light_text"/>
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0.3"
+                                    android:id="@+id/total_points"
+                                    android:gravity="left"
+                                    android:layout_marginLeft="8dp"
+                                    android:fontFamily="@font/avenir_light"
+                                    android:textColor="@color/card_grid_text"
+                                    android:textSize="16sp"
+                                    android:layout_height="wrap_content" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/border_two">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/avenir_light"
+                                    android:textColor="@color/card_grid_text"
+                                    android:textSize="16sp"
+                                    android:layout_marginLeft="8dp"
+                                    android:text="Till Next Candy"
+                                    android:layout_height="wrap_content" />
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@color/card_light_text"/>
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0.3"
+                                    android:id="@+id/points_till_candy"
+                                    android:gravity="left"
+                                    android:layout_marginLeft="8dp"
+                                    android:fontFamily="@font/avenir_light"
+                                    android:textColor="@color/card_grid_text"
+                                    android:textSize="16sp"
+                                    android:layout_height="wrap_content" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:visibility="gone"
+                                android:id="@+id/candy_wrap"
+                                android:layout_gravity="center_vertical"
+                                android:layout_height="100dp">
+
+                                <ImageView
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:scaleType="centerCrop"
+                                    android:layout_centerInParent="true"
+                                    android:src="@mipmap/ic_candy"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:fontFamily="@font/rosario_regular"
+                                    android:textColor="@color/colorPrimary"
+                                    android:layout_alignParentBottom="true"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    android:text="Gets A Candy today"/>
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+
+                    <Button
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@color/grey_100"
+                        android:gravity="center"
+                        android:layout_gravity="bottom"
+                        android:id="@+id/done_button"
+                        android:text="Done"
+                        android:textColor="@color/teal_500"/>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:id="@+id/prayer_points_container">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="32dp"
+                        android:textSize="20sp"
+                        android:id="@+id/prayer_points_title"
+                        android:fontFamily="@font/rosario_regular"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:text="Prayer Points"/>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_below="@id/prayer_points_title"
+                        android:id="@+id/prayer_points_recycler"/>
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

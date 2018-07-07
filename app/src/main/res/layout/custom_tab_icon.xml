@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="?attr/actionBarSize">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir_light"
+                android:textColor="@color/black"
+                android:text="Ocean Kid"
+                android:textSize="18sp"
+                android:id="@+id/tab_title"/>
+
+            <ImageView
+                android:visibility="gone"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/icon"
+                android:src="@mipmap/ic_verse"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/tab_title"
+                android:layout_centerInParent="true"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

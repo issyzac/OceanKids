@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="62dp"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/card_separator"/>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:id="@+id/kids_names"
+            android:textColor="@color/card_grid_text"
+            android:text="Alphonce"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:fontFamily="@font/opensans_regular"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/kids_class"
+            android:textColor="@color/card_grid_text"
+            android:text="Primary"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:fontFamily="@font/opensans_regular"/>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border_one"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="32dp"
+                android:text="CheckIn"
+                android:id="@+id/checkin_child_id"
+                android:textColor="@color/card_grid_text"
+                android:textAllCaps="false"
+                android:fontFamily="@font/opensans_regular"
+                android:layout_alignParentRight="true"/>
+
+            <Button
+                android:visibility="gone"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border_four"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="32dp"
+                android:text="CheckOut"
+                android:id="@+id/checkout_child_id"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:fontFamily="@font/opensans_regular"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/opensans_regular"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="154dp"
+                android:id="@+id/card_number"
+                android:textColor="@color/card_grid_text"
+                android:text="33"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

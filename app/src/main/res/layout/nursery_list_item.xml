@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="@drawable/nursery_kids_list_selector">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/yellow_050"
+        android:id="@+id/selected_view"
+        android:visibility="gone"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        android:id="@+id/nursery_kids_names"
+        android:textColor="@color/card_title_text"
+        android:text="Alphonce"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:fontFamily="@font/opensans_regular"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/card_separator"/>
+
+</RelativeLayout>

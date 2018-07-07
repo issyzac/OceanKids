@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/sign_in_container">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/logo"
+            android:id="@+id/login_logo"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/login_logo"
+            android:layout_marginTop="16dp"
+            android:text="Ocean Kids App"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:id="@+id/login_title"
+            android:fontFamily="@font/avenir_light"/>
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:id="@+id/email"
+            android:layout_marginRight="8dp"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="16dp"
+            android:hint="Email"
+            android:layout_below="@id/login_title"
+            android:layout_centerHorizontal="true"
+            android:textSize="16sp"
+            android:textColor="@color/card_grid_text"
+            android:textColorHint="@color/card_grid_text"
+            android:fontFamily="@font/avenir_light"
+            android:inputType="textEmailAddress"
+            android:drawableLeft="@mipmap/ic_email"
+            android:drawablePadding="8dp"
+            android:background="@drawable/et_background" />
+
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:id="@+id/password"
+            android:layout_marginRight="8dp"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="16dp"
+            android:hint="Password"
+            android:layout_below="@id/email"
+            android:layout_centerHorizontal="true"
+            android:textSize="16sp"
+            android:textColor="@color/card_grid_text"
+            android:textColorHint="@color/card_grid_text"
+            android:fontFamily="@font/avenir_light"
+            android:inputType="textPassword"
+            android:drawableLeft="@mipmap/ic_input"
+            android:drawablePadding="8dp"
+            android:background="@drawable/et_background" />
+
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:id="@+id/login_button"
+            android:layout_below="@id/password"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/round_button_fill"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:layout_centerInParent="true"
+                android:id="@+id/login_button_text"
+                android:textColor="@color/white"
+                android:fontFamily="@font/avenir_light"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"/>
+
+            <com.github.rahatarmanahmed.cpv.CircularProgressView
+                android:visibility="gone"
+                android:id="@+id/progress_view"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                app:cpv_animAutostart="true"
+                app:cpv_indeterminate="true"
+                app:cpv_color="@color/white" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/card_separator_third">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/transparent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="Items"
+            android:layout_marginTop="16dp"
+            android:textColor="#ff6000"
+            android:fontFamily="@font/avenir_light"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"/>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                app:cardBackgroundColor="@color/red_100"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/primary_class_card"
+                    android:layout_height="100dp"
+                    android:layout_width="match_parent">
+
+                    <TextView
+                        android:id="@+id/primary_class_title"
+                        android:layout_width="120dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/avenir_light"
+                        android:text="@string/checkinout"
+                        android:textStyle="bold"
+                        android:textColor="@color/card_title_text"
+                        android:textSize="18sp" />
+
+                </RelativeLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"/>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                app:cardBackgroundColor="@color/red_100"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:id="@+id/register_child_container">
+
+                    <TextView
+                        android:id="@+id/register_title"
+                        android:layout_width="150dp"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/avenir_light"
+                        android:text="Register"
+                        android:textStyle="bold"
+                        android:textColor="@color/card_title_text"
+                        android:textSize="18sp" />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"/>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="100dp"
+                android:background="@drawable/border_one">
+
+                <TextView
+                    android:id="@+id/preteen_class_title"
+                    android:layout_width="150dp"
+                    android:gravity="center_horizontal"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/avenir_light"
+                    android:text="Birthdays"
+                    android:textStyle="bold"
+                    android:textColor="@color/card_title_text"
+                    android:textSize="18sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@id/preteen_class_title">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/grey_800"
+                        android:alpha="0.5"/>
+
+                    <View
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:layout_marginLeft="-20dp"
+                        android:layout_marginTop="-20dp"
+                        android:rotation="25"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"/>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="100dp"
+                android:background="@drawable/border_one">
+
+                <TextView
+                    android:id="@+id/nursery_class_title"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/avenir_light"
+                    android:gravity="center_horizontal"
+                    android:text="Prayers"
+                    android:textColor="@color/card_title_text"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"/>
+
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="Sunday Summaries"
+            android:layout_marginTop="16dp"
+            android:textColor="#ff6000"
+            android:fontFamily="@font/avenir_light"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:background="@drawable/et_background">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/card_title_text"
+                    android:textStyle="bold"
+                    android:text="Second Service"
+                    android:textSize="18sp"
+                    android:id="@+id/second_service_title"
+                    android:fontFamily="@font/avenir_light"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="16dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/separator_one"
+                    android:background="@color/card_light_text"
+                    android:layout_below="@id/second_service_title"
+                    android:layout_marginTop="16dp"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/separator_one"
+                    android:textSize="16sp"
+                    android:id="@+id/attended_title"
+                    android:textColor="#ff6000"
+                    android:fontFamily="@font/avenir_light"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Total Attended"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/separator_one"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@id/attended_title"
+                    android:textColor="@color/card_title_text"
+                    android:fontFamily="@font/avenir_light"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="0"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/attended_title"
+                    android:textSize="16sp"
+                    android:id="@+id/checked_in_title"
+                    android:textColor="#ff6000"
+                    android:fontFamily="@font/avenir_light"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Checked In"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/attended_title"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@id/checked_in_title"
+                    android:textColor="@color/card_title_text"
+                    android:fontFamily="@font/avenir_light"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="0"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/checked_in_title"
+                    android:textSize="16sp"
+                    android:id="@+id/checked_out_title"
+                    android:textColor="#ff6000"
+                    android:fontFamily="@font/avenir_light"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Checked Out"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/checked_in_title"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@id/checked_out_title"
+                    android:textColor="@color/card_title_text"
+                    android:fontFamily="@font/avenir_light"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="0"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/card_light_text"/>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/card_title_text"
+                    android:textStyle="bold"
+                    android:text="Third Service"
+                    android:textSize="18sp"
+                    android:id="@+id/third_service_title"
+                    android:fontFamily="@font/avenir_light"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="16dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/separator_two"
+                    android:background="@color/card_light_text"
+                    android:layout_below="@id/third_service_title"
+                    android:layout_marginTop="16dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/separator_two"
+                    android:textSize="16sp"
+                    android:id="@+id/second_attended_title"
+                    android:textColor="#ff6000"
+                    android:fontFamily="@font/avenir_light"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Total Attended"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/separator_two"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@id/second_attended_title"
+                    android:textColor="@color/card_title_text"
+                    android:fontFamily="@font/avenir_light"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="0"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/second_attended_title"
+                    android:textSize="16sp"
+                    android:id="@+id/second_checked_in_title"
+                    android:textColor="#ff6000"
+                    android:fontFamily="@font/avenir_light"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Checked In"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/second_attended_title"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@id/second_checked_in_title"
+                    android:textColor="@color/card_title_text"
+                    android:fontFamily="@font/avenir_light"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="0"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/second_checked_in_title"
+                    android:textSize="16sp"
+                    android:id="@+id/second_checked_out_title"
+                    android:textColor="#ff6000"
+                    android:fontFamily="@font/avenir_light"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Checked Out"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/second_checked_in_title"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@id/second_checked_out_title"
+                    android:textColor="@color/card_title_text"
+                    android:fontFamily="@font/avenir_light"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="0"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

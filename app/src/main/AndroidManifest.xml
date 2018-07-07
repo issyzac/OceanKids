@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="apps.issy.com.oceankids">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity android:name=".LoginActivity"
+            android:windowSoftInputMode="stateHidden">
+        </activity>
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".KidsListActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:parentActivityName=".MainActivity"/>
+
+        <activity android:name=".ChildDetailsActivity"
+            android:parentActivityName=".MainActivity"/>
+
+        <activity android:name=".RegisterChildActivity"
+            android:parentActivityName=".KidsListActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+
+        <activity android:name=".PrimaryKidsActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppThemePrimary"/>
+
+        <activity android:name=".PreSchoolActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppThemePreSchool"/>
+
+        <activity android:name=".PreSchoolInfoActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppThemePreSchool"/>
+
+        <activity android:name=".NurseryKidsActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppThemeNursery"/>
+
+        <activity android:name=".NuseryKidsInfoActivity"
+            android:parentActivityName=".NurseryKidsActivity"
+            android:theme="@style/AppThemeNursery"/>
+
+        <activity android:name=".BirthdaysActivity"
+            android:parentActivityName=".NurseryKidsActivity"
+            android:theme="@style/AppThemeNursery"/>
+
+        <activity android:name=".PreSchoolBirthdayActivity"
+            android:parentActivityName=".PreSchoolActivity"
+            android:theme="@style/AppThemePreSchool"/>
+
+        <activity android:name=".PrimaryKidsRewardActivity"
+            android:parentActivityName=".PrimaryKidsActivity"
+            android:theme="@style/AppThemePrimary"/>
+
+    </application>
+
+</manifest>

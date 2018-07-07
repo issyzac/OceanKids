@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/container"
+        android:background="@color/white">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_blue_600"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/toolbar">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:text="Pre-School Kids"
+                        android:id="@+id/app_title"
+                        android:fontFamily="@font/google_sans_bold"/>
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_below="@id/app_bar_layout">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/card_separator_sec"
+                    android:scrollbars="vertical"
+                    android:id="@+id/primary_kids_list_recycler"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/google_sans_regular"
+                    android:textColor="@color/light_blue_600"
+                    android:id="@+id/primary_list_message"
+                    android:text="Loading list..."/>
+
+            </RelativeLayout>
+
+            <ScrollView
+                android:layout_width="0dp"
+                android:layout_weight="0.6"
+                android:id="@+id/primary_details_scroll_view"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/child_info_details_container"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/primary_details_kid_names"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
+                            android:textSize="48dp"
+                            android:fontFamily="@font/google_sans_bold"
+                            android:text="Name Of Child"
+                            android:textColor="@color/light_blue_600"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/primary_allergies_title"
+                            app:layout_constraintTop_toBottomOf="@id/primary_details_kid_names"
+                            app:layout_constraintLeft_toLeftOf="@id/primary_details_kid_names"
+                            android:layout_marginTop="16dp"
+                            android:text="Allergies"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/google_sans_regular"
+                            android:textColor="@color/card_title_text"/>
+
+                        <TextView
+                            android:layout_width="300dp"
+                            android:layout_height="wrap_content"
+                            android:minHeight="100dp"
+                            android:id="@+id/primary_allergies_value"
+                            app:layout_constraintTop_toBottomOf="@id/primary_allergies_title"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="8dp"
+                            android:textSize="18sp"
+                            android:padding="16dp"
+                            android:textColor="@color/card_grid_text"
+                            android:text=""
+                            android:background="@drawable/border_two"
+                            android:fontFamily="@font/opensans_regular"/>
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            app:layout_constraintLeft_toRightOf="@id/primary_allergies_value"
+                            app:layout_constraintTop_toBottomOf="@id/primary_details_kid_names"
+                            android:layout_marginTop="32dp"
+                            android:layout_marginLeft="32dp"
+                            android:src="@mipmap/ic_parent"
+                            android:id="@+id/parent_name_icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/parent_name_title"
+                            android:text="Parent Name"
+                            app:layout_constraintLeft_toRightOf="@id/parent_name_icon"
+                            app:layout_constraintTop_toBottomOf="@id/primary_details_kid_names"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginLeft="32dp"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/google_sans_regular"
+                            android:textColor="@color/card_title_text"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:id="@+id/parent_name_value"
+                            android:textColor="@color/card_grid_text"
+                            android:fontFamily="@font/google_sans_regular"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp"
+                            android:text="Juma Nkamia"
+                            app:layout_constraintTop_toBottomOf="@id/parent_name_title"
+                            app:layout_constraintLeft_toRightOf="@id/parent_name_icon"
+                            android:layout_marginLeft="32dp"/>
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            app:layout_constraintLeft_toRightOf="@id/primary_allergies_value"
+                            app:layout_constraintTop_toBottomOf="@id/parent_name_value"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginLeft="32dp"
+                            android:src="@mipmap/ic_phone_white"
+                            android:backgroundTint="@color/purple_400"
+                            android:id="@+id/parent_phone_icon"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/primary_phone_title"
+                            app:layout_constraintTop_toBottomOf="@id/parent_name_value"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintLeft_toRightOf="@id/parent_phone_icon"
+                            android:layout_marginLeft="32dp"
+                            android:text="Phone"
+                            android:textColor="@color/card_title_text"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/google_sans_regular"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/phone_value"
+                            app:layout_constraintTop_toBottomOf="@id/primary_phone_title"
+                            app:layout_constraintLeft_toLeftOf="@id/primary_phone_title"
+                            android:layout_marginTop="4dp"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                            android:textColor="@color/card_grid_text"
+                            android:text="0683321768"
+                            android:fontFamily="@font/google_sans_regular"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintTop_toBottomOf="@id/primary_allergies_value"
+                            android:id="@+id/profile_contents_container">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="16dp"
+                                android:orientation="horizontal">
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:layout_margin="1dp"
+                                    android:id="@+id/attendance_card"
+                                    android:background="@color/light_blue_500">
+
+                                    <ImageView
+                                        android:layout_width="45dp"
+                                        android:layout_height="45dp"
+                                        android:layout_marginTop="20dp"
+                                        android:layout_centerHorizontal="true"
+                                        android:src="@mipmap/ic_kid_present"
+                                        android:id="@+id/attended_icon"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textStyle="bold"
+                                        android:fontFamily="@font/google_sans_regular"
+                                        android:text="Attended"
+                                        android:textColor="@color/white"
+                                        android:layout_below="@id/attended_icon"
+                                        android:layout_centerHorizontal="true"/>
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:id="@+id/attended_check"
+                                        android:visibility="gone">
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="#000000"
+                                            android:alpha="0.5"/>
+
+                                        <ImageView
+                                            android:layout_centerInParent="true"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:src="@mipmap/ic_check"/>
+
+                                    </RelativeLayout>
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:layout_margin="1dp"
+                                    android:id="@+id/has_bible_card"
+                                    android:background="@color/light_blue_500">
+
+                                    <ImageView
+                                        android:layout_width="45dp"
+                                        android:layout_height="45dp"
+                                        android:layout_marginTop="20dp"
+                                        android:layout_centerHorizontal="true"
+                                        android:src="@mipmap/ic_bible"
+                                        android:id="@+id/bible_icon"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textStyle="bold"
+                                        android:fontFamily="@font/google_sans_regular"
+                                        android:text="Has Bible"
+                                        android:textColor="@color/white"
+                                        android:layout_below="@id/bible_icon"
+                                        android:layout_centerHorizontal="true"/>
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:id="@+id/bible_check"
+                                        android:visibility="gone">
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="#000000"
+                                            android:alpha="0.5"/>
+
+                                        <ImageView
+                                            android:layout_centerInParent="true"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:src="@mipmap/ic_check"/>
+
+                                    </RelativeLayout>
+
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:layout_margin="1dp"
+                                    android:id="@+id/knows_memory_verse_card"
+                                    android:background="@color/light_blue_500">
+
+                                    <ImageView
+                                        android:layout_width="45dp"
+                                        android:layout_height="45dp"
+                                        android:layout_marginTop="20dp"
+                                        android:layout_centerHorizontal="true"
+                                        android:src="@mipmap/ic_verse"
+                                        android:id="@+id/verse_icon"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textStyle="bold"
+                                        android:fontFamily="@font/google_sans_regular"
+                                        android:text="Memory Verse"
+                                        android:textColor="@color/white"
+                                        android:layout_below="@id/verse_icon"
+                                        android:layout_centerHorizontal="true"/>
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:id="@+id/verse_check"
+                                        android:visibility="gone">
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="#000000"
+                                            android:alpha="0.5"/>
+
+                                        <ImageView
+                                            android:layout_centerInParent="true"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:src="@mipmap/ic_check"/>
+
+                                    </RelativeLayout>
+
+
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="1dp"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="16dp"
+                                android:orientation="horizontal">
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:layout_margin="1dp"
+                                    android:id="@+id/has_offering_card"
+                                    android:background="@color/light_blue_500">
+
+                                    <ImageView
+                                        android:layout_width="45dp"
+                                        android:layout_height="45dp"
+                                        android:layout_marginTop="20dp"
+                                        android:layout_centerHorizontal="true"
+                                        android:src="@mipmap/ic_offering"
+                                        android:id="@+id/offering_icon"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textStyle="bold"
+                                        android:fontFamily="@font/google_sans_regular"
+                                        android:text="Offering"
+                                        android:textColor="@color/white"
+                                        android:layout_below="@id/offering_icon"
+                                        android:layout_centerHorizontal="true"/>
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:id="@+id/offering_check"
+                                        android:visibility="gone">
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="#000000"
+                                            android:alpha="0.5"/>
+
+                                        <ImageView
+                                            android:layout_centerInParent="true"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:src="@mipmap/ic_check"/>
+
+                                    </RelativeLayout>
+
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:layout_margin="1dp"
+                                    android:id="@+id/brought_a_friend_card"
+                                    android:background="@color/light_blue_500">
+
+                                    <ImageView
+                                        android:layout_width="45dp"
+                                        android:layout_height="45dp"
+                                        android:layout_marginTop="20dp"
+                                        android:layout_centerHorizontal="true"
+                                        android:src="@mipmap/ic_friend"
+                                        android:id="@+id/brought_friend_icon"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textStyle="bold"
+                                        android:fontFamily="@font/google_sans_regular"
+                                        android:text="Brought Friend"
+                                        android:textColor="@color/white"
+                                        android:layout_below="@id/brought_friend_icon"
+                                        android:layout_centerHorizontal="true"/>
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:id="@+id/friend_check"
+                                        android:visibility="gone">
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="#000000"
+                                            android:alpha="0.5"/>
+
+                                        <ImageView
+                                            android:layout_centerInParent="true"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:src="@mipmap/ic_check"/>
+
+                                    </RelativeLayout>
+
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:id="@+id/bonus_card"
+                                    android:layout_margin="1dp"
+                                    android:background="@color/light_blue_500">
+
+                                    <ImageView
+                                        android:layout_width="45dp"
+                                        android:layout_height="45dp"
+                                        android:layout_marginTop="20dp"
+                                        android:layout_centerHorizontal="true"
+                                        android:src="@mipmap/ic_bonus"
+                                        android:id="@+id/bonus_icon"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textStyle="bold"
+                                        android:fontFamily="@font/google_sans_regular"
+                                        android:text="Bonus"
+                                        android:textColor="@color/white"
+                                        android:layout_below="@id/bonus_icon"
+                                        android:layout_centerHorizontal="true"/>
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:id="@+id/bonus_check"
+                                        android:visibility="gone">
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="#000000"
+                                            android:alpha="0.5"/>
+
+                                        <ImageView
+                                            android:layout_centerInParent="true"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:src="@mipmap/ic_check"/>
+
+                                    </RelativeLayout>
+
+
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="16dp"
+                                android:background="@color/white"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:layout_marginTop="8dp"
+                                    android:gravity="right"
+                                    android:layout_height="wrap_content">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="40dp"
+                                        android:orientation="horizontal"
+                                        android:gravity="center_vertical"
+                                        android:background="@drawable/border_two">
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/google_sans_regular"
+                                            android:textColor="@color/card_grid_text"
+                                            android:textSize="16sp"
+                                            android:layout_marginLeft="8dp"
+                                            android:text="Aggregate Points"
+                                            android:layout_height="wrap_content" />
+
+                                        <View
+                                            android:layout_width="1dp"
+                                            android:layout_height="match_parent"
+                                            android:background="@color/card_light_text"/>
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_weight="0.3"
+                                            android:id="@+id/aggregate_points"
+                                            android:gravity="left"
+                                            android:layout_marginLeft="8dp"
+                                            android:fontFamily="@font/google_sans_bold"
+                                            android:textColor="@color/card_grid_text"
+                                            android:textSize="16sp"
+                                            android:layout_height="wrap_content" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="40dp"
+                                        android:gravity="center_vertical"
+                                        android:background="@drawable/border_two">
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/google_sans_regular"
+                                            android:textColor="@color/card_grid_text"
+                                            android:textSize="16sp"
+                                            android:layout_marginLeft="8dp"
+                                            android:text="Today's Points"
+                                            android:layout_height="wrap_content" />
+
+                                        <View
+                                            android:layout_width="1dp"
+                                            android:layout_height="match_parent"
+                                            android:background="@color/card_light_text"/>
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_weight="0.3"
+                                            android:id="@+id/total_points"
+                                            android:gravity="left"
+                                            android:layout_marginLeft="8dp"
+                                            android:fontFamily="@font/google_sans_bold"
+                                            android:textColor="@color/card_grid_text"
+                                            android:textSize="16sp"
+                                            android:layout_height="wrap_content" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="40dp"
+                                        android:gravity="center_vertical"
+                                        android:background="@drawable/border_two">
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/google_sans_regular"
+                                            android:textColor="@color/card_grid_text"
+                                            android:textSize="16sp"
+                                            android:layout_marginLeft="8dp"
+                                            android:text="Till Next Candy"
+                                            android:layout_height="wrap_content" />
+
+                                        <View
+                                            android:layout_width="1dp"
+                                            android:layout_height="match_parent"
+                                            android:background="@color/card_light_text"/>
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_weight="0.3"
+                                            android:id="@+id/points_till_candy"
+                                            android:gravity="left"
+                                            android:layout_marginLeft="8dp"
+                                            android:fontFamily="@font/google_sans_bold"
+                                            android:textColor="@color/card_grid_text"
+                                            android:textSize="16sp"
+                                            android:layout_height="wrap_content" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:visibility="gone"
+                                        android:id="@+id/candy_wrap"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_height="100dp">
+
+                                        <ImageView
+                                            android:layout_width="70dp"
+                                            android:layout_height="70dp"
+                                            android:scaleType="centerCrop"
+                                            android:layout_centerInParent="true"
+                                            android:src="@mipmap/ic_candy"/>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerHorizontal="true"
+                                            android:fontFamily="@font/rosario_regular"
+                                            android:textColor="@color/light_blue_700"
+                                            android:layout_alignParentBottom="true"
+                                            android:textSize="14sp"
+                                            android:textStyle="bold"
+                                            android:text="Gets A Candy today"/>
+
+                                    </RelativeLayout>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"/>
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="16dp">
+
+                                <Button
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="60dp"
+                                    android:background="@drawable/border_one"
+                                    android:gravity="center"
+                                    android:layout_marginLeft="16dp"
+                                    android:layout_marginRight="16dp"
+                                    android:layout_gravity="bottom"
+                                    android:id="@+id/done_button"
+                                    android:text="Done"
+                                    android:textColor="@color/light_blue_500"/>
+
+                                <com.github.rahatarmanahmed.cpv.CircularProgressView
+                                    android:visibility="invisible"
+                                    android:id="@+id/save_rewards_progress_view"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:layout_centerInParent="true"
+                                    app:cpv_animAutostart="true"
+                                    app:cpv_indeterminate="true"
+                                    app:cpv_color="@color/light_blue_600" />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </android.support.constraint.ConstraintLayout>
+
+                    <com.github.rahatarmanahmed.cpv.CircularProgressView
+                        android:id="@+id/progress_view"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerInParent="true"
+                        app:cpv_animAutostart="true"
+                        app:cpv_indeterminate="true"
+                        app:cpv_color="@color/light_blue_600" />
+
+                </RelativeLayout>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

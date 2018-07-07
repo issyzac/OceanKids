@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:fontFamily="@font/avenir_light"
+            android:text="Check-in Child"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/service_title"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/avenir_light"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="Service"/>
+
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:id="@+id/select_service"
+                android:layout_below="@id/service_title">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="1dp"
+                    android:id="@+id/second_service"
+                    android:background="@color/teal_500">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/avenir_light"
+                        android:text="2nd"
+                        android:textColor="@color/white"
+                        android:layout_centerInParent="true"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/second_service_selected_check">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#000000"
+                            android:alpha="0.4"/>
+
+                        <ImageView
+                            android:layout_centerInParent="true"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@mipmap/ic_check"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="1dp"
+                    android:id="@+id/third_service"
+                    android:background="@color/teal_500">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/avenir_light"
+                        android:text="3rd"
+                        android:textColor="@color/white"
+                        android:layout_centerInParent="true"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/third_service_selected_check"
+                        android:visibility="gone">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#000000"
+                            android:alpha="0.4"/>
+
+                        <ImageView
+                            android:layout_centerInParent="true"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@mipmap/ic_check"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/card_number_title"
+                android:layout_marginLeft="70dp"
+                android:layout_toRightOf="@id/select_service"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/avenir_light"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="Number"/>
+
+            <EditText
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="70dp"
+                android:layout_below="@id/card_number_title"
+                android:id="@+id/card_number"
+                android:layout_toRightOf="@id/select_service"
+                android:layout_toEndOf="@id/select_service"
+                android:textSize="28sp"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/card_title_text"
+                android:background="@drawable/et_background"/>
+
+        </RelativeLayout>
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="OK"
+            android:id="@+id/ok_button"
+            android:textColor="@color/white"
+            android:fontFamily="@font/avenir_light"
+            android:layout_alignParentRight="true"
+            android:layout_margin="8dp"
+            android:textStyle="bold"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/round_button_fill"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

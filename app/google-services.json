@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "699180178462",
+    "firebase_url": "https://kids-reward-system.firebaseio.com",
+    "project_id": "kids-reward-system",
+    "storage_bucket": "kids-reward-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:699180178462:android:ab000aa944292b1d",
+        "android_client_info": {
+          "package_name": "apps.issy.com.oceankids"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "699180178462-t7v2fgqedjema7bjj9shqrdobbc3hi6h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "apps.issy.com.oceankids",
+            "certificate_hash": "b9d4379442e06ded52d6f7f4ea6d7f6c37892f6c"
+          }
+        },
+        {
+          "client_id": "699180178462-t2isq73ost965j0usictmj6sh3te5kep.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBs24IuCvYw6DSC9-3pnTDldoddTfyqkB0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "699180178462-t2isq73ost965j0usictmj6sh3te5kep.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
