@@ -32,8 +32,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:text="Pre-School Kids"
+                        android:textSize="16sp"
+                        android:text="Primary Reward Chart"
                         android:id="@+id/app_title"
                         android:fontFamily="@font/google_sans_bold"/>
 

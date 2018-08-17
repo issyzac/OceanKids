@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import apps.issy.com.oceankids.Base.BaseActivity
+import kotlinx.android.synthetic.main.primary_kids_activity.*
 
 /**
  *  Created by issy on 12/06/2018.
@@ -17,6 +18,9 @@ import apps.issy.com.oceankids.Base.BaseActivity
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.primary_kids_activity)
+
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
     }
 

@@ -63,6 +63,9 @@ class PrimaryKidsRewardActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_primary_kids_reward)
 
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
         parent_name_icon.setColorFilter(resources.getColor(R.color.light_blue_400))
         parent_phone_icon.setColorFilter(resources.getColor(R.color.light_blue_400))
         attended_icon.setColorFilter(resources.getColor(R.color.white))

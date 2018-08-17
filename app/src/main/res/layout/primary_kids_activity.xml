@@ -31,10 +31,10 @@
                         android:layout_centerVertical="true"
                         android:textColor="@color/white"
                         android:textStyle="bold"
-                        android:textSize="24sp"
+                        android:textSize="16sp"
                         android:text="Primary Kids"
                         android:id="@+id/app_title"
-                        android:fontFamily="@font/avenir_light"/>
+                        android:fontFamily="@font/google_sans_bold"/>
 
                 </RelativeLayout>
 
