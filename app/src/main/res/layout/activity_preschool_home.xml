@@ -9,7 +9,7 @@
         android:id="@+id/preschool_app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/yellow_600"
+        android:background="@color/purple_600"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
@@ -28,10 +28,10 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:fontFamily="@font/opensans_bold"
+                    android:fontFamily="@font/google_sans_bold"
                     android:text="Pre-School Kids"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
 
             </RelativeLayout>
 
@@ -71,7 +71,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/yellow_700"
+                    android:background="@color/purple_700"
                     android:alpha="0.6"/>
 
                 <ImageView

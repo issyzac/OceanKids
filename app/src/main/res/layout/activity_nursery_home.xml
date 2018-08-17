@@ -9,7 +9,7 @@
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_400"
+        android:background="@color/yellow_400"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
@@ -71,7 +71,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/purple_600"
+                    android:background="@color/yellow_600"
                     android:alpha="0.6"/>
 
                 <ImageView

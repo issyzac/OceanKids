@@ -446,7 +446,7 @@
                                 android:fontFamily="@font/rosario_regular"
                                 android:gravity="center"
                                 android:text="Nursery"
-                                android:textColor="@color/purple_700"
+                                android:textColor="@color/yellow_700"
                                 android:textSize="18sp"
                                 android:textStyle="bold"/>
 
@@ -482,7 +482,7 @@
                                 android:fontFamily="@font/rosario_regular"
                                 android:gravity="center"
                                 android:text="Pre-School"
-                                android:textColor="@color/yellow_700"
+                                android:textColor="@color/purple_700"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 

@@ -38,8 +38,11 @@ import kotlin.collections.ArrayList
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preschool)
 
-        parent_name_icon.setColorFilter(resources.getColor(R.color.yellow_900))
-        parent_phone_icon.setColorFilter(resources.getColor(R.color.yellow_900))
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        parent_name_icon.setColorFilter(resources.getColor(R.color.purple_300))
+        parent_phone_icon.setColorFilter(resources.getColor(R.color.purple_300))
 
         val linearLayoutManager = LinearLayoutManager(this)
         preschool_kids_list_recycler.layoutManager = linearLayoutManager

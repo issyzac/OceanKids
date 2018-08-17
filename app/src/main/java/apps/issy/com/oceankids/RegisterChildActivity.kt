@@ -61,6 +61,9 @@ class RegisterChildActivity : BaseActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_child)
 
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
         levelList.add("Pre-School")
         levelList.add("Primary")
         levelList.add("Pre-teen")

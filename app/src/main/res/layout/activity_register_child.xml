@@ -31,8 +31,9 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:textColor="@color/white"
-                    android:text="Ocean Kids"
-                    android:fontFamily="@font/avenir_light"/>
+                    android:text="Register Child"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/google_sans_bold"/>
 
             </RelativeLayout>
 

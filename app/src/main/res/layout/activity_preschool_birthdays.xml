@@ -15,7 +15,7 @@
             android:id="@+id/preschool_app_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/yellow_700"
+            android:background="@color/purple_600"
             android:theme="@style/AppTheme.AppBarOverlay">
 
             <android.support.v7.widget.Toolbar
@@ -36,7 +36,7 @@
                         android:layout_alignParentTop="true"
                         android:fontFamily="@font/opensans_bold"
                         android:text="Birthdays"
-                        android:textColor="@color/card_title_text"
+                        android:textColor="@color/white"
                         android:textSize="20sp" />
 
                 </RelativeLayout>

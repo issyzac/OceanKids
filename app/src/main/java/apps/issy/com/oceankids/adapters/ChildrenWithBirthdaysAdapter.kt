@@ -47,11 +47,11 @@ class ChildrenWithBirthdaysAdapter (private val children : ArrayList<Child>) : R
             itemView.years.text = childAge.toString()+" Years"
 
             if (childAge in 0..3){
-                itemView.names.setTextColor(context.resources.getColor(R.color.purple_600))
-                itemView.years.setTextColor(context.resources.getColor(R.color.purple_600))
-            }else if (childAge in 4..5){
                 itemView.names.setTextColor(context.resources.getColor(R.color.yellow_700))
                 itemView.years.setTextColor(context.resources.getColor(R.color.yellow_700))
+            }else if (childAge in 4..5){
+                itemView.names.setTextColor(context.resources.getColor(R.color.purple_600))
+                itemView.years.setTextColor(context.resources.getColor(R.color.purple_600))
             }else if (childAge in 6..10){
                 itemView.names.setTextColor(context.resources.getColor(R.color.light_blue_600))
                 itemView.years.setTextColor(context.resources.getColor(R.color.light_blue_600))

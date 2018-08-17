@@ -32,7 +32,7 @@ class NurseryListAdapter (val kids : ArrayList<Child>, val firebaseData : Databa
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindForecast(kids[position], firebaseData, infoActivity)
         if (position == NuseryKidsInfoActivity.selectedPosition){
-            val colorPurple : Int = context!!.resources.getColor(R.color.purple_100)
+            val colorPurple : Int = context!!.resources.getColor(R.color.yellow_100)
             holder.itemView?.setBackgroundColor( colorPurple )
         }else {
             val colorLight : Int = context!!.resources.getColor(R.color.card_separator_third)

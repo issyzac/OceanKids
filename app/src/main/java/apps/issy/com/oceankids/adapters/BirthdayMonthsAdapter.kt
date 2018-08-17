@@ -30,7 +30,7 @@ class BirthdayMonthsAdapter (val months : ArrayList<String>, val itemClick: (Str
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindForecast(months[position])
         if (position == BirthdaysActivity.selectedPosition){
-            val colorPurple : Int = context!!.resources.getColor(R.color.purple_100)
+            val colorPurple : Int = context!!.resources.getColor(R.color.yellow_100)
             holder.itemView?.setBackgroundColor( colorPurple )
         }else {
             val colorLight : Int = context!!.resources.getColor(R.color.card_separator_third)

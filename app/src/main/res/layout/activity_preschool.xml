@@ -30,11 +30,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:textColor="@color/card_title_text"
-                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="Pre-School Kids"
                         android:id="@+id/app_title"
-                        android:fontFamily="@font/opensans_bold"/>
+                        android:fontFamily="@font/google_sans_bold"/>
 
                 </RelativeLayout>
 
@@ -80,7 +80,7 @@
                     android:layout_centerInParent="true"
                     android:textSize="18sp"
                     android:fontFamily="@font/opensans_regular"
-                    android:textColor="@color/yellow_900"
+                    android:textColor="@color/purple_900"
                     android:id="@+id/preschool_list_message"
                     android:text="Loading list..."/>
 
@@ -108,7 +108,7 @@
                         android:textSize="48dp"
                         android:fontFamily="@font/opensans_extrabold"
                         android:text=""
-                        android:textColor="@color/yellow_900"/>
+                        android:textColor="@color/purple_500"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -223,7 +223,7 @@
                     android:layout_centerInParent="true"
                     app:cpv_animAutostart="true"
                     app:cpv_indeterminate="true"
-                    app:cpv_color="@color/yellow_900" />
+                    app:cpv_color="@color/purple_900" />
 
             </RelativeLayout>
 

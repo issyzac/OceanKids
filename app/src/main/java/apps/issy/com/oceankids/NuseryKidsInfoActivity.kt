@@ -41,8 +41,8 @@ class NuseryKidsInfoActivity : BaseActivity(){
         nursery_kids_list_recycler.layoutManager = linearLayoutManager
         nursery_kids_list_recycler.hasFixedSize()
 
-        parent_name_icon.setColorFilter(resources.getColor(R.color.purple_200))
-        parent_phone_icon.setColorFilter(resources.getColor(R.color.purple_200))
+        parent_name_icon.setColorFilter(resources.getColor(R.color.yellow_900))
+        parent_phone_icon.setColorFilter(resources.getColor(R.color.yellow_900))
 
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

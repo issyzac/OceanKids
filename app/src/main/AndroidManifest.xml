@@ -44,7 +44,7 @@
             android:theme="@style/AppThemePreSchool"/>
 
         <activity android:name=".PreSchoolInfoActivity"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".PreSchoolActivity"
             android:theme="@style/AppThemePreSchool"
             android:windowSoftInputMode="stateHidden"/>
 

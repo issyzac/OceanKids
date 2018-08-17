@@ -34,7 +34,7 @@ class PreSchoolListAdapter (val kids : ArrayList<Child>, val firebaseData : Data
         holder?.bindForecast(position, kids[position], firebaseData, infoActivity)
 
         if(position == PreSchoolInfoActivity.selectedPosition){
-            var colorYellow : Int = context!!.resources.getColor(R.color.yellow_100)
+            var colorYellow : Int = context!!.resources.getColor(R.color.purple_100)
             holder?.itemView?.setBackgroundColor( colorYellow )
         }else{
             var colorLight : Int = context!!.resources.getColor(R.color.card_separator_third)
