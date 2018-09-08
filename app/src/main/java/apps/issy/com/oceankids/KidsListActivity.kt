@@ -27,6 +27,9 @@ class KidsListActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.class_list_activity)
 
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
         val linearLayoutManager = LinearLayoutManager(this)
         kids_list.layoutManager = linearLayoutManager
         kids_list.hasFixedSize()
