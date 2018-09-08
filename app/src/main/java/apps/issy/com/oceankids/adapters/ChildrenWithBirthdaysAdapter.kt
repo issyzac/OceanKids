@@ -41,10 +41,16 @@ class ChildrenWithBirthdaysAdapter (private val children : ArrayList<Child>) : R
             val todaysCalendarInstance = Calendar.getInstance()
 
             dateOfBirthCalendarInstance.timeInMillis = child.dob
+            val birthdayMonth = dateOfBirthCalendarInstance.get(Calendar.MONTH)+1
+            val birthdayDate = dateOfBirthCalendarInstance.get(Calendar.DAY_OF_MONTH)
+            val birthdayYear = todaysCalendarInstance.get(Calendar.YEAR)
 
             var childAge = todaysCalendarInstance.get(Calendar.YEAR) - dateOfBirthCalendarInstance.get(Calendar.YEAR)
 
             itemView.years.text = childAge.toString()+" Years"
+            itemView.birthday_date.text = birthdayDate.toString()+"/"+
+                    birthdayMonth.toString()+"/"+
+                    birthdayYear.toString()
 
             if (childAge in 0..3){
                 itemView.names.setTextColor(context.resources.getColor(R.color.yellow_700))

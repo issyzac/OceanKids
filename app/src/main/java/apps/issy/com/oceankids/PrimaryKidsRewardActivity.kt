@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
 import apps.issy.com.oceankids.Base.BaseActivity
 import apps.issy.com.oceankids.adapters.PrimaryKidsListAdapter
 import apps.issy.com.oceankids.data.Child
@@ -118,19 +120,18 @@ class PrimaryKidsRewardActivity : BaseActivity() {
             }
 
         }
-        childReference?.addValueEventListener(kidsListener)
+        childReference?.addListenerForSingleValueEvent(kidsListener)
 
         done_button.setOnClickListener(object : View.OnClickListener{
             override fun onClick(p0: View?) {
                 //this is supposed to save and finish the activity
                 done_button.visibility = View.INVISIBLE
                 save_rewards_progress_view.visibility = View.VISIBLE
-                recordChart(attend, bible, verse, offering, friend, bonus, totalPoints)
+                //Pass in the middleware first to check if the child's point have already been recorded
+                RecordRewardMiddleware(attend, bible, verse, offering, friend, bonus, totalPoints)
+                primary_kids_list_recycler.clearFocus()
                 done_button.visibility = View.VISIBLE
                 save_rewards_progress_view.visibility = View.INVISIBLE
-                val alertSaved = AlertView("Rewards Saved", "", AlertStyle.DIALOG)
-                alertSaved.addAction(AlertAction("OK", AlertActionStyle.DEFAULT, { action ->  }))
-                alertSaved.show(this@PrimaryKidsRewardActivity)
             }
         })
 
@@ -166,7 +167,7 @@ class PrimaryKidsRewardActivity : BaseActivity() {
 
         primary_kids_search_et.onTextChange { text, start, before, count ->
             val res = kidsList
-                    .filter { it.firstName!!.startsWith(text, ignoreCase = true) }
+                    .filter { it.firstName!!.startsWith(text, ignoreCase = true) || it.lastName!!.startsWith(text, ignoreCase = true) }
             val result : ArrayList<Child> = ArrayList(res)
             accomodateItemsListChanges(result)
         }
@@ -384,6 +385,37 @@ class PrimaryKidsRewardActivity : BaseActivity() {
             checkView.visibility = View.GONE
     }
 
+    fun RecordRewardMiddleware (
+            hasAttended : Boolean?,
+            hasABible : Boolean?,
+            knowsMemoryVerse : Boolean?,
+            hasOffering : Boolean?,
+            broughtAFriend : Boolean?,
+            gotBonus : Boolean?,
+            points: Int? ){
+        val childRewardReference : DatabaseReference = rewardReference.child(dateKey).child(currentChild.id)
+        val childRewardValueEventListener = object : ValueEventListener {
+            override fun onDataChange(p0: DataSnapshot) {
+                if (p0.getValue(true) != null){
+                    //Data already exist
+                    val alertSaved = AlertView("Not Saved, \nReward Already recorded for today", "", AlertStyle.DIALOG)
+                    alertSaved.addAction(AlertAction("Cancel", AlertActionStyle.DEFAULT, { action ->  }))
+                    alertSaved.show(this@PrimaryKidsRewardActivity)
+
+                }else{
+                    //Data does not exist
+                    recordChart(hasAttended, hasABible, knowsMemoryVerse, hasOffering, broughtAFriend, gotBonus, points)
+                }
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+            }
+
+        }
+        childRewardReference.addListenerForSingleValueEvent(childRewardValueEventListener)
+
+    }
+
     fun recordChart(
             hasAttended : Boolean?,
             hasABible : Boolean?,
@@ -402,6 +434,13 @@ class PrimaryKidsRewardActivity : BaseActivity() {
 
         aggregatePoints += totalPoints
         childReference!!.child(currentChild.id).child("aggregatePoints").setValue(aggregatePoints)
+
+        //Display the aggregate points
+        aggregate_points.text = aggregatePoints.toString()
+
+        val alertSaved = AlertView("Rewards Saved", "", AlertStyle.DIALOG)
+        alertSaved.addAction(AlertAction("OK", AlertActionStyle.DEFAULT, { action ->  }))
+        alertSaved.show(this@PrimaryKidsRewardActivity)
 
     }
 

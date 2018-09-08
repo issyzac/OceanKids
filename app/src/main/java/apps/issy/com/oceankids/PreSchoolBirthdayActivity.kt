@@ -43,7 +43,6 @@ class PreSchoolBirthdayActivity : BaseActivity(){
         preschool_months_recycler.layoutManager = linearLayoutManager
         preschool_months_recycler.hasFixedSize()
 
-
         val lLayoutManager = LinearLayoutManager(this)
         lLayoutManager.scrollToPositionWithOffset(thisWeek, 8)
         preschool_weekly_birthdays_recycler.layoutManager = lLayoutManager

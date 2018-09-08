@@ -109,7 +109,7 @@ import kotlin.collections.ArrayList
 
         preschool_kids_search_et.onTextChange { text, start, before, count ->
             val res = kidsList
-                    .filter { it.firstName!!.startsWith(text, ignoreCase = true) }
+                    .filter { it.firstName!!.startsWith(text, ignoreCase = true) || it.lastName!!.startsWith(text, ignoreCase = true) }
             val result : ArrayList<Child> = ArrayList(res)
             accomodateItemSizeChanges(result)
         }

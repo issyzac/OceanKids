@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center"
+                android:paddingBottom="8dp"
                 android:layout_centerInParent="true">
 
                 <TextView
@@ -41,9 +42,21 @@
                     android:layout_height="wrap_content"
                     android:text="3 Years"
                     android:id="@+id/years"
+                    android:layout_marginTop="8dp"
                     android:textColor="@color/purple_600"
                     android:fontFamily="@font/opensans_extrabold"
                     android:textSize="18sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/card_grid_text"
+                    android:id="@+id/birthday_date"
+                    android:text="12/9/2018"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/google_sans_medium"/>
 
             </LinearLayout>
 
