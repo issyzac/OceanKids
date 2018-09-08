@@ -13,6 +13,10 @@ import apps.issy.com.oceankids.data.Child
 import apps.issy.com.oceankids.fragments.CheckinDialogue
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.irozon.alertview.AlertActionStyle
+import com.irozon.alertview.AlertStyle
+import com.irozon.alertview.AlertView
+import com.irozon.alertview.objects.AlertAction
 import kotlinx.android.synthetic.main.kid_list_item.view.*
 import java.util.*
 
@@ -99,32 +103,32 @@ class KidsListAdapter (val kids : ArrayList<Child>, val firebaseData : DatabaseR
 
                 itemView.checkout_child_id.setOnClickListener(object : View.OnClickListener{
                     override fun onClick(p0: View?) {
-                        //Checking Out Child
-                        itemView.checkin_child_id.visibility = View.VISIBLE
-                        itemView.checkout_child_id.visibility = View.GONE
 
-                        //Check child out in the child information node
-                        firebaseData?.
-                                child(kid.id)?.
-                                child("attendance")?.
-                                child("checkedIn")?.
-                                setValue(0)
-                        firebaseData?.
-                                child(kid.id)?.
-                                child("attendance")?.
-                                child("cardNumber")?.
-                                setValue("")
+                        val alertCheckout = AlertView("Checkout Child", "Are you sure you want to checkout "+kid.firstName+" "+kid.lastName, AlertStyle.DIALOG)
+                        alertCheckout.addAction(AlertAction("No", AlertActionStyle.NEGATIVE) { action ->
 
-                        //Check child out in the attendance Register node
-                        val calendar = Calendar.getInstance()
-                        val day = calendar.get(Calendar.DAY_OF_MONTH)
-                        val month = calendar.get(Calendar.MONTH)+1
-                        val year = calendar.get(Calendar.YEAR)
-                        val todaysDateKey = day.toString()+"-"+month+"-"+year
-                        val attendanceReference = FirebaseDatabase.getInstance().getReference("attendance")
-                                .child(todaysDateKey)
-                                .child(kid.attendance.service.toString())
-                        attendanceReference?.child(kid.id)?.child("checkedOut")?.setValue(1)
+                        })
+                        alertCheckout.addAction(AlertAction("Yes", AlertActionStyle.POSITIVE) { action ->
+                            //Checking Out Child
+                            itemView.checkin_child_id.visibility = View.VISIBLE
+                            itemView.checkout_child_id.visibility = View.GONE
+
+                            //Check child out in the child information node
+                            firebaseData?.child(kid.id)?.child("attendance")?.child("checkedIn")?.setValue(0)
+                            firebaseData?.child(kid.id)?.child("attendance")?.child("cardNumber")?.setValue("")
+
+                            //Check child out in the attendance Register node
+                            val calendar = Calendar.getInstance()
+                            val day = calendar.get(Calendar.DAY_OF_MONTH)
+                            val month = calendar.get(Calendar.MONTH)+1
+                            val year = calendar.get(Calendar.YEAR)
+                            val todaysDateKey = day.toString()+"-"+month+"-"+year
+                            val attendanceReference = FirebaseDatabase.getInstance().getReference("attendance")
+                                    .child(todaysDateKey)
+                                    .child(kid.attendance.service.toString())
+                            attendanceReference?.child(kid.id)?.child("checkedOut")?.setValue(1)
+                        })
+                        alertCheckout.show(activity)
 
                     }
                 })

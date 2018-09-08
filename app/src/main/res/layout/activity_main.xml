@@ -40,7 +40,7 @@
                     android:layout_marginLeft="16dp"
                     android:text="Ocean Kids"
                     android:id="@+id/app_title"
-                    android:fontFamily="@font/avenir_light"/>
+                    android:fontFamily="@font/google_sans_bold"/>
 
             </RelativeLayout>
 
