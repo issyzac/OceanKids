@@ -68,9 +68,9 @@ class KidsListAdapter (val kids : ArrayList<Child>, val firebaseData : DatabaseR
                     childYears--
                 }
 
-                if (childYears in 0..3){
+                if (childYears in 0..2){
                     itemView.kids_class.text = "Nursery"
-                }else if (childYears in 4..5){
+                }else if (childYears in 3..5){
                     itemView.kids_class.text = "Pre-School"
                 }else if (childYears in 6..10){
                     itemView.kids_class.text = "Primary"
@@ -81,11 +81,9 @@ class KidsListAdapter (val kids : ArrayList<Child>, val firebaseData : DatabaseR
                 Log.d("tag", "Kids checked "+kid.attendance.checkedIn)
 
                 if (kid.attendance.checkedIn == 1){
-                    Log.d("tag", "Kids checked == 1")
                     itemView.checkin_child_id.visibility = View.GONE
                     itemView.checkout_child_id.visibility = View.VISIBLE
                 }else{
-                    Log.d("tag", "Kids checked == 0")
                     itemView.checkout_child_id.visibility = View.GONE
                     itemView.checkin_child_id.visibility = View.VISIBLE
                 }

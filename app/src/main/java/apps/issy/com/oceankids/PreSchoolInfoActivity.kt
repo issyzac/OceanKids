@@ -66,7 +66,7 @@ import kotlin.collections.ArrayList
                             childYears--
                         }
 
-                        if (childYears in 4..5){
+                        if (childYears in 3..5){
                             toReturn.add(child)
                         }
 

@@ -65,9 +65,13 @@ class NuseryKidsInfoActivity : BaseActivity(){
                             childYears--
                         }
 
-                        if (childYears in 0..3){
+                        if (childYears in 0..2){
                             toReturn.add(child)
                         }
+//
+//                        if (childYears in 0..3){
+//                            toReturn.add(child)
+//                        }
 
                     }catch (e: Exception){
                         e.printStackTrace()

@@ -1,5 +1,8 @@
 package apps.issy.com.oceankids
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,6 +15,10 @@ import apps.issy.com.oceankids.data.Parent
 import com.github.angads25.toggle.LabeledSwitch
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.irozon.alertview.AlertActionStyle
+import com.irozon.alertview.AlertStyle
+import com.irozon.alertview.AlertView
+import com.irozon.alertview.objects.AlertAction
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 
 /**
@@ -57,6 +64,9 @@ class RegisterChildActivity : BaseActivity(){
 
     val firebaseData : DatabaseReference = FirebaseDatabase.getInstance().reference
 
+    var cm: ConnectivityManager? = null
+    var activeNetwork: NetworkInfo? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_child)
@@ -92,13 +102,19 @@ class RegisterChildActivity : BaseActivity(){
 
         register_button_container.setOnClickListener( object : View.OnClickListener{
             override fun onClick(p0: View?) {
-                Log.d("saving", "Saving child clicked")
-                progress_view.visibility = View.VISIBLE
-                register_text.visibility = View.GONE
-                if(getInputs()){
-                    pushChildren(pushParent(), children) //pass @ParentKey to pushChildren
-                }
 
+                if (getNetworkStatus()){
+                    Log.d("saving", "Saving child clicked")
+                    progress_view.visibility = View.VISIBLE
+                    register_text.visibility = View.GONE
+                    if(getInputs()){
+                        pushChildren(pushParent(), children) //pass @ParentKey to pushChildren
+                    }
+                }else{
+                    val alertSaved = AlertView("Error, \nPlease check your network and try again", "", AlertStyle.DIALOG)
+                    alertSaved.addAction(AlertAction("Cancel", AlertActionStyle.DEFAULT, { action ->  }))
+                    alertSaved.show(this@RegisterChildActivity)
+                }
                 //saveChild()
             }
         })
@@ -124,7 +140,7 @@ class RegisterChildActivity : BaseActivity(){
                         allBirthDatesInLong.add(dateInLong)
 
                         val dayString: String = dayOfMonth.toString()
-                        val monthString: String = monthOfYear.toString()
+                        val monthString: String = (monthOfYear+1).toString()
                         val yearString: String = year.toString()
                         v.setText(dayString + "-" + monthString + "-" + yearString)
                     }
@@ -239,9 +255,15 @@ class RegisterChildActivity : BaseActivity(){
             it.parents.add(parent)
             firebaseData.child("kids").child("kids_list").child(it.id).setValue(it)
         }
-        progress_view.visibility = View.GONE
-        register_text.visibility = View.VISIBLE
-        finish()
+
+        val alert = AlertView("Registered", "Child was registered successfully", AlertStyle.DIALOG)
+        alert.addAction(AlertAction("OK", AlertActionStyle.POSITIVE) { action ->
+            // Action 1 callback
+            progress_view.visibility = View.GONE
+            register_text.visibility = View.VISIBLE
+            finish()
+        })
+        alert.show(this)
 
     }
 
@@ -252,6 +274,13 @@ class RegisterChildActivity : BaseActivity(){
         nationality.setText("")
 
         finish()
+    }
+
+    fun getNetworkStatus(): Boolean {
+        cm = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        activeNetwork = cm!!.getActiveNetworkInfo()
+        return activeNetwork != null && activeNetwork!!.isConnectedOrConnecting()
+
     }
 
 }
