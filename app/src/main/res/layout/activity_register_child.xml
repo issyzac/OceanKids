@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:app_ms="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:id="@+id/root_layout"
     tools:context="apps.issy.com.oceankids.MainActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -37,9 +35,9 @@
 
             </RelativeLayout>
 
-        </android.support.v7.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -230,112 +228,122 @@
             android:layout_height="match_parent"
             android:scrollbars="none">
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                android:id="@+id/root_layout"
+                app:cardBackgroundColor="@color/white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="16dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/avenir_light"
-                        android:textSize="20sp"
-                        android:text="Child"
-                        android:textColor="@color/colorPrimary"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/avenir_light"
-                        android:textSize="20sp"
-                        android:text="ren"
-                        android:textColor="@color/card_title_text"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/avenir_light"
-                        android:textSize="20sp"
-                        android:layout_marginLeft="6dp"
-                        android:text="Information"
-                        android:textColor="@color/colorPrimary"/>
-
-                </LinearLayout>
-
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/children_table"/>
-
-                <include
-                    android:visibility="gone"
-                    layout="@layout/individual_child_register"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginTop="16dp">
-
-                    <Button
-                        android:layout_width="150dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:text="Add Child"
-                        android:id="@+id/add_child_button"
-                        android:fontFamily="@font/avenir_light"
-                        android:textAllCaps="false"
-                        android:textColor="@color/cyan_900"
-                        android:textStyle="bold"
-                        android:background="@drawable/round_button"/>
-
-                    <RelativeLayout
-                        android:layout_width="150dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="16dp"
-                        android:id="@+id/register_button_container"
-                        android:background="@drawable/round_button_fill">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textStyle="bold"
                             android:fontFamily="@font/avenir_light"
-                            android:text="Register"
-                            android:id="@+id/register_text"
-                            android:layout_centerInParent="true"
+                            android:textSize="20sp"
+                            android:text="Child"
+                            android:textColor="@color/colorPrimary"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/avenir_light"
+                            android:textSize="20sp"
+                            android:text="ren"
+                            android:textColor="@color/card_title_text"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/avenir_light"
+                            android:textSize="20sp"
+                            android:layout_marginLeft="6dp"
+                            android:text="Information"
+                            android:textColor="@color/colorPrimary"/>
+
+                    </LinearLayout>
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/children_table"/>
+
+                    <include
+                        android:visibility="gone"
+                        layout="@layout/individual_child_register"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="16dp">
+
+                        <Button
+                            android:layout_width="150dp"
+                            android:layout_height="50dp"
+                            android:text="Add Child"
+                            android:id="@+id/add_child_button"
+                            android:fontFamily="@font/avenir_light"
                             android:textAllCaps="false"
-                            android:textColor="@color/white"
-                            android:textStyle="bold"/>
+                            android:textColor="@color/cyan_900"
+                            android:textStyle="bold"
+                            android:background="@drawable/round_button"/>
 
-                        <com.github.rahatarmanahmed.cpv.CircularProgressView
-                            android:visibility="gone"
-                            android:id="@+id/progress_view"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_centerInParent="true"
-                            app:cpv_animAutostart="true"
-                            app:cpv_indeterminate="true"
-                            app:cpv_color="@color/white" />
+                        <RelativeLayout
+                            android:layout_width="150dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="16dp"
+                            android:id="@+id/register_button_container"
+                            android:background="@drawable/round_button_fill">
 
-                    </RelativeLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/avenir_light"
+                                android:text="Register"
+                                android:id="@+id/register_text"
+                                android:layout_centerInParent="true"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"/>
+
+                            <com.github.rahatarmanahmed.cpv.CircularProgressView
+                                android:visibility="gone"
+                                android:id="@+id/progress_view"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_centerInParent="true"
+                                app:cpv_animAutostart="true"
+                                app:cpv_indeterminate="true"
+                                app:cpv_color="@color/white" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
         </ScrollView>
 
     </LinearLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

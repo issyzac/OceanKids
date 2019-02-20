@@ -98,7 +98,7 @@
                 android:layout_marginLeft="8dp"
                 android:textColorHint="@color/colorPrimary"/>
 
-            <com.github.angads25.toggle.LabeledSwitch
+            <com.github.angads25.toggle.widget.LabeledSwitch
                 android:id="@+id/gender"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"

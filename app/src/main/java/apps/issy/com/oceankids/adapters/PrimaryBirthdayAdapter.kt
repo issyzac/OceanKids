@@ -1,11 +1,10 @@
 package apps.issy.com.oceankids.adapters
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import apps.issy.com.oceankids.PreSchoolBirthdayActivity
+import androidx.recyclerview.widget.RecyclerView
 import apps.issy.com.oceankids.PrimaryBirthdayActivity
 import apps.issy.com.oceankids.R
 import kotlinx.android.synthetic.main.nursery_list_item.view.*

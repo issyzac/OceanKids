@@ -1,13 +1,15 @@
 package apps.issy.com.oceankids
 
-import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.View
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import apps.issy.com.oceankids.Base.BaseActivity
-import apps.issy.com.oceankids.adapters.KidsListAdapter
-import apps.issy.com.oceankids.data.Child
-import com.google.firebase.database.*
+import apps.issy.com.oceankids.adapters.AllKidsAdapter
+import apps.issy.com.oceankids.database.entities.Kid
+import apps.issy.com.oceankids.viewmodels.KidViewModel
 import com.mcxiaoke.koi.ext.onTextChange
 
 /**
@@ -19,9 +21,16 @@ import com.mcxiaoke.koi.ext.onTextChange
 
 import kotlinx.android.synthetic.main.class_list_activity.*
 
+
 class KidsListActivity : BaseActivity() {
 
-    var kidsList : ArrayList<Child> = ArrayList()
+    private lateinit var kidViewModel : KidViewModel
+
+    var searchedKids : List<Kid> = ArrayList()
+
+    var allKidsList : List<Kid> = ArrayList()
+
+    var searchAdapter : AllKidsAdapter = AllKidsAdapter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,74 +39,69 @@ class KidsListActivity : BaseActivity() {
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        val linearLayoutManager = LinearLayoutManager(this)
-        kids_list.layoutManager = linearLayoutManager
-        kids_list.hasFixedSize()
-        setupAdapter(kidsList)
+        //Wrap the viewModel in a viewModelProvider for configuration changes sake
+        kidViewModel = ViewModelProviders.of(this).get(KidViewModel::class.java)
 
-        val kidsListener = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val toReturn: ArrayList<Child> = ArrayList()
-                for (data in dataSnapshot.children){
-                    try {
-                        val oneChild = data.getValue<Child>(Child::class.java)
-                        val child = oneChild.let { it } ?: continue
-                        toReturn.add(child)
-                    }catch (e: Exception){
-                        e.printStackTrace()
-                    }
-                }
+        val searchResultsLinearLayoutManager = LinearLayoutManager(this)
 
-                kidsList  = toReturn
-                setupAdapter(kidsList)
 
-            }
+        search_results.layoutManager = searchResultsLinearLayoutManager
 
-            override fun onCancelled(p0: DatabaseError) {
+        search_results.setHasFixedSize(true)
 
-            }
+        search_results.adapter = searchAdapter
 
-        }
-        childReference?.addValueEventListener(kidsListener)
-
-        addchild_button.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(p0: View?) {
-                //TODO Add a pop up view to add a new child to the database
-                val intent  = Intent(this@KidsListActivity, RegisterChildActivity::class.java)
-                startActivity(intent)
+        //After all has been loaded program will continue here
+        kidViewModel.allKids.observe(this, Observer { kids ->
+            kids?.let {
+                allKidsList = it
             }
         })
 
-        card_number_filter.onTextChange { text, start, before, count ->
-//            TODO
-            val res = kidsList
-                    .filter { it.attendance.cardNumber.startsWith(text, ignoreCase = true) }
+        //loadKids()
 
-            val result : ArrayList<Child> = ArrayList(res)
-            setupAdapter(result)
+        search_names.onTextChange { text, _, _, _ ->
 
-        }
+            if (text.isEmpty()){
+                search_results.visibility = View.INVISIBLE
+            }else{
+                search_results.visibility = View.VISIBLE
+            }
 
-        names_filter.onTextChange { text, start, before, count ->
-
-            val res = kidsList
-                    .filter { it.firstName!!.startsWith(text, ignoreCase = true) || it.lastName!!.startsWith(text, ignoreCase = true)}
-
-            val result : ArrayList<Child> = ArrayList(res)
-            setupAdapter(result)
+            val res =  allKidsList.filter {
+                it.firstName.startsWith(text, ignoreCase = true) || it.lastName.startsWith(text, ignoreCase = true)
+            }
+            val result : ArrayList<Kid> = ArrayList(res)
+            searchAdapter.setKids(result)
 
         }
 
-    }
+        all_checkin_button.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(p0: View?) {
 
-    private fun setupAdapter(data: ArrayList<Child>){
+//                nursery_checkin_button.setBackgroundResource(R.drawable.border_one)
+//                pre_school_checkin_button.setBackgroundResource(R.drawable.border_one)
+//                primary_checkin_button.setBackgroundResource(R.drawable.border_one)
+                all_checkin_button.setBackgroundResource(R.drawable.border_filter_button)
+                all_checkout_button.setBackgroundResource(R.drawable.border_one)
 
-        kids_list.adapter = KidsListAdapter(data, childReference, this) {
-            //
-        }
+                checkin_container.visibility = View.VISIBLE
+                checkout_fragment.view!!.visibility = View.INVISIBLE
 
-        //scroll to bottom
-        //mainActivityRecyclerView.scrollToPosition(data.size - 1)
+            }
+        })
+
+        all_checkout_button.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(p0: View?) {
+
+                all_checkout_button.setBackgroundResource(R.drawable.border_filter_button)
+                all_checkin_button.setBackgroundResource(R.drawable.border_one)
+
+                checkin_container.visibility = View.INVISIBLE
+                checkout_fragment.view!!.visibility = View.VISIBLE
+
+            }
+        })
 
     }
 

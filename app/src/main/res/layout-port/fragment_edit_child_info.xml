@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:fitsSystemWindows="true"
+        android:paddingBottom="16dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/child_details_container">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:textColor="@color/teal_800"
+                    android:textSize="30sp"
+                    android:fontFamily="@font/google_sans_bold"
+                    android:text="Update Child Information"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    app:contentPadding="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp"
+                            android:textColor="@color/card_title_text"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/google_sans_bold"
+                            android:text="Parent Information"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="70dp"
+                                android:id="@+id/parent_first_name"
+                                android:layout_marginRight="8dp"
+                                android:paddingLeft="10dp"
+                                android:hint="First Name"
+                                android:textSize="16sp"
+                                android:textColor="@color/card_grid_text"
+                                android:textColorHint="@color/card_light_text"
+                                android:fontFamily="@font/google_sans_regular"
+                                android:inputType="textCapSentences"
+                                android:drawableLeft="@mipmap/ic_input"
+                                android:drawablePadding="8dp"
+                                android:background="@drawable/et_background" />
+
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="70dp"
+                                android:id="@+id/parent_last_name"
+                                android:layout_marginLeft="8dp"
+                                android:paddingLeft="10dp"
+                                android:hint="Last Name"
+                                android:textSize="16sp"
+                                android:textColor="@color/card_grid_text"
+                                android:textColorHint="@color/card_light_text"
+                                android:fontFamily="@font/google_sans_regular"
+                                android:inputType="textCapSentences"
+                                android:drawableLeft="@mipmap/ic_input"
+                                android:drawablePadding="8dp"
+                                android:background="@drawable/et_background" />
+
+                        </LinearLayout>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:id="@+id/parent_relationship"
+                            android:layout_marginTop="16dp"
+                            android:paddingLeft="10dp"
+                            android:hint="Parent Relationship"
+                            android:textSize="16sp"
+                            android:textColor="@color/card_grid_text"
+                            android:textColorHint="@color/card_light_text"
+                            android:fontFamily="@font/google_sans_regular"
+                            android:inputType="textCapSentences"
+                            android:drawableLeft="@mipmap/ic_person"
+                            android:drawablePadding="8dp"
+                            android:background="@drawable/et_background" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:id="@+id/parent_phone_number"
+                            android:layout_marginTop="16dp"
+                            android:paddingLeft="10dp"
+                            android:hint="Parent Phone"
+                            android:textSize="16sp"
+                            android:textColor="@color/card_grid_text"
+                            android:textColorHint="@color/card_light_text"
+                            android:fontFamily="@font/google_sans_regular"
+                            android:inputType="phone"
+                            android:drawableLeft="@mipmap/ic_email"
+                            android:drawablePadding="8dp"
+                            android:background="@drawable/et_background" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:id="@+id/parent_email"
+                            android:layout_marginTop="16dp"
+                            android:paddingLeft="10dp"
+                            android:hint="Email"
+                            android:textSize="16sp"
+                            android:textColor="@color/card_grid_text"
+                            android:textColorHint="@color/card_light_text"
+                            android:fontFamily="@font/google_sans_regular"
+                            android:inputType="textEmailAddress"
+                            android:drawableLeft="@mipmap/ic_email"
+                            android:drawablePadding="8dp"
+                            android:background="@drawable/et_background" />
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_margin="16dp"
+                app:contentPadding="8dp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:id="@+id/child_number"
+                        android:fontFamily="@font/google_sans_bold"
+                        android:textSize="16sp"
+                        android:text="Child Information"
+                        android:textColor="@color/card_title_text"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="70dp"
+                            android:id="@+id/first_name"
+                            android:layout_marginRight="8dp"
+                            android:paddingLeft="10dp"
+                            android:hint="First Name"
+                            android:textSize="16sp"
+                            android:textColor="@color/card_grid_text"
+                            android:textColorHint="@color/card_light_text"
+                            android:fontFamily="@font/google_sans_regular"
+                            android:inputType="textCapSentences"
+                            android:drawableLeft="@mipmap/ic_input"
+                            android:drawablePadding="8dp"
+                            android:background="@drawable/et_background" />
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="70dp"
+                            android:id="@+id/last_name"
+                            android:paddingLeft="10dp"
+                            android:hint="Last Name"
+                            android:textSize="16sp"
+                            android:textColor="@color/card_grid_text"
+                            android:textColorHint="@color/card_light_text"
+                            android:fontFamily="@font/google_sans_regular"
+                            android:inputType="textCapSentences"
+                            android:drawableLeft="@mipmap/ic_input"
+                            android:drawablePadding="8dp"
+                            android:background="@drawable/et_background" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="70dp"
+                            android:id="@+id/date_of_birth"
+                            android:paddingLeft="10dp"
+                            android:hint="Date Of Birth"
+                            android:textSize="16sp"
+                            android:textColor="@color/card_grid_text"
+                            android:textColorHint="@color/card_light_text"
+                            android:fontFamily="@font/google_sans_regular"
+                            android:inputType="textEmailAddress"
+                            android:drawableLeft="@mipmap/ic_cal"
+                            android:drawableTint="@color/colorPrimary"
+                            android:drawablePadding="8dp"
+                            android:background="@drawable/et_background" />
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="8dp"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:hint="Gender"
+                                android:layout_marginLeft="8dp"
+                                android:textColorHint="@color/card_grid_text"/>
+
+                            <com.github.angads25.toggle.widget.LabeledSwitch
+                                android:id="@+id/gender"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_margin="8dp"
+                                android:padding="4dp"
+                                android:textSize="18sp"
+                                app:colorBorder="@color/teal_300"
+                                app:colorDisabled="@color/teal_300"
+                                app:colorOff="@color/white"
+                                app:colorOn="@color/teal_300"
+                                app:textOn="M"
+                                app:textOff="F"
+                                app:on="false" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="70dp"
+                            android:id="@+id/nationality"
+                            android:paddingLeft="10dp"
+                            android:hint="Nationality"
+                            android:textSize="16sp"
+                            android:textColor="@color/card_grid_text"
+                            android:textColorHint="@color/card_light_text"
+                            android:fontFamily="@font/google_sans_regular"
+                            android:inputType="textCapSentences"
+                            android:drawableLeft="@mipmap/ic_country"
+                            android:drawablePadding="8dp"
+                            android:background="@drawable/et_background" />
+
+                    </LinearLayout>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:id="@+id/allergies"
+                        android:hint="Allergies"
+                        android:minLines="4"
+                        android:minHeight="100dp"
+                        android:gravity="start"
+                        android:textSize="18sp"
+                        android:padding="16dp"
+                        android:textColor="@color/card_grid_text"
+                        android:textColorHint="@color/card_light_text"
+                        android:fontFamily="@font/google_sans_regular"
+                        android:inputType="textMultiLine|textCapSentences"
+                        android:background="@drawable/et_background" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="16dp"
+            android:id="@+id/register_button_container"
+            android:background="@drawable/border_one"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/child_details_container">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/google_sans_bold"
+                android:text="Update"
+                android:id="@+id/update_text"
+                android:layout_centerInParent="true"
+                android:textAllCaps="false"
+                android:textColor="@color/teal_800"
+                android:textStyle="bold"/>
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:visibility="gone"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:id="@+id/filter_indicator"
+                app:indicatorColor="@color/teal_800"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="16dp"
+            android:id="@+id/cancel_button"
+            android:background="@drawable/border_one"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/child_details_container"
+            app:layout_constraintRight_toLeftOf="@id/register_button_container">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/google_sans_regular"
+                android:text="Cancel"
+                android:id="@+id/cancel_text"
+                android:layout_centerInParent="true"
+                android:textAllCaps="false"
+                android:textColor="@color/card_title_text"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            android:id="@+id/loading_indicator"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@color/black"
+            android:alpha="0.4">
+
+            <com.github.rahatarmanahmed.cpv.CircularProgressView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerInParent="true"
+                app:cpv_color="@color/white"/>
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -1,9 +1,9 @@
 package apps.issy.com.oceankids
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import apps.issy.com.oceankids.Base.BaseActivity
 import apps.issy.com.oceankids.adapters.PreSchoolListAdapter
 import apps.issy.com.oceankids.data.Child
@@ -180,15 +180,15 @@ import kotlin.collections.ArrayList
 
     fun RecyclerView.addOnItemClickListener(onClickListener: OnItemClickListener) {
         this.addOnChildAttachStateChangeListener(object: RecyclerView.OnChildAttachStateChangeListener {
-            override fun onChildViewDetachedFromWindow(view: View?) {
-                view?.setOnClickListener(null)
+            override fun onChildViewDetachedFromWindow(view: View) {
+                view.setOnClickListener(null)
             }
 
-            override fun onChildViewAttachedToWindow(view: View?) {
-                view?.setOnClickListener({
+            override fun onChildViewAttachedToWindow(view: View) {
+                view.setOnClickListener {
                     val holder = getChildViewHolder(view)
                     onClickListener.onItemClicked(holder.adapterPosition, view)
-                })
+                }
             }
         })
     }

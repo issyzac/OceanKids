@@ -1,18 +1,15 @@
 package apps.issy.com.oceankids
 
 import android.os.Bundle
-import android.text.BoringLayout
-import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import apps.issy.com.oceankids.Base.BaseActivity
-import apps.issy.com.oceankids.data.Kid
+import apps.issy.com.oceankids.database.entities.Kid
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.gson.Gson
 import com.mcxiaoke.koi.ext.asString
 import com.mcxiaoke.koi.ext.dateNow
 import com.mcxiaoke.koi.ext.dateParse
@@ -157,7 +154,7 @@ class ChildDetailsActivity : BaseActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val aKid = dataSnapshot.getValue<Kid>(Kid::class.java)
                 aggregatePoints = aKid!!.aggregatePoints
-                child_names.text = aKid.names
+                child_names.text = aKid.firstName
                 aggregate_points.text = aKid.aggregatePoints.toString()
 
                 tillNextCandy = 10 - (aggregatePoints % 10)

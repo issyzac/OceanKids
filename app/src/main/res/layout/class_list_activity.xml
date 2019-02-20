@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,13 +9,13 @@
     android:background="@color/card_separator"
     tools:context="apps.issy.com.oceankids.MainActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -29,136 +30,131 @@
                 android:paddingBottom="8dp">
 
                 <ImageView
-                    android:visibility="gone"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_centerVertical="true"
                     android:scaleType="centerCrop"
                     android:src="@drawable/logo"/>
 
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="2dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="50dp"
-                    android:textSize="16sp"
-                    android:background="@drawable/border_three"
-                    android:id="@+id/names_filter"
-                    android:textColor="@color/white"
-                    android:inputType="textCapWords"
-                    android:hint="Search Name"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textColorHint="@color/white"/>
+            </RelativeLayout>
 
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="2dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="50dp"
-                    android:background="@drawable/border_three"
-                    android:textSize="16sp"
-                    android:id="@+id/card_number_filter"
-                    android:textColor="@color/white"
-                    android:inputType="number"
-                    android:layout_toRightOf="@id/names_filter"
-                    android:layout_marginLeft="32dp"
-                    android:hint="Search Number"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textColorHint="@color/white"/>
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:id="@+id/section_title"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:id="@+id/all_checkin_button"
+                        android:layout_marginLeft="4dp"
+                        android:background="@drawable/border_filter_button"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/card_title_text"
+                        android:text="All"
+                        android:fontFamily="@font/google_sans_bold"/>
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_toRightOf="@id/all_checkin_button"
+                        android:layout_toEndOf="@id/all_checkin_button"
+                        android:id="@+id/all_checkout_button"
+                        android:background="@drawable/border_one"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/card_title_text"
+                        android:text="Check Out"
+                        android:fontFamily="@font/google_sans_bold"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/section_title"
+                    android:layout_marginTop="4dp">
+
+                    <fragment
+                        android:id="@+id/checkout_fragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:name="apps.issy.com.oceankids.fragments.CheckoutFragment"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:id="@+id/checkin_container">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="5dp"
+                            android:layout_marginTop="60dp"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginRight="32dp"
+                            android:textSize="18sp"
+                            android:background="@drawable/border_one"
+                            android:id="@+id/search_names"
+                            android:textColor="@color/card_grid_tex"
+                            android:inputType="textCapWords"
+                            android:hint="Search Names"
+                            android:drawableRight="@mipmap/ic_search"
+                            android:fontFamily="@font/google_sans_regular"
+                            android:textColorHint="@color/card_grid_tex"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="32dp"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginTop="8dp"
+                            android:id="@+id/search_results"
+                            android:layout_below="@id/search_names"
+                            android:background="@android:color/transparent"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
 
             </RelativeLayout>
 
-        </android.support.v7.widget.Toolbar>
+        </androidx.cardview.widget.CardView>
 
-    </android.support.design.widget.AppBarLayout>
+    </LinearLayout>
 
-    <android.support.v7.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginBottom="4dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:id="@+id/title_container">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/kids_names"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:text="NAMES"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:layout_marginLeft="16dp"
-                    android:fontFamily="@font/opensans_bold"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/kids_class_title"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:text="CLASS"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:layout_toRightOf="@id/kids_names"
-                    android:fontFamily="@font/opensans_bold"/>
-
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/kids_number_title"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:text="CHECK IN/OUT"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:gravity="center"
-                    android:fontFamily="@font/opensans_bold"/>
-
-            </LinearLayout>
-
-            <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/kids_list"
-                android:layout_below="@id/title_container" />
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/addchild_button"
-                android:visibility="gone"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginBottom="32dp"
-                android:layout_marginRight="32dp"
-                android:layout_marginEnd="32dp"
-                app:backgroundTint="@color/green_500"
-                app:fabSize="auto"
-                app:srcCompat="@mipmap/ic_person_add" />
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
-
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -6,6 +6,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="md_font_title">@font/google_sans_bold</item>
+        <item name="md_font_body">@font/google_sans_bold</item>
+        <item name="md_font_button">@font/google_sans_bold</item>
+
     </style>
 
     <style name="AppThemeNursery" parent="Theme.AppCompat.Light.NoActionBar">

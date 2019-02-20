@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ffee58</color>
-    <color name="colorPrimaryDark">#f9a825</color>
+    <!--<color name="colorPrimary">#ffee58</color>-->
+    <!--<color name="colorPrimaryDark">#f9a825</color>-->
+
+    <color name="colorPrimary">#00897b</color>
+    <color name="colorPrimaryDark">#00695c</color>
+
     <color name="colorAccent">#FF4081</color>
 
     <color name="i_like_this_color">#85fb57</color>
@@ -135,7 +139,7 @@
     <color name="teal_300">#4db6ac</color> <!-- Use with black text -->
     <color name="teal_400">#26a69a</color> <!-- Use with black text -->
     <color name="teal_500">#009688</color> <!-- Use with white text -->
-    <color name="teal_600">#00897b</color> <!-- Use with white text -->
+    <!--<color name="teal_600">#00897b</color> &lt;!&ndash; Use with white text &ndash;&gt;-->
     <color name="teal_700">#00796b</color> <!-- Use with white text -->
     <color name="teal_800">#00695c</color> <!-- Use with white text -->
     <color name="teal_900">#004d40</color> <!-- Use with white text -->

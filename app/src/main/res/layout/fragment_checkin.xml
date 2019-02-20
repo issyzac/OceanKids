@@ -6,49 +6,58 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary">
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:id="@+id/check_in_icon"
+            android:tint="@color/card_grid_tex"
+            android:src="@mipmap/ic_check_in"/>
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:textSize="24sp"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/google_sans_bold"
+            android:textColor="@color/card_title_text"
+            android:text="Checking in Child"
+            android:layout_toRightOf="@id/check_in_icon"
+            android:layout_marginTop="32dp"
             android:layout_marginLeft="16dp"
-            android:layout_centerVertical="true"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:fontFamily="@font/avenir_light"
-            android:text="Check-in Child"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/white">
+            android:layout_marginStart="16dp"/>
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/check_in_icon"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="32dp">
+            android:layout_marginTop="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
                 android:id="@+id/service_title"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/avenir_light"
-                android:textSize="16sp"
+                android:textColor="@color/card_grid_text"
+                android:fontFamily="@font/google_sans_bold"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                android:text="Service"/>
+                android:text="Service Attended"/>
 
             <LinearLayout
-                android:layout_width="120dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="16dp"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
                 android:orientation="horizontal"
                 android:id="@+id/select_service"
-                android:layout_below="@id/service_title">
+                android:layout_marginLeft="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_toRightOf="@id/service_title">
 
                 <RelativeLayout
                     android:layout_width="0dp"
@@ -131,45 +140,34 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
                 android:id="@+id/card_number_title"
-                android:layout_marginLeft="70dp"
-                android:layout_toRightOf="@id/select_service"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/avenir_light"
+                android:layout_below="@id/select_service"
+                android:textColor="@color/card_grid_text"
+                android:fontFamily="@font/google_sans_bold"
                 android:textSize="16sp"
+                android:layout_marginTop="8dp"
                 android:textStyle="bold"
-                android:text="Number"/>
+                android:text="Child  Card  Number"/>
 
             <EditText
-                android:layout_width="70dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="70dp"
-                android:layout_below="@id/card_number_title"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/select_service"
                 android:id="@+id/card_number"
-                android:layout_toRightOf="@id/select_service"
-                android:layout_toEndOf="@id/select_service"
+                android:layout_toRightOf="@id/card_number_title"
+                android:layout_toEndOf="@id/card_number_title"
                 android:textSize="28sp"
                 android:gravity="center"
                 android:inputType="number"
-                android:layout_marginTop="16dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
                 android:textColor="@color/card_title_text"
                 android:background="@drawable/et_background"/>
 
         </RelativeLayout>
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:text="OK"
-            android:id="@+id/ok_button"
-            android:textColor="@color/white"
-            android:fontFamily="@font/avenir_light"
-            android:layout_alignParentRight="true"
-            android:layout_margin="8dp"
-            android:textStyle="bold"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/round_button_fill"/>
 
     </RelativeLayout>
 

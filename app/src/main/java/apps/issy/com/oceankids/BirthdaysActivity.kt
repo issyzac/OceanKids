@@ -1,10 +1,10 @@
 package apps.issy.com.oceankids
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import apps.issy.com.oceankids.Base.BaseActivity
 import apps.issy.com.oceankids.adapters.BirthdayMonthsAdapter
 import apps.issy.com.oceankids.adapters.WeeklyBirthdaysAdapter
@@ -46,7 +46,6 @@ class BirthdaysActivity : BaseActivity() {
         lLayoutManager.scrollToPositionWithOffset(thisWeek, 8)
         weekly_birthdays_recycler.layoutManager = lLayoutManager
         weekly_birthdays_recycler.hasFixedSize()
-
 
         setSupportActionBar(birthdays_toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -107,7 +106,7 @@ class BirthdaysActivity : BaseActivity() {
         }
         childReference?.addValueEventListener(kidsListener)
 
-        months_recycler.addOnItemClickListener(object: BirthdaysActivity.OnItemClickListener {
+        months_recycler.addOnItemClickListener(object : OnItemClickListener {
             override fun onItemClicked(position: Int, view: View) {
                 if (monthsList.size > 0){
                     selectedPosition = position
@@ -120,7 +119,7 @@ class BirthdaysActivity : BaseActivity() {
 
                 }
             }
-        } )
+        })
 
     }
 
@@ -223,17 +222,18 @@ class BirthdaysActivity : BaseActivity() {
     }
 
     fun RecyclerView.addOnItemClickListener(onClickListener: OnItemClickListener) {
-        this.addOnChildAttachStateChangeListener(object: RecyclerView.OnChildAttachStateChangeListener {
-            override fun onChildViewDetachedFromWindow(view: View?) {
-                view?.setOnClickListener(null)
+        addOnChildAttachStateChangeListener(object : RecyclerView.OnChildAttachStateChangeListener{
+            override fun onChildViewAttachedToWindow(view: View) {
+                view.setOnClickListener(null)
             }
 
-            override fun onChildViewAttachedToWindow(view: View?) {
-                view?.setOnClickListener({
+            override fun onChildViewDetachedFromWindow(view: View) {
+                view.setOnClickListener {
                     val holder = getChildViewHolder(view)
                     onClickListener.onItemClicked(holder.adapterPosition, view)
-                })
+                }
             }
+
         })
     }
 

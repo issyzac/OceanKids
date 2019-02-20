@@ -1,13 +1,12 @@
 package apps.issy.com.oceankids.adapters
 
 import android.content.Context
-import android.os.Bundle
-import android.support.v4.app.FragmentManager
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import apps.issy.com.oceankids.R
 import apps.issy.com.oceankids.data.WeeklyResponses
 import kotlinx.android.synthetic.main.prayer_and_thanksgiving_item.view.*

@@ -7,18 +7,24 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
+import androidx.annotation.LayoutRes
 import apps.issy.com.oceankids.Base.BaseActivity
 import apps.issy.com.oceankids.data.Child
 import apps.issy.com.oceankids.data.Parent
-import com.github.angads25.toggle.LabeledSwitch
+import apps.issy.com.oceankids.util.Constants.Companion.genderFemale
+import apps.issy.com.oceankids.util.Constants.Companion.genderMale
+import com.afollestad.materialdialogs.MaterialDialog
+import com.github.angads25.toggle.widget.LabeledSwitch
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.irozon.alertview.AlertActionStyle
 import com.irozon.alertview.AlertStyle
 import com.irozon.alertview.AlertView
 import com.irozon.alertview.objects.AlertAction
+import com.mcxiaoke.koi.ext.inflate
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 
 /**
@@ -30,17 +36,20 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 
 import kotlinx.android.synthetic.main.activity_register_child.*
 import kotlinx.android.synthetic.main.individual_child_register.*
+import kotlinx.android.synthetic.main.kid_list_item.view.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import org.jetbrains.anko.contentView
 import java.util.*
 import kotlin.collections.ArrayList
 
 class RegisterChildActivity : BaseActivity(){
 
-    final val TAG : String = "RegisterChildActivity"
-
     var dateOfBirth : Long = 0
     val levelList : ArrayList<String> = ArrayList()
 
-    val datePickerDialog = DatePickerDialog()
+    var datePickerDialog = DatePickerDialog()
     var dobCalendar : Calendar = Calendar.getInstance()
 
     var children : ArrayList<Child> = ArrayList()
@@ -82,7 +91,7 @@ class RegisterChildActivity : BaseActivity(){
 
         date_of_birth.setOnClickListener(object : View.OnClickListener{
             override fun onClick(p0: View?) {
-                datePickerDialog.show(fragmentManager, "dateOfBirth")
+                datePickerDialog.show(supportFragmentManager, "dateOfBirth")
                 datePickerDialog.setOnDateSetListener(object : DatePickerDialog.OnDateSetListener {
                     override fun onDateSet(view: DatePickerDialog, year: Int, monthOfYear: Int, dayOfMonth: Int) {
 
@@ -113,7 +122,7 @@ class RegisterChildActivity : BaseActivity(){
                 }else{
                     val alertSaved = AlertView("Error, \nPlease check your network and try again", "", AlertStyle.DIALOG)
                     alertSaved.addAction(AlertAction("Cancel", AlertActionStyle.DEFAULT, { action ->  }))
-                    alertSaved.show(this@RegisterChildActivity)
+//                    alertSaved.show(this@RegisterChildActivity)
                 }
                 //saveChild()
             }
@@ -131,7 +140,7 @@ class RegisterChildActivity : BaseActivity(){
     fun addDatePickerListeners(v : EditText) {
         v.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
-                datePickerDialog.show(fragmentManager, "dateOfBirth")
+                datePickerDialog.show(supportFragmentManager, "dateOfBirth")
                 datePickerDialog.setOnDateSetListener(object : DatePickerDialog.OnDateSetListener {
                     override fun onDateSet(view: DatePickerDialog, year: Int, monthOfYear: Int, dayOfMonth: Int) {
                         var dateInLong: Long
@@ -150,12 +159,9 @@ class RegisterChildActivity : BaseActivity(){
     }
 
     fun addNewChildView() {
-        var childView : View = LayoutInflater.from(this@RegisterChildActivity)
-                .inflate(
-                        R.layout.individual_child_register,
-                        root_layout,
-                        false
-                )
+
+        var childView : View = LayoutInflater.from(this).inflate(R.layout.individual_child_register, root_layout, false)
+
         var childNumber : TextView = childView.findViewById(R.id.child_number)
         childNumber.setText("Child "+childrenCount)
 
@@ -186,15 +192,18 @@ class RegisterChildActivity : BaseActivity(){
         while (i < childrenCount){
             var childFirstName = allFirstNames.get(i).text.toString()
             var childLastName = allLastNames.get(i).text.toString()
-            var dobValue = allBirthDatesInLong.get(i)
+            var dobValue : Long = 0
+            if (allBirthDatesInLong.size > 0){
+                dobValue = allBirthDatesInLong.get(i)
+            }
             var nationality = allNationalities.get(i).text.toString()
             var childAllergies = allAllergies.get(i).text.toString()
 
             var childGenderValue : String
             if (allGenders.get(i).isOn){
-                childGenderValue = "Male"
+                childGenderValue = genderMale
             }else{
-                childGenderValue = "Female"
+                childGenderValue = genderFemale
             }
 
             //Create a child object
@@ -256,15 +265,19 @@ class RegisterChildActivity : BaseActivity(){
             firebaseData.child("kids").child("kids_list").child(it.id).setValue(it)
         }
 
-        val alert = AlertView("Registered", "Child was registered successfully", AlertStyle.DIALOG)
-        alert.addAction(AlertAction("OK", AlertActionStyle.POSITIVE) { action ->
-            // Action 1 callback
-            progress_view.visibility = View.GONE
-            register_text.visibility = View.VISIBLE
-            finish()
-        })
-        alert.show(this)
+        MaterialDialog(this).show {
+            title(text = "Child Registered")
+            message(text = "Successfully Registered a child")
+            positiveButton(text = "OK") { dialog ->
 
+                //Checking Out Child
+                //progress_view.visibility = View.GONE
+                //register_text.visibility = View.VISIBLE
+
+                finish()
+
+            }
+        }
     }
 
     fun clearFields(){
@@ -281,6 +294,10 @@ class RegisterChildActivity : BaseActivity(){
         activeNetwork = cm!!.getActiveNetworkInfo()
         return activeNetwork != null && activeNetwork!!.isConnectedOrConnecting()
 
+    }
+
+    fun ViewGroup.inflate (@LayoutRes layoutRes: Int, attachToRoot: Boolean = false): View {
+        return LayoutInflater.from(context).inflate(layoutRes, this, attachToRoot)
     }
 
 }

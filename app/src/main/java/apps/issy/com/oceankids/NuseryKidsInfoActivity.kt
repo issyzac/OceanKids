@@ -1,9 +1,10 @@
 package apps.issy.com.oceankids
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.NO_POSITION
 import apps.issy.com.oceankids.Base.BaseActivity
 import apps.issy.com.oceankids.adapters.NurseryListAdapter
 import apps.issy.com.oceankids.data.Child
@@ -30,7 +31,7 @@ class NuseryKidsInfoActivity : BaseActivity(){
     var adapter : NurseryListAdapter = NurseryListAdapter(kidsList, childReference, this){}
 
     companion object {
-        var selectedPosition : Int = RecyclerView.NO_POSITION
+        var selectedPosition : Int = NO_POSITION
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -188,15 +189,15 @@ class NuseryKidsInfoActivity : BaseActivity(){
 
     fun RecyclerView.addOnItemClickListener(onClickListener: OnItemClickListener) {
         this.addOnChildAttachStateChangeListener(object: RecyclerView.OnChildAttachStateChangeListener {
-            override fun onChildViewDetachedFromWindow(view: View?) {
-                view?.setOnClickListener(null)
+            override fun onChildViewDetachedFromWindow(view: View) {
+                view.setOnClickListener(null)
             }
 
-            override fun onChildViewAttachedToWindow(view: View?) {
-                view?.setOnClickListener({
+            override fun onChildViewAttachedToWindow(view: View) {
+                view.setOnClickListener {
                     val holder = getChildViewHolder(view)
                     onClickListener.onItemClicked(holder.adapterPosition, view)
-                })
+                }
             }
         })
     }

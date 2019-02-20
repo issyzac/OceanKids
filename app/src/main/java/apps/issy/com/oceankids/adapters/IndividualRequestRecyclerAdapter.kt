@@ -1,9 +1,9 @@
 package apps.issy.com.oceankids.adapters
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import apps.issy.com.oceankids.R
 import apps.issy.com.oceankids.data.SingleRequestItem
 import apps.issy.com.oceankids.data.WeeklyResponses

@@ -1,19 +1,15 @@
 package apps.issy.com.oceankids.fragments
 
-import android.app.Activity
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import apps.issy.com.oceankids.MainActivity
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import apps.issy.com.oceankids.R
 import apps.issy.com.oceankids.adapters.RequestsRecyclerAdapter
 import apps.issy.com.oceankids.data.WeeklyResponses
-import com.mcxiaoke.koi.ext.getActivity
 import kotlinx.android.synthetic.main.fragment_prayer.*
 
 /**

@@ -2,41 +2,62 @@ package apps.issy.com.oceankids
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.view.PagerAdapter
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.lifecycle.ViewModelProviders
 import apps.issy.com.oceankids.Base.BaseActivity
+import apps.issy.com.oceankids.Base.Endpoints
 import apps.issy.com.oceankids.data.Attendance
 import apps.issy.com.oceankids.data.User
+import apps.issy.com.oceankids.services.ServerSyncService
+import apps.issy.com.oceankids.util.Constants.Companion.apiKey
+import apps.issy.com.oceankids.util.Constants.Companion.baseURL
+import apps.issy.com.oceankids.viewmodels.KidViewModel
+import com.androidhuman.rxfirebase2.database.dataChanges
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.mcxiaoke.koi.ext.inflater
-import com.ogaclejapan.smarttablayout.SmartTabLayout
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import okhttp3.*
+import okhttp3.logging.HttpLoggingInterceptor
+import org.json.JSONArray
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.io.IOException
 import java.util.*
 
 class MainActivity : BaseActivity() {
 
+    private lateinit var kidViewModel : KidViewModel
+
     private val auth : FirebaseAuth? = FirebaseAuth.getInstance()
-    private var attendanceReferenceSecondService : DatabaseReference? = null
-    private var attendanceReferenceThirdService : DatabaseReference? = null
+    private var attendanceReferenceSecondService : DatabaseReference = FirebaseDatabase.getInstance().reference
+    private var attendanceReferenceThirdService : DatabaseReference = FirebaseDatabase.getInstance().reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val backgroundServiceIntent = Intent(this, ServerSyncService::class.java)
+        startService(backgroundServiceIntent)
 
         if (auth?.currentUser == null){
             val intent  = Intent(this@MainActivity, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }
+
+        //Wrap the viewModel in a viewModelProvider for configuration changes sake
+        kidViewModel = ViewModelProviders.of(this).get(KidViewModel::class.java)
 
         setSupportActionBar(toolbar)
 
@@ -59,15 +80,27 @@ class MainActivity : BaseActivity() {
         var month = calendar.get(Calendar.MONTH)+1
         var year = calendar.get(Calendar.YEAR)
         val todaysDateKey = day.toString()+"-"+month+"-"+year
+
         attendanceReferenceSecondService = FirebaseDatabase.getInstance().getReference("attendance").child(todaysDateKey).child("2")
         attendanceReferenceThirdService = FirebaseDatabase.getInstance().getReference("attendance").child(todaysDateKey).child("3")
+
+        attendanceReferenceSecondService.dataChanges()
+                .subscribe({
+                    for (data in it.children){
+
+                    }
+                }){
+
+                }
 
         val secondServiceAttendanceListener = object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0 != null){
+
                     val attendanceList : ArrayList<Attendance> = ArrayList()
                     var totalCheckedInSecondService : Int = 0
                     var totalCheckedOutSecondService : Int = 0
+
                     for (data in p0.children){
                         totalCheckedInSecondService++
                         try {
@@ -86,8 +119,8 @@ class MainActivity : BaseActivity() {
                     }
 
                     //Set the summary values
-                    total_checked_in_2_home.text = totalCheckedInSecondService.toString()
-                    total_checked_out_2_home.text = totalCheckedOutSecondService.toString()
+                    s_pr_in.text = totalCheckedInSecondService.toString()
+                    s_pr_out.text = totalCheckedOutSecondService.toString()
 
                 }
             }
@@ -120,8 +153,8 @@ class MainActivity : BaseActivity() {
                     }
 
                     //Set the summary values
-                    total_checked_in_3_home.text = totalCheckedInThirdService.toString()
-                    total_checked_out_3_home.text = totalCheckedOutThirdService.toString()
+                    t_pr_in.text = totalCheckedInThirdService.toString()
+                    t_pr_out.text = totalCheckedOutThirdService.toString()
 
                 }
             }
@@ -254,7 +287,7 @@ class MainActivity : BaseActivity() {
             }
         }
 
-        viewpagertab.setCustomTabView(object : SmartTabLayout.TabProvider {
+        /*viewpagertab.setCustomTabView(object : SmartTabLayout.TabProvider {
             override fun createTabView(container: ViewGroup?, position: Int, adapter: PagerAdapter?): View {
                 val view = inflater.inflate (R.layout.custom_tab_icon, container, false)
                 var iconView : ImageView = view.findViewById (R.id.icon)
@@ -305,7 +338,7 @@ class MainActivity : BaseActivity() {
                 return view
             }
         })
-        viewpagertab.setViewPager(viewpager)
+        viewpagertab.setViewPager(viewpager)*/
 
     }
 

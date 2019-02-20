@@ -1,13 +1,9 @@
 package apps.issy.com.oceankids
 
-import android.app.Dialog
-import android.app.DialogFragment
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.Toast
-import android.widget.Toast.LENGTH_LONG
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import apps.issy.com.oceankids.Base.BaseActivity
 import apps.issy.com.oceankids.adapters.PrimaryKidsListAdapter
 import apps.issy.com.oceankids.data.Child
@@ -398,9 +394,12 @@ class PrimaryKidsRewardActivity : BaseActivity() {
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.getValue(true) != null){
                     //Data already exist
+                    /*
+                    TODO Change this to custom dialog
                     val alertSaved = AlertView("Not Saved, \nReward Already recorded for today", "", AlertStyle.DIALOG)
                     alertSaved.addAction(AlertAction("Cancel", AlertActionStyle.DEFAULT, { action ->  }))
                     alertSaved.show(this@PrimaryKidsRewardActivity)
+                    */
 
                 }else{
                     //Data does not exist
@@ -438,9 +437,12 @@ class PrimaryKidsRewardActivity : BaseActivity() {
         //Display the aggregate points
         aggregate_points.text = aggregatePoints.toString()
 
+        /*
+        TODO Change this to custom dialog
         val alertSaved = AlertView("Rewards Saved", "", AlertStyle.DIALOG)
         alertSaved.addAction(AlertAction("OK", AlertActionStyle.DEFAULT, { action ->  }))
         alertSaved.show(this@PrimaryKidsRewardActivity)
+        */
 
     }
 
@@ -455,15 +457,15 @@ class PrimaryKidsRewardActivity : BaseActivity() {
 
     fun RecyclerView.addOnItemClickListener(onClickListener: OnItemClickListener) {
         this.addOnChildAttachStateChangeListener(object: RecyclerView.OnChildAttachStateChangeListener {
-            override fun onChildViewDetachedFromWindow(view: View?) {
-                view?.setOnClickListener(null)
+            override fun onChildViewDetachedFromWindow(view: View) {
+                view.setOnClickListener(null)
             }
 
-            override fun onChildViewAttachedToWindow(view: View?) {
-                view?.setOnClickListener({
+            override fun onChildViewAttachedToWindow(view: View) {
+                view.setOnClickListener {
                     val holder = getChildViewHolder(view)
                     onClickListener.onItemClicked(holder.adapterPosition, view)
-                })
+                }
             }
         })
     }

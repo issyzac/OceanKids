@@ -1,12 +1,11 @@
 package apps.issy.com.oceankids
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import apps.issy.com.oceankids.Base.BaseActivity
-import apps.issy.com.oceankids.adapters.BirthdayMonthsAdapter
 import apps.issy.com.oceankids.adapters.PreSchoolBirthdaysAdapter
 import apps.issy.com.oceankids.adapters.WeeklyBirthdaysAdapter
 import apps.issy.com.oceankids.data.BirthdayObject
@@ -14,7 +13,6 @@ import apps.issy.com.oceankids.data.Child
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.activity_birthdays.*
 import kotlinx.android.synthetic.main.activity_preschool_birthdays.*
 import java.util.*
 
@@ -225,15 +223,15 @@ class PreSchoolBirthdayActivity : BaseActivity(){
 
     fun RecyclerView.addOnItemClickListener(onClickListener: OnItemClickListener) {
         this.addOnChildAttachStateChangeListener(object: RecyclerView.OnChildAttachStateChangeListener {
-            override fun onChildViewDetachedFromWindow(view: View?) {
-                view?.setOnClickListener(null)
+            override fun onChildViewDetachedFromWindow(view: View) {
+                view.setOnClickListener(null)
             }
 
-            override fun onChildViewAttachedToWindow(view: View?) {
-                view?.setOnClickListener({
+            override fun onChildViewAttachedToWindow(view: View) {
+                view.setOnClickListener {
                     val holder = getChildViewHolder(view)
                     onClickListener.onItemClicked(holder.adapterPosition, view)
-                })
+                }
             }
         })
     }
