@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import apps.issy.com.oceankids.KidsListActivity
 import apps.issy.com.oceankids.R
+import apps.issy.com.oceankids.R.id.class_color_reflector
 import apps.issy.com.oceankids.fragments.EditChildInfoFragment
 import kotlinx.android.synthetic.main.kid_list_item.view.*
 import java.util.*
@@ -56,6 +57,8 @@ class AllKidsAdapter internal constructor(val activity: KidsListActivity) : Recy
             with(kid) {
                 itemView.kids_names.text = kid.firstName+ " " + kid.lastName
 
+
+
                 val kidViewModel = ViewModelProviders.of(activity).get(KidViewModel::class.java)
 
                 var childYears : Int
@@ -69,12 +72,16 @@ class AllKidsAdapter internal constructor(val activity: KidsListActivity) : Recy
 
                 if (childYears in 0..2){
                     itemView.kids_class.text = "Nursery"
+                    itemView.class_color_reflector.setBackgroundColor(activity.resources.getColor(R.color.yellow_600))
                 }else if (childYears in 3..5){
                     itemView.kids_class.text = "Pre-School"
+                    itemView.class_color_reflector.setBackgroundColor(activity.resources.getColor(R.color.purple_600))
                 }else if (childYears in 6..10){
                     itemView.kids_class.text = "Primary"
+                    itemView.class_color_reflector.setBackgroundColor(activity.resources.getColor(R.color.light_blue_600))
                 }else if (childYears in 11..12){
                     itemView.kids_class.text = "Pre-Teens"
+                    itemView.class_color_reflector.setBackgroundColor(activity.resources.getColor(R.color.blue_grey_900))
                 }
 
                 if (kid.attendance.checkedIn == 1){

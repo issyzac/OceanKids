@@ -174,7 +174,8 @@ class KidsRepository(private val kidDao: KidDao){
         //Update local DB
         kidDao.updateChild(kid)
 
-        sendCheckoutText(kid)
+        //Comment this if you do not want the app to send text messages to parents after checkout
+        //sendCheckoutText(kid)
 
         //Update Firebase
         val thisChildRef = FirebaseDatabase.getInstance().getReference("kids")

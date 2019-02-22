@@ -1,143 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:background="@color/white"
-    tools:context="apps.issy.com.oceankids.MainActivity">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:background="@color/white">
 
-        <androidx.cardview.widget.CardView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="45dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:id="@+id/checkout_title">
 
-            <RelativeLayout
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:layout_marginLeft="4dp"
+                android:id="@+id/nursery_checkout_button"
+                android:background="@drawable/border_filter_button"
+                android:layout_centerVertical="true"
+                android:textColor="@color/card_title_text"
+                android:text="Nursery"
+                android:fontFamily="@font/google_sans_bold"/>
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:layout_toRightOf="@+id/nursery_checkout_button"
+                android:layout_marginLeft="16dp"
+                android:id="@+id/pre_school_checkout_button"
+                android:background="@drawable/border_one"
+                android:layout_centerVertical="true"
+                android:textColor="@color/card_title_text"
+                android:text="Pre-School"
+                android:fontFamily="@font/google_sans_bold"/>
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:id="@+id/primary_checkout_button"
+                android:layout_toRightOf="@+id/pre_school_checkout_button"
+                android:layout_marginLeft="16dp"
+                android:background="@drawable/border_one"
+                android:layout_centerVertical="true"
+                android:textColor="@color/card_title_text"
+                android:text="Primary"
+                android:fontFamily="@font/google_sans_bold"/>
+
+            <EditText
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="16dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="50dp"
+                android:drawableLeft="@mipmap/ic_keyboard"
+                android:textSize="16sp"
+                android:background="@drawable/border_one"
+                android:id="@+id/names_filter"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/card_grid_tex"
+                android:inputType="textCapWords"
+                android:hint="Name"
+                android:fontFamily="@font/google_sans_regular"
+                android:textColorHint="@color/card_grid_tex"/>
+
+            <EditText
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_toLeftOf="@id/names_filter"
+                android:layout_centerVertical="true"
+                android:paddingLeft="8dp"
+                android:paddingRight="20dp"
+                android:background="@drawable/border_one"
+                android:textSize="16sp"
+                android:drawableLeft="@mipmap/ic_dialpad"
+                android:id="@+id/card_number_filter"
+                android:textColor="@color/card_grid_tex"
+                android:inputType="number"
+                android:hint="Number"
+                android:fontFamily="@font/google_sans_regular"
+                android:textColorHint="@color/card_grid_tex"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/checkout_title"
+            android:layout_marginTop="4dp">
+
+            <!--Add the recycler views-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/white">
+                android:id="@+id/nursery_list"
+                android:background="@android:color/transparent"/>
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:id="@+id/checkout_title">
+            <androidx.recyclerview.widget.RecyclerView
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/pre_school_list"
+                android:background="@android:color/transparent"/>
 
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:textSize="14sp"
-                        android:gravity="center"
-                        android:layout_marginLeft="4dp"
-                        android:id="@+id/nursery_checkout_button"
-                        android:background="@drawable/border_filter_button"
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/card_title_text"
-                        android:text="Nursery"
-                        android:fontFamily="@font/google_sans_bold"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/primary_list"
+                android:background="@android:color/transparent"/>
 
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:textSize="14sp"
-                        android:gravity="center"
-                        android:layout_toRightOf="@+id/nursery_checkout_button"
-                        android:layout_marginLeft="16dp"
-                        android:id="@+id/pre_school_checkout_button"
-                        android:background="@drawable/border_one"
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/card_title_text"
-                        android:text="Pre-School"
-                        android:fontFamily="@font/google_sans_bold"/>
+        </RelativeLayout>
 
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:textSize="14sp"
-                        android:gravity="center"
-                        android:id="@+id/primary_checkout_button"
-                        android:layout_toRightOf="@+id/pre_school_checkout_button"
-                        android:layout_marginLeft="16dp"
-                        android:background="@drawable/border_one"
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/card_title_text"
-                        android:text="Primary"
-                        android:fontFamily="@font/google_sans_bold"/>
+    </RelativeLayout>
 
-                    <EditText
-                        android:layout_width="150dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="16dp"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="50dp"
-                        android:textSize="16sp"
-                        android:background="@drawable/border_one"
-                        android:id="@+id/names_filter"
-                        android:layout_alignParentRight="true"
-                        android:textColor="@color/card_grid_tex"
-                        android:inputType="textCapWords"
-                        android:hint="Name"
-                        android:fontFamily="@font/google_sans_regular"
-                        android:textColorHint="@color/card_grid_tex"/>
+</LinearLayout>
 
-                    <EditText
-                        android:layout_width="150dp"
-                        android:layout_height="60dp"
-                        android:layout_toLeftOf="@id/names_filter"
-                        android:layout_centerVertical="true"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="20dp"
-                        android:background="@drawable/border_one"
-                        android:textSize="16sp"
-                        android:id="@+id/card_number_filter"
-                        android:textColor="@color/card_grid_tex"
-                        android:inputType="number"
-                        android:hint="Number"
-                        android:fontFamily="@font/google_sans_regular"
-                        android:textColorHint="@color/card_grid_tex"/>
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@id/checkout_title"
-                    android:layout_marginTop="4dp">
-
-                    <!--Add the recycler views-->
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:visibility="visible"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/nursery_list"
-                        android:background="@android:color/transparent"/>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:visibility="invisible"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/pre_school_list"
-                        android:background="@android:color/transparent"/>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:visibility="invisible"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/primary_list"
-                        android:background="@android:color/transparent"/>
-
-                </RelativeLayout>
-
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>

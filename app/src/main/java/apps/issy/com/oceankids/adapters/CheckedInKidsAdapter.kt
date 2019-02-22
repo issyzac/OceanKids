@@ -40,8 +40,10 @@ class CheckedInKidsAdapter internal constructor(val fragment: CheckoutFragment) 
             with(kid) {
                 itemView.kids_names.text = kid.firstName+ " " + kid.lastName
 
+                //Get the object of the current child
                 val kidViewModel = ViewModelProviders.of(fragment).get(KidViewModel::class.java)
 
+                //Calculate the age of the child from the date of birth
                 var childYears : Int
                 val todayCal : Calendar = Calendar.getInstance()
                 val dobCal : Calendar = Calendar.getInstance()
@@ -51,22 +53,28 @@ class CheckedInKidsAdapter internal constructor(val fragment: CheckoutFragment) 
                     childYears--
                 }
 
+                //Init the views based on child details
+                //itemView.profile_image.setColorFilter(fragment.context!!.resources.getColor(R.color.white))
+
+
                 if (childYears in 0..2){
                     itemView.kids_class.text = "Nursery"
+                    itemView.class_color_reflector.setBackgroundColor(fragment.resources.getColor(R.color.yellow_600))
                 }else if (childYears in 3..5){
                     itemView.kids_class.text = "Pre-School"
+                    itemView.class_color_reflector.setBackgroundColor(fragment.resources.getColor(R.color.purple_600))
                 }else if (childYears in 6..10){
                     itemView.kids_class.text = "Primary"
+                    itemView.class_color_reflector.setBackgroundColor(fragment.resources.getColor(R.color.light_blue_600))
                 }else if (childYears in 11..12){
                     itemView.kids_class.text = "Pre-Teens"
+                    itemView.class_color_reflector.setBackgroundColor(fragment.resources.getColor(R.color.blue_grey_900))
                 }
 
+                //Set the value of a child's card on the checkout button
                 itemView.checkout_child_id.text = kid.attendance.cardNumber
 
-                var selectedService : Int = 2
-                var cardNumberGiven : Int = 0
-                var checkInChild : Boolean = false
-
+                //Ask user to confirm checking out of the child
                 itemView.checkout_child_id.setOnClickListener(object : View.OnClickListener{
                     override fun onClick(p0: View?) {
 

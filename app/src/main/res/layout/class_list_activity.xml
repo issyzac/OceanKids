@@ -45,115 +45,104 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="?attr/actionBarSize">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:layout_marginBottom="4dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginLeft="8dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:id="@+id/section_title"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:id="@+id/all_checkin_button"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/border_filter_button"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/card_title_text"
+                    android:text="All"
+                    android:fontFamily="@font/google_sans_bold"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_toRightOf="@id/all_checkin_button"
+                    android:layout_toEndOf="@id/all_checkin_button"
+                    android:id="@+id/all_checkout_button"
+                    android:background="@drawable/border_one"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/card_title_text"
+                    android:text="Check Out"
+                    android:fontFamily="@font/google_sans_bold"/>
+
+            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/white">
+                android:layout_below="@id/section_title">
 
-                <RelativeLayout
+                <fragment
+                    android:id="@+id/checkout_fragment"
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp"
-                    android:id="@+id/section_title"
-                    android:layout_marginTop="8dp">
-
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:textSize="14sp"
-                        android:gravity="center"
-                        android:id="@+id/all_checkin_button"
-                        android:layout_marginLeft="4dp"
-                        android:background="@drawable/border_filter_button"
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/card_title_text"
-                        android:text="All"
-                        android:fontFamily="@font/google_sans_bold"/>
-
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:textSize="14sp"
-                        android:gravity="center"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_toRightOf="@id/all_checkin_button"
-                        android:layout_toEndOf="@id/all_checkin_button"
-                        android:id="@+id/all_checkout_button"
-                        android:background="@drawable/border_one"
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/card_title_text"
-                        android:text="Check Out"
-                        android:fontFamily="@font/google_sans_bold"/>
-
-                </RelativeLayout>
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:name="apps.issy.com.oceankids.fragments.CheckoutFragment"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@id/section_title"
-                    android:layout_marginTop="4dp">
+                    android:background="@color/white"
+                    android:id="@+id/checkin_container">
 
-                    <fragment
-                        android:id="@+id/checkout_fragment"
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="32dp"
+                        android:textSize="18sp"
+                        android:background="@drawable/border_one"
+                        android:id="@+id/search_names"
+                        android:textColor="@color/card_grid_tex"
+                        android:inputType="textCapWords"
+                        android:hint="Search Names"
+                        android:drawableRight="@mipmap/ic_search"
+                        android:fontFamily="@font/google_sans_regular"
+                        android:textColorHint="@color/card_grid_tex"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/white"
-                        android:name="apps.issy.com.oceankids.fragments.CheckoutFragment"/>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/white"
-                        android:id="@+id/checkin_container">
-
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:paddingLeft="16dp"
-                            android:paddingRight="5dp"
-                            android:layout_marginTop="60dp"
-                            android:layout_marginLeft="32dp"
-                            android:layout_marginRight="32dp"
-                            android:textSize="18sp"
-                            android:background="@drawable/border_one"
-                            android:id="@+id/search_names"
-                            android:textColor="@color/card_grid_tex"
-                            android:inputType="textCapWords"
-                            android:hint="Search Names"
-                            android:drawableRight="@mipmap/ic_search"
-                            android:fontFamily="@font/google_sans_regular"
-                            android:textColorHint="@color/card_grid_tex"/>
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginRight="32dp"
-                            android:layout_marginLeft="32dp"
-                            android:layout_marginTop="8dp"
-                            android:id="@+id/search_results"
-                            android:layout_below="@id/search_names"
-                            android:background="@android:color/transparent"/>
-
-                    </RelativeLayout>
+                        android:layout_marginRight="32dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:id="@+id/search_results"
+                        android:layout_below="@id/search_names"
+                        android:background="@android:color/transparent"/>
 
                 </RelativeLayout>
 
             </RelativeLayout>
 
-        </androidx.cardview.widget.CardView>
+        </RelativeLayout>
 
     </LinearLayout>
 
