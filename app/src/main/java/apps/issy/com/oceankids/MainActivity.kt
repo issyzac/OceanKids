@@ -95,7 +95,7 @@ class MainActivity : BaseActivity() {
 
         val secondServiceAttendanceListener = object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
-                if (p0 != null){
+                if (p0.exists()){
 
                     val attendanceList : ArrayList<Attendance> = ArrayList()
                     var totalCheckedInSecondService : Int = 0
@@ -129,7 +129,7 @@ class MainActivity : BaseActivity() {
 
         val thirdServiceAttendanceListener = object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
-                if (p0 != null){
+                if (p0.exists()){
 
                     var totalCheckedInThirdService : Int = 0
                     var totalCheckedOutThirdService : Int = 0
@@ -217,8 +217,6 @@ class MainActivity : BaseActivity() {
          * if nursery -> add Nursery tab
          *
          */
-
-        val adapter : FragmentPagerItemAdapter
 
         when (userRole){
             0 -> {

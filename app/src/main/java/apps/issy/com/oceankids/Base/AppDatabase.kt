@@ -49,12 +49,12 @@ abstract class AppDatabase : RoomDatabase() {
             super.onOpen(db)
             INSTANCE?.let { database ->
                 scope.launch(Dispatchers.IO) {
-                    populateDatabase(database.kidDao())
+                    populateDatabase()
                 }
             }
         }
 
-        fun populateDatabase( kidDao : KidDao ){
+        fun populateDatabase( ){
 
             /*
             you may use this to clear the database and insert clean data whenever the database

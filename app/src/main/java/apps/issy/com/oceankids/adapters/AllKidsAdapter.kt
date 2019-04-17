@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import apps.issy.com.oceankids.KidsListActivity
 import apps.issy.com.oceankids.R
-import apps.issy.com.oceankids.R.id.class_color_reflector
 import apps.issy.com.oceankids.fragments.EditChildInfoFragment
 import kotlinx.android.synthetic.main.kid_list_item.view.*
 import java.util.*
@@ -103,9 +102,9 @@ class AllKidsAdapter internal constructor(val activity: KidsListActivity) : Recy
 //                        itemView.checkin_child_id.visibility = View.GONE
 //                        itemView.checkout_child_id.visibility = View.VISIBLE
 
-                        val dialog = MaterialDialog(activity)
+                        val mDialog = MaterialDialog(activity)
                                 .customView(R.layout.fragment_checkin, scrollable = true)
-                        val customView = dialog.getCustomView()
+                        val customView = mDialog.getCustomView()
                         val secondService = customView!!.findViewById<RelativeLayout>(R.id.second_service)
                         val secondServiceCheck = customView.findViewById<RelativeLayout>(R.id.second_service_selected_check)
                         val thirdService = customView.findViewById<RelativeLayout>(R.id.third_service)
@@ -128,7 +127,7 @@ class AllKidsAdapter internal constructor(val activity: KidsListActivity) : Recy
                             }
                         })
 
-                        dialog .positiveButton (text = "CHECK-IN") { dialog ->
+                        mDialog .positiveButton (text = "CHECK-IN") { dialog ->
                             if (cardNumberInput.text.isEmpty()){
                                 Toast.makeText(activity, "Card Number cannot be empty", LENGTH_LONG).show()
                             }else{
@@ -138,12 +137,12 @@ class AllKidsAdapter internal constructor(val activity: KidsListActivity) : Recy
                             }
                         }
 
-                        dialog.negativeButton (text = "Cancel") { dialog ->
+                        mDialog.negativeButton (text = "Cancel") { dialog ->
                             checkInChild = false
                             dialog.dismiss()
                         }
 
-                        dialog.onDismiss { dialog ->
+                        mDialog.onDismiss { dialog ->
 
                             if (checkInChild){
                                 //Fire Check in this child
@@ -170,7 +169,7 @@ class AllKidsAdapter internal constructor(val activity: KidsListActivity) : Recy
                             }
                         }
 
-                        dialog.show()
+                        mDialog.show()
 
                     }
                 })

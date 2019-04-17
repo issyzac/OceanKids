@@ -29,7 +29,7 @@ class ChildDetailsActivity : BaseActivity() {
     var aggregatePoints : Int = 0
     var tillNextCandy : Int = 0
 
-    private var kidId : String = String()
+    private var kidId : String? = String()
     private val childRef = FirebaseDatabase.getInstance().reference.child("kids").child("kids_list")
     private val rewardReference = FirebaseDatabase.getInstance().reference.child("kids").child("reward_chart")
 
@@ -228,16 +228,16 @@ class ChildDetailsActivity : BaseActivity() {
             broughtAFriend : Boolean?,
             gotBonus : Boolean?,
             points: Int?){
-        rewardReference.child(dateKey).child(kidId).child("attended").setValue(hasAttended)
-        rewardReference.child(dateKey).child(kidId).child("bonus").setValue(gotBonus)
-        rewardReference.child(dateKey).child(kidId).child("brought_a_friend").setValue(broughtAFriend)
-        rewardReference.child(dateKey).child(kidId).child("has_bible").setValue(hasABible)
-        rewardReference.child(dateKey).child(kidId).child("has_offering").setValue(hasOffering)
-        rewardReference.child(dateKey).child(kidId).child("knows_memory_verse").setValue(knowsMemoryVerse)
-        rewardReference.child(dateKey).child(kidId).child("todays_points").setValue(points)
+        rewardReference.child(dateKey).child(kidId.toString()).child("attended").setValue(hasAttended)
+        rewardReference.child(dateKey).child(kidId.toString()).child("bonus").setValue(gotBonus)
+        rewardReference.child(dateKey).child(kidId.toString()).child("brought_a_friend").setValue(broughtAFriend)
+        rewardReference.child(dateKey).child(kidId.toString()).child("has_bible").setValue(hasABible)
+        rewardReference.child(dateKey).child(kidId.toString()).child("has_offering").setValue(hasOffering)
+        rewardReference.child(dateKey).child(kidId.toString()).child("knows_memory_verse").setValue(knowsMemoryVerse)
+        rewardReference.child(dateKey).child(kidId.toString()).child("todays_points").setValue(points)
 
         aggregatePoints += totalPoints
-        childRef.child(kidId).child("aggregatePoints").setValue(aggregatePoints)
+        childRef.child(kidId.toString()).child("aggregatePoints").setValue(aggregatePoints)
 
     }
 

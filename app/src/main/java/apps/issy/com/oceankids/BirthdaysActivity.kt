@@ -125,7 +125,6 @@ class BirthdaysActivity : BaseActivity() {
 
     private fun getAllBirthdaysOfMonth(position : Int){
 
-        var monthValue = position
 
         var allChildrenViews : String = ""
         var wholeMonthBirthdays : ArrayList<BirthdayObject> = ArrayList()

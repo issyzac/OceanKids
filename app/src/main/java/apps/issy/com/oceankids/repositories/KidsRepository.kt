@@ -281,7 +281,7 @@ class KidsRepository(private val kidDao: KidDao){
             //"from": "AcmeLtd"
             jsonObject.put("from", "OCEAN KIDS")
             jsonObject.put("phone_number", phone)
-            jsonObject.put("message", kid.firstName+" has been checked out. Today was another awesome Sunday. We just can't express how grateful we are that you've allowed us to lead your kids in the way of the Lord. We continue to pray over you and your family, and if you have any specific requests, please reply to this number. Our memory verse this week is from Hebrews 11:1 .\n\nThank you for churching with us, have a wonderful week!!!" )
+            jsonObject.put("message", "Heya, what a wonderful Sunday it is,\n\n"+kid.firstName+" has been checked out. We feel so blessed to have fellowshipped with your child, and even more, the opportunity to pour the word of God into their life. Today we learned about the importance of choosing God in the midst of peer pressure from the story of the 12 spies found in Numbers 13-17-33. The memory verse for this week is from Joshua 24:15 \n\nThank you so much and we wish a wonderful week!!!!" )
             jsonObject.put("device_id", "108776")
 
             jsonArray.put(jsonObject)
