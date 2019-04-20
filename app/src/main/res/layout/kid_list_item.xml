@@ -95,7 +95,7 @@
     <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:background="@drawable/border_one"
+        android:background="@drawable/border_button_selector"
         android:layout_marginRight="16dp"
         android:text="CheckIn"
         android:fontFamily="@font/google_sans_bold"
@@ -112,7 +112,7 @@
         android:visibility="visible"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:background="@drawable/border_four"
+        android:background="@drawable/fill_button_selector"
         android:layout_marginRight="16dp"
         android:text="CheckOut"
         android:id="@+id/checkout_child_id"

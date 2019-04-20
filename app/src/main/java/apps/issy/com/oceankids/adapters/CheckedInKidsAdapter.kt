@@ -1,5 +1,7 @@
 package apps.issy.com.oceankids.adapters
 
+import android.content.Context.VIBRATOR_SERVICE
+import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,6 +55,8 @@ class CheckedInKidsAdapter internal constructor(val fragment: CheckoutFragment) 
                     childYears--
                 }
 
+                val vibration : Vibrator = fragment.activity!!.applicationContext.getSystemService(VIBRATOR_SERVICE) as Vibrator
+
                 //Init the views based on child details
                 //itemView.profile_image.setColorFilter(fragment.context!!.resources.getColor(R.color.white))
 
@@ -77,7 +81,7 @@ class CheckedInKidsAdapter internal constructor(val fragment: CheckoutFragment) 
                 //Ask user to confirm checking out of the child
                 itemView.checkout_child_id.setOnClickListener(object : View.OnClickListener{
                     override fun onClick(p0: View?) {
-
+                        vibration.vibrate(40)
                         MaterialDialog(p0!!.context).show {
 
                             title(text = "Checkout Child")
