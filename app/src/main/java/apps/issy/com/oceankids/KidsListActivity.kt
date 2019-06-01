@@ -44,11 +44,11 @@ class KidsListActivity : BaseActivity() {
 
         val searchResultsLinearLayoutManager = LinearLayoutManager(this)
 
+        searchAdapter.setHasStableIds(true)
 
         search_results.layoutManager = searchResultsLinearLayoutManager
-
         search_results.setHasFixedSize(true)
-
+        search_results.setItemViewCacheSize(20)
         search_results.adapter = searchAdapter
 
         //After all has been loaded program will continue here

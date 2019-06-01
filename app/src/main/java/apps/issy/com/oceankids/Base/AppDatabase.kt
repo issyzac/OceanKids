@@ -49,17 +49,18 @@ abstract class AppDatabase : RoomDatabase() {
             super.onOpen(db)
             INSTANCE?.let { database ->
                 scope.launch(Dispatchers.IO) {
-                    populateDatabase()
+                    populateDatabase(database)
                 }
             }
         }
 
-        fun populateDatabase( ){
+        fun populateDatabase(database: AppDatabase){
 
             /*
             you may use this to clear the database and insert clean data whenever the database
             is being opened
             */
+            database.toString()
         }
 
     }

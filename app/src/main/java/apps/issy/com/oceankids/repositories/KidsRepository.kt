@@ -281,11 +281,7 @@ class KidsRepository(private val kidDao: KidDao){
             //"from": "AcmeLtd"
             jsonObject.put("from", "OCEAN KIDS")
             jsonObject.put("phone_number", phone)
-            jsonObject.put("message", kid.firstName+" has been checked out. \nIn other news, He is risen!!!! Our Saviour is alive! " +
-                    "As we celebrate the resurrection of our saviour we would like to thank you for trusting us with your child, you're making " +
-                    "the right investment in your child's destiny. We would like to encourage you to have conversations with your child about the " +
-                    "power in the death and resurrection of Christ. We want to cement the truth of the death and resurrection of Christ as the " +
-                    "foundation of our faith in the hearts of Ocean Kids. Our memory verse for this week is from John 15:5 . \nWishing you a wonderful easter!!!" )
+            jsonObject.put("message", kid.firstName+" has been checked out. \nThank you for churching with us today, we wish you a great Sunday.\nSee you next week!" )
             jsonObject.put("device_id", "108776")
 
             jsonArray.put(jsonObject)

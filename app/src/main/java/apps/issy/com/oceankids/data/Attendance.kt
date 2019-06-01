@@ -9,4 +9,6 @@ package apps.issy.com.oceankids.data
 class Attendance{
     var cardNumber : String = "-1"
     var checkedOut : Int = -1
+    var checkedInTime : String = ""
+    var checkedOutTimew : String = ""
 }

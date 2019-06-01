@@ -214,6 +214,11 @@ class AllKidsAdapter internal constructor(val activity: KidsListActivity) : Recy
         }
     }
 
+    override fun getItemId(position: Int): Long {
+        return kids[position].id.hashCode().toLong()
+    }
+
+
     fun setKids(updatedList : List<Kid> ){
 
         val kidsDiffCallback = KidsDiffCallback(this.kids, updatedList)

@@ -8,31 +8,15 @@ import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import apps.issy.com.oceankids.Base.BaseActivity
-import apps.issy.com.oceankids.Base.Endpoints
 import apps.issy.com.oceankids.data.Attendance
 import apps.issy.com.oceankids.data.User
 import apps.issy.com.oceankids.services.ServerSyncService
-import apps.issy.com.oceankids.util.Constants.Companion.apiKey
-import apps.issy.com.oceankids.util.Constants.Companion.baseURL
 import apps.issy.com.oceankids.viewmodels.KidViewModel
 import com.androidhuman.rxfirebase2.database.dataChanges
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import okhttp3.*
-import okhttp3.logging.HttpLoggingInterceptor
-import org.json.JSONArray
-import org.json.JSONObject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.io.IOException
 import java.util.*
 
 class MainActivity : BaseActivity() {
