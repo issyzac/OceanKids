@@ -129,24 +129,50 @@
                             android:fontFamily="@font/google_sans_regular"
                             android:textColorHint="@color/card_grid_tex"/>
 
-                        <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:layout_below="@id/search_names"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal"
                             android:layout_centerInParent="true"
-                            android:layout_marginTop="100dp"
-                            android:src="@mipmap/ic_check_in"
-                            android:alpha="0.1"/>
+                            android:id="@+id/kids_list_loader_and_message">
+
+                            <TextView
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:text="Type child's name above to search"
+                                android:textColor="@color/grey_500"
+                                android:fontFamily="@font/google_sans_medium"
+                                android:textSize="24sp"
+                                android:id="@+id/kids_list_message_text"
+                                android:alpha="0.7"/>
+
+                            <ProgressBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/message_text"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="16dp"
+                                android:id="@+id/kids_loading_indicator"
+                                android:backgroundTint="@color/grey_500"
+                                android:minHeight="70dp"
+                                android:minWidth="70dp"
+                                android:progressBackgroundTint="@color/darkerGray"
+                                android:progressTint="@color/darkerGray" />
+
+                        </LinearLayout>
+
 
                         <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/search_results"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginRight="32dp"
-                            android:layout_marginLeft="32dp"
-                            android:layout_marginTop="8dp"
-                            android:id="@+id/search_results"
                             android:layout_below="@id/search_names"
-                            android:background="@android:color/transparent"/>
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginRight="32dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@android:color/transparent"
+                            android:backgroundTint="@color/darkerGray" />
 
                     </RelativeLayout>
 

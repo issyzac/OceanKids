@@ -1,7 +1,6 @@
 package apps.issy.com.oceankids
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -9,8 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import apps.issy.com.oceankids.Base.BaseActivity
 import apps.issy.com.oceankids.adapters.AllKidsAdapter
 import apps.issy.com.oceankids.database.entities.Kid
+import apps.issy.com.oceankids.util.Constants
+import apps.issy.com.oceankids.util.SharedPreferencesHelper
 import apps.issy.com.oceankids.viewmodels.KidViewModel
+import com.mcxiaoke.koi.Const
 import com.mcxiaoke.koi.ext.onTextChange
+
 
 /**
  *  Created by issy on 23/02/2018.
@@ -20,6 +23,7 @@ import com.mcxiaoke.koi.ext.onTextChange
  */
 
 import kotlinx.android.synthetic.main.class_list_activity.*
+import org.jetbrains.anko.share
 
 
 class KidsListActivity : BaseActivity() {
@@ -32,14 +36,23 @@ class KidsListActivity : BaseActivity() {
 
     var searchAdapter : AllKidsAdapter = AllKidsAdapter(this)
 
-    var checkoutChildKlicked : Boolean = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.class_list_activity)
 
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        val sharedPreferences : SharedPreferencesHelper = SharedPreferencesHelper(this)
+        kids_list_message_text.setText(Constants.KIDS_LIST_DEFAULT_MESSAGE)
+
+        sharedPreferences.save(Constants.CHECKING_IN, true)
+
+        if (sharedPreferences.getValueBoolean(Constants.CHECKING_IN, true) == true){
+            //Show the lading kids loader
+            kids_loading_indicator.visibility = View.VISIBLE
+            kids_list_message_text.setText("Loading Kids")
+        }
 
         //Wrap the viewModel in a viewModelProvider for configuration changes sake
         kidViewModel = ViewModelProviders.of(this).get(KidViewModel::class.java)
@@ -57,6 +70,8 @@ class KidsListActivity : BaseActivity() {
         kidViewModel.allKids.observe(this, Observer { kids ->
             kids?.let {
                 allKidsList = it
+                kids_loading_indicator.visibility = View.INVISIBLE
+                kids_list_message_text.setText(Constants.KIDS_LIST_DEFAULT_MESSAGE)
             }
         })
 
@@ -73,6 +88,12 @@ class KidsListActivity : BaseActivity() {
             val res =  allKidsList.filter {
                 it.firstName.startsWith(text, ignoreCase = true) || it.lastName.startsWith(text, ignoreCase = true)
             }
+            if (res.size <= 0){
+                kids_list_message_text.setText("Child could not be found!")
+            }else{
+                kids_list_message_text.setText("")
+            }
+
             val result : ArrayList<Kid> = ArrayList(res)
             searchAdapter.setKids(result)
 
@@ -81,9 +102,10 @@ class KidsListActivity : BaseActivity() {
         all_checkin_button.setOnClickListener(object : View.OnClickListener{
             override fun onClick(p0: View?) {
 
-//                nursery_checkin_button.setBackgroundResource(R.drawable.border_one)
-//                pre_school_checkin_button.setBackgroundResource(R.drawable.border_one)
-//                primary_checkin_button.setBackgroundResource(R.drawable.border_one)
+                if (sharedPreferences.getValueBoolean(Constants.CHECKING_IN, true) == false){
+                    sharedPreferences.save(Constants.CHECKING_IN, true)
+                }
+
                 all_checkin_button.setBackgroundResource(R.drawable.border_filter_button)
                 all_checkout_button.setBackgroundResource(R.drawable.border_one)
 
@@ -96,7 +118,9 @@ class KidsListActivity : BaseActivity() {
         all_checkout_button.setOnClickListener(object : View.OnClickListener{
             override fun onClick(p0: View?) {
 
-                checkoutChildKlicked = true
+                if (sharedPreferences.getValueBoolean(Constants.CHECKING_IN, true) == true){
+                    sharedPreferences.save(Constants.CHECKING_IN, false)
+                }
 
                 all_checkout_button.setBackgroundResource(R.drawable.border_filter_button)
                 all_checkin_button.setBackgroundResource(R.drawable.border_one)
