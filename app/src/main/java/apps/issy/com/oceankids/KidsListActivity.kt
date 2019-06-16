@@ -32,6 +32,8 @@ class KidsListActivity : BaseActivity() {
 
     var searchAdapter : AllKidsAdapter = AllKidsAdapter(this)
 
+    var checkoutChildKlicked : Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.class_list_activity)
@@ -93,6 +95,8 @@ class KidsListActivity : BaseActivity() {
 
         all_checkout_button.setOnClickListener(object : View.OnClickListener{
             override fun onClick(p0: View?) {
+
+                checkoutChildKlicked = true
 
                 all_checkout_button.setBackgroundResource(R.drawable.border_filter_button)
                 all_checkin_button.setBackgroundResource(R.drawable.border_one)
