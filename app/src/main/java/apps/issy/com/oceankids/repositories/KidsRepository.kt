@@ -177,7 +177,7 @@ class KidsRepository(private val kidDao: KidDao){
         //Comment this if you do not want the app to send text messages to parents after checkout
         //sendCheckoutText(kid)
 
-        //Update Firebase
+        //Update Child node on Firebase to change child's attendance to checked out
         val thisChildRef = FirebaseDatabase.getInstance().getReference("kids")
                 .child("kids_list")
                 .child(kid.id)
@@ -202,13 +202,18 @@ class KidsRepository(private val kidDao: KidDao){
         val year = calendar.get(Calendar.YEAR)
         val todaysDateKey = day.toString()+"-"+month+"-"+year
 
+        //Update firebase attendance node to record a child being checked out
         val attendanceReference = FirebaseDatabase.getInstance().getReference("attendance")
                 .child(todaysDateKey)
                 .child(kidService.toString())
                 .child(kid.id)
 
+        //Timestamp object to record time the child was checked out
+        val time = Calendar.getInstance().timeInMillis
+
         val attendanceUpdate = mapOf(
-                "checkedOut" to 1
+                "checkedOut" to 1,
+                "timeOut" to time
         )
 
         attendanceReference.rxUpdateChildren(attendanceUpdate)

@@ -159,7 +159,7 @@ class AllKidsAdapter internal constructor(val activity: KidsListActivity) : Recy
                                 kid.checkedIn = 1
 
                                 GlobalScope.launch (Dispatchers.IO) {
-                                    kidViewModel.checkinChild(kid)
+                                    kidViewModel.checkingInChild(kid)
                                 }
 
                             }else{
@@ -191,7 +191,7 @@ class AllKidsAdapter internal constructor(val activity: KidsListActivity) : Recy
                                 itemView.checkout_child_id.visibility = View.GONE
 
                                 GlobalScope.launch (Dispatchers.IO) {
-                                    kidViewModel.checkoutChild(kid)
+                                    kidViewModel.checkingOutChild(kid)
                                 }
 
                             }

@@ -89,7 +89,7 @@ class CheckedInKidsAdapter internal constructor(val fragment: CheckoutFragment) 
                             positiveButton(text = "Yes") { dialog ->
 
                                 GlobalScope.launch (Dispatchers.IO) {
-                                    kidViewModel.checkoutChild(kid)
+                                    kidViewModel.checkingOutChild(kid)
                                 }
 
                             }

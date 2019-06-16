@@ -47,11 +47,17 @@ class KidViewModel(application: Application) : AndroidViewModel(application) {
         kidRepository.loadAllKids()
     }
 
-    suspend fun checkinChild(kid : Kid) = scope.launch (Dispatchers.IO) {
+    /**
+     * A suspended funtion in called within a coroutinescope to check in child in a background thread
+     */
+    suspend fun checkingInChild(kid: Kid) {
         kidRepository.insertAttendanceData(kid)
     }
 
-    suspend fun checkoutChild(kid: Kid) = scope.launch (Dispatchers.IO) {
+    /**
+     * A suspended function called within a coroutinescope to check out a child in the background
+     */
+    suspend fun checkingOutChild(kid: Kid) {
         kidRepository.checkoutChildAttendance(kid)
     }
 
