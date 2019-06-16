@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/username/projectname.svg?branch=master)]()
+
 # OceanKids Checkin App
 
 ## The Ocean in Dar Kids Ministry check-in check-out system
