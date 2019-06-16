@@ -18,10 +18,12 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".LoginActivity"
-            android:windowSoftInputMode="stateHidden">
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -30,27 +32,33 @@
         </activity>
         <activity android:name=".KidsListActivity"
             android:windowSoftInputMode="stateHidden|adjustNothing"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
 
         <activity android:name=".ChildDetailsActivity"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
 
         <activity android:name=".RegisterChildActivity"
             android:parentActivityName=".KidsListActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="portrait"/>
 
         <activity android:name=".PrimaryKidsActivity"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppThemePrimary"/>
+            android:theme="@style/AppThemePrimary"
+            android:screenOrientation="portrait"/>
 
         <activity android:name=".PreSchoolActivity"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppThemePreSchool"/>
+            android:theme="@style/AppThemePreSchool"
+            android:screenOrientation="portrait"/>
 
         <activity android:name=".PreSchoolInfoActivity"
             android:parentActivityName=".PreSchoolActivity"
             android:theme="@style/AppThemePreSchool"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
 
         <activity android:name=".NurseryKidsActivity"
             android:parentActivityName=".MainActivity"
@@ -59,24 +67,29 @@
         <activity android:name=".NuseryKidsInfoActivity"
             android:parentActivityName=".NurseryKidsActivity"
             android:theme="@style/AppThemeNursery"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
 
         <activity android:name=".BirthdaysActivity"
             android:parentActivityName=".NurseryKidsActivity"
-            android:theme="@style/AppThemeNursery"/>
+            android:theme="@style/AppThemeNursery"
+            android:screenOrientation="portrait"/>
 
         <activity android:name=".PreSchoolBirthdayActivity"
             android:parentActivityName=".PreSchoolActivity"
-            android:theme="@style/AppThemePreSchool"/>
+            android:theme="@style/AppThemePreSchool"
+            android:screenOrientation="portrait"/>
 
         <activity android:name=".PrimaryKidsRewardActivity"
             android:parentActivityName=".PrimaryKidsActivity"
             android:theme="@style/AppThemePrimary"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
 
         <activity android:name=".PrimaryBirthdayActivity"
             android:parentActivityName=".PrimaryKidsActivity"
-            android:theme="@style/AppThemePrimary"/>
+            android:theme="@style/AppThemePrimary"
+            android:screenOrientation="portrait"/>
 
         <service android:name=".services.ServerSyncService"/>
 
