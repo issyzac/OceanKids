@@ -64,6 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_marginTop="25dp"
                 android:background="@color/grey_050">
 
                 <LinearLayout
@@ -163,6 +164,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:layout_marginTop="25dp"
                 android:background="@color/card_separator"/>
 
             <TextView
@@ -170,6 +172,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:text="Sunday Attendance Summaries"
+                android:layout_marginTop="25dp"
                 android:textColor="@color/card_title_text"
                 android:fontFamily="@font/google_sans_bold"
                 android:textStyle="bold"
