@@ -148,15 +148,13 @@
                                 android:alpha="0.7"/>
 
                             <ProgressBar
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
                                 android:layout_below="@id/message_text"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="16dp"
                                 android:id="@+id/kids_loading_indicator"
                                 android:backgroundTint="@color/grey_500"
-                                android:minHeight="70dp"
-                                android:minWidth="70dp"
                                 android:progressBackgroundTint="@color/darkerGray"
                                 android:progressTint="@color/darkerGray" />
 
