@@ -3,6 +3,8 @@ package apps.issy.com.oceankids.Base
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import apps.issy.com.oceankids.util.DeviceStatus
+import com.afollestad.materialdialogs.MaterialDialog
 
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -45,6 +47,19 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val deviceStatus = DeviceStatus(this)
+        if (!deviceStatus.Internet()){
+            //Show dialog indicating  NO INTERNET CONNECTION
+            MaterialDialog(this).show {
+                title(text = "Warning")
+                message(text = "Device not connected to the Internet")
+                positiveButton(text = "OK") {
+                    dismiss()
+                }
+
+            }
+        }
 
         mDatabase = FirebaseDatabase.getInstance().reference
 

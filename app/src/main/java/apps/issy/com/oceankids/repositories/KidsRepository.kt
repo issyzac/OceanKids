@@ -283,7 +283,6 @@ class KidsRepository(private val kidDao: KidDao){
         val jsonArray = JSONArray()
 
         try {
-            //"from": "AcmeLtd"
             jsonObject.put("from", "OCEAN KIDS")
             jsonObject.put("phone_number", phone)
             jsonObject.put("message", kid.firstName+" has been checked out. \nThank you for churching with us today, we wish you a great Sunday.\nSee you next week!" )

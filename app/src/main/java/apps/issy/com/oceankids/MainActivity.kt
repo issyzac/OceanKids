@@ -11,7 +11,9 @@ import apps.issy.com.oceankids.Base.BaseActivity
 import apps.issy.com.oceankids.data.Attendance
 import apps.issy.com.oceankids.data.User
 import apps.issy.com.oceankids.services.ServerSyncService
+import apps.issy.com.oceankids.util.DeviceStatus
 import apps.issy.com.oceankids.viewmodels.KidViewModel
+import com.afollestad.materialdialogs.MaterialDialog
 import com.androidhuman.rxfirebase2.database.dataChanges
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
