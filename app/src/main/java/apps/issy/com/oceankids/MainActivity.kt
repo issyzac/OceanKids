@@ -11,9 +11,7 @@ import apps.issy.com.oceankids.Base.BaseActivity
 import apps.issy.com.oceankids.data.Attendance
 import apps.issy.com.oceankids.data.User
 import apps.issy.com.oceankids.services.ServerSyncService
-import apps.issy.com.oceankids.util.DeviceStatus
 import apps.issy.com.oceankids.viewmodels.KidViewModel
-import com.afollestad.materialdialogs.MaterialDialog
 import com.androidhuman.rxfirebase2.database.dataChanges
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -195,34 +193,11 @@ class MainActivity : BaseActivity() {
 
     private fun configureLayout(userRole : Int?) {
 
-        /**
-         * Check user's role and add the required TAB
-         *
-         * if pre-school -> add Pre-school tab
-         * if primary -> add Primary tab
-         * if nursery -> add Nursery tab
-         *
-         */
-
         when (userRole){
             0 -> {
-                //user is an admin
-                /*adapter = FragmentPagerItemAdapter(
-                        supportFragmentManager, FragmentPagerItems.with(this)
-                        .add("Nursery", NurseryKidsFragment::class.java)
-                        .add("Pre-School", PreSchoolKidsFragment::class.java)
-                        .add("Primary", PrimaryKidsFragment::class.java)
-                        .create())
-                viewpager.adapter = adapter*/
-
+                //TODO
             }
             1 -> {
-                //user is a nursery volunteer
-                /*adapter = FragmentPagerItemAdapter(
-                        supportFragmentManager, FragmentPagerItems.with(this)
-                        .add("Nursery", NurseryKidsFragment::class.java)
-                        .create())
-                viewpager.adapter = adapter*/
                 preschool_card.isEnabled = false
                 preschool_card.setCardBackgroundColor(resources.getColor(R.color.card_separator))
                 pre_school_class_title.setTextColor(resources.getColor(R.color.card_grid_tex))
@@ -231,12 +206,6 @@ class MainActivity : BaseActivity() {
                 primary_class_title.setTextColor(resources.getColor(R.color.card_grid_tex))
             }
             2 -> {
-                //user is a pre-school volunteer
-                /*adapter = FragmentPagerItemAdapter(
-                        supportFragmentManager, FragmentPagerItems.with(this)
-                        .add("Pre-School", PreSchoolKidsFragment::class.java)
-                        .create())
-                viewpager.adapter = adapter*/
                 nursery_card.isEnabled = false
                 nursery_card.setCardBackgroundColor(resources.getColor(R.color.card_separator))
                 nursery_class_title.setTextColor(resources.getColor(R.color.card_grid_tex))
@@ -245,12 +214,6 @@ class MainActivity : BaseActivity() {
                 primary_class_title.setTextColor(resources.getColor(R.color.card_grid_tex))
             }
             3 -> {
-                //user is a Primary volunteer
-                /*adapter = FragmentPagerItemAdapter(
-                        supportFragmentManager, FragmentPagerItems.with(this)
-                        .add("Primary", PrimaryKidsFragment::class.java)
-                        .create())
-                viewpager.adapter = adapter*/
                 nursery_card.isEnabled = false
                 nursery_card.setCardBackgroundColor(resources.getColor(R.color.card_separator))
                 nursery_class_title.setTextColor(resources.getColor(R.color.card_grid_tex))
@@ -259,70 +222,11 @@ class MainActivity : BaseActivity() {
                 pre_school_class_title.setTextColor(resources.getColor(R.color.card_grid_tex))
             }
             4 -> {
-                //user is a Pre-teen volunteer
-                /*adapter = FragmentPagerItemAdapter(
-                        supportFragmentManager, FragmentPagerItems.with(this)
-                        //.add("Nursery", NurseryKidsFragment::class.java)
-                        .create())
-                viewpager.adapter = adapter*/
                 primary_card.isEnabled = false
                 nursery_card.isEnabled = false
                 preschool_card.isEnabled = false
             }
         }
-
-        /*viewpagertab.setCustomTabView(object : SmartTabLayout.TabProvider {
-            override fun createTabView(container: ViewGroup?, position: Int, adapter: PagerAdapter?): View {
-                val view = inflater.inflate (R.layout.custom_tab_icon, container, false)
-                var iconView : ImageView = view.findViewById (R.id.icon)
-                var tabTitle : TextView = view.findViewById(R.id.tab_title)
-                when (userRole){
-                    0 -> {
-                        when(position){
-                            0 -> {
-                                tabTitle.text = "Nursery"
-                            }
-                            1 -> {
-                                tabTitle.text = "Pre-School"
-                            }
-                            2 -> {
-                                tabTitle.text = "Primary"
-                            }
-                        }
-                    }
-                    1 -> {
-                        when(position){
-                            0 -> {
-                                tabTitle.text = "Nursery"
-                            }
-                        }
-                    }
-                    2 -> {
-                        when(position){
-                            0 -> {
-                                tabTitle.text = "Pre-School"
-                            }
-                        }
-                    }
-                    3 -> {
-                        when(position){
-                            0 -> {
-                                tabTitle.text = "Primary"
-                            }
-                        }
-                    }
-                    4 -> {
-                        when(position){
-                            0 -> {
-                                tabTitle.text = "Pre-teen"
-                            }
-                        }
-                    }
-                }
-                return view
-            }
-        })
-        viewpagertab.setViewPager(viewpager)*/
 
     }
 
