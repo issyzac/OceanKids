@@ -84,7 +84,7 @@ class LoginActivity : BaseActivity(){
                     if (task.isSuccessful()) {
 
                         //This will be suspended by a coroutine function called
-                        loadAllKids(task.result!!.user)
+                        loadAllKids()
 
                     } else {
                         Toast.makeText(this@LoginActivity, "Authentication failed.",
@@ -98,15 +98,24 @@ class LoginActivity : BaseActivity(){
             })
     }
 
-    fun loadAllKids(user: FirebaseUser?) {
+    fun loadAllKids() {
 
         GlobalScope.launch (Dispatchers.IO) {
+            val user = getCurrentUser()
             userViewModel.loadAllUsers(user!!.uid)
             val currentUser : User =  userViewModel.getCurrentUser(user.uid)
-            kidViewModel.loadAllKids(currentUser.role)
-            updateUI(user)
+
+            if (currentUser != null){
+                kidViewModel.loadAllKids(currentUser.role)
+                updateUI(user)
+            }
+
         }
 
+    }
+
+    suspend fun getCurrentUser() : FirebaseUser? {
+        return auth.currentUser
     }
 
     fun updateUI(user: FirebaseUser?){
