@@ -72,6 +72,7 @@ class KidsListActivity : BaseActivity() {
                 allKidsList = it
                 kids_loading_indicator.visibility = View.INVISIBLE
                 kids_list_message_text.setText(Constants.KIDS_LIST_DEFAULT_MESSAGE)
+                searchAdapter.setKids(allKidsList)
             }
         })
 
@@ -80,7 +81,7 @@ class KidsListActivity : BaseActivity() {
         search_names.onTextChange { text, _, _, _ ->
 
             if (text.isEmpty()){
-                search_results.visibility = View.INVISIBLE
+                search_results.visibility = View.VISIBLE
             }else{
                 search_results.visibility = View.VISIBLE
             }
