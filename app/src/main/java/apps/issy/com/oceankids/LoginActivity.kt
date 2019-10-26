@@ -9,7 +9,9 @@ import com.google.firebase.auth.AuthResult
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
+import apps.issy.com.oceankids.database.entities.User
 import apps.issy.com.oceankids.viewmodels.KidViewModel
+import apps.issy.com.oceankids.viewmodels.UserViewModel
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
@@ -30,6 +32,7 @@ import org.jetbrains.anko.startActivity
 class LoginActivity : BaseActivity(){
 
     private lateinit var kidViewModel : KidViewModel
+    private lateinit var userViewModel: UserViewModel
 
     private val RC_SIGN_IN = 123 //the request code could be any Integer
     val auth = FirebaseAuth.getInstance()!!
@@ -39,6 +42,7 @@ class LoginActivity : BaseActivity(){
         setContentView(R.layout.activity_login)
 
         kidViewModel = ViewModelProviders.of(this).get(KidViewModel::class.java)
+        userViewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
 
         if(auth.currentUser != null){ //If user is signed in
 //                startActivity(Next Activity)
@@ -78,8 +82,9 @@ class LoginActivity : BaseActivity(){
                     login_button_text.visibility = View.VISIBLE
 
                     if (task.isSuccessful()) {
+
                         //This will be suspended by a coroutine function called
-                        loadAllKids()
+                        loadAllKids(task.result!!.user)
 
                     } else {
                         Toast.makeText(this@LoginActivity, "Authentication failed.",
@@ -93,10 +98,12 @@ class LoginActivity : BaseActivity(){
             })
     }
 
-    fun loadAllKids() {
+    fun loadAllKids(user: FirebaseUser?) {
+
         GlobalScope.launch (Dispatchers.IO) {
-            kidViewModel.loadAllKids()
-            val user = auth.getCurrentUser()
+            userViewModel.loadAllUsers(user!!.uid)
+            val currentUser : User =  userViewModel.getCurrentUser(user.uid)
+            kidViewModel.loadAllKids(currentUser.role)
             updateUI(user)
         }
 
