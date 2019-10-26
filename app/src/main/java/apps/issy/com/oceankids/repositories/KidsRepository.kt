@@ -45,11 +45,11 @@ class KidsRepository(private val kidDao: KidDao){
     suspend fun insert(kid : Kid){
         kidDao.InsertKid(kid)
     }
-
+    @WorkerThread
     suspend fun insertNewKid(kid : Kid?){
         kidDao.InsertKid(kid)
     }
-
+    @WorkerThread
     suspend fun updateKid(kid : Kid?){
         kidDao.updateChild(kid)
         Log.d("child_event_changes", "Child Updated!!")
@@ -60,20 +60,34 @@ class KidsRepository(private val kidDao: KidDao){
     }
 
     @SuppressLint("CheckResult")
-    suspend fun  loadAllKids(){
+    suspend fun  loadAllKids(userRole : Int){
+
+        /**
+         * If
+         *  @userRole == 1 -> Nursery Class
+         *  @userRole == 2 -> Preschool Class
+         *  @userRole == 3 -> Primary Class
+         */
 
         val kidsList : ArrayList<Kid> = ArrayList()
 
-        val reference : DatabaseReference = FirebaseDatabase.getInstance()
+        val range = getRangeBasedOnRole(userRole)
+
+        val reference = FirebaseDatabase.getInstance()
                 .reference
                 .child("kids")
                 .child("kids_list")
+                .orderByChild("dob")
+                .startAt(range.first.toDouble())
+                .endAt(range.second.toDouble())
+
 
         reference.data()
                 .subscribe({
                     if (it.exists()) {
                         for (data in it.children) {
 
+                            val id = data.key
                             val firstName = data.child("firstName").value
                             val lastName = data.child("lastName").value
                             val nationality = data.child("nationality").value
@@ -93,6 +107,7 @@ class KidsRepository(private val kidDao: KidDao){
 
                             val child = Kid()
 
+                            child.id = id.toString()
                             child.firstName = firstName.toString()
                             child.lastName = lastName.toString()
                             child.allergies = allergies.toString()
@@ -161,6 +176,27 @@ class KidsRepository(private val kidDao: KidDao){
                     //Throw Errors
                     Log.d("spectacular", "Error : "+it.message)
                 }
+    }
+
+    fun getRangeBasedOnRole(role: Int) : Pair<Long, Long> {
+
+        val calendar = Calendar.getInstance()
+        val todayInMilliseconds = calendar.timeInMillis
+
+        var start : Long  = 0
+        var end : Long = 0
+
+        if (role == 3){
+            //Role is primary class
+            start = todayInMilliseconds - Constants.CALENDAR.TEN_YEARS_AGO
+            end = todayInMilliseconds - Constants.CALENDAR.SIX_YEARS_AGO
+        }else {
+            //Role is preschool and Nursery checkin
+            start = todayInMilliseconds - Constants.CALENDAR.SIX_YEARS_AGO
+            end = todayInMilliseconds
+        }
+
+        return Pair(start, end)
     }
 
     fun insertAttendanceData(kid : Kid) {
