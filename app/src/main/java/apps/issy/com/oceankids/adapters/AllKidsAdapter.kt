@@ -83,7 +83,7 @@ class AllKidsAdapter internal constructor(val activity: KidsListActivity) : Recy
                     itemView.class_color_reflector.setBackgroundColor(activity.resources.getColor(R.color.blue_grey_900))
                 }
 
-                if (kid.attendance.checkedIn == 1){
+                if (kid.attendance.checkedIn == "1"){
                     itemView.checkin_child_id.visibility = View.GONE
                     itemView.checkout_child_id.visibility = View.VISIBLE
                     itemView.checkout_child_id.text = kid.attendance.cardNumber
@@ -92,8 +92,8 @@ class AllKidsAdapter internal constructor(val activity: KidsListActivity) : Recy
                     itemView.checkin_child_id.visibility = View.VISIBLE
                 }
 
-                var selectedService : Int = 2
-                var cardNumberGiven : Int = 0
+                var selectedService = "2"
+                var cardNumberGiven = "0"
                 var checkInChild : Boolean = false
 
                 itemView.checkin_child_id.setOnClickListener(object : View.OnClickListener{
@@ -115,7 +115,7 @@ class AllKidsAdapter internal constructor(val activity: KidsListActivity) : Recy
                             override fun onClick(p0: View?) {
                                 secondServiceCheck.visibility = View.VISIBLE
                                 thirdServiceCheck.visibility = View.GONE
-                                selectedService = 2
+                                selectedService = "2"
                             }
                         })
 
@@ -123,7 +123,7 @@ class AllKidsAdapter internal constructor(val activity: KidsListActivity) : Recy
                             override fun onClick(p0: View?) {
                                 thirdServiceCheck?.visibility = View.VISIBLE
                                 secondServiceCheck.visibility = View.GONE
-                                selectedService = 3
+                                selectedService = "3"
                             }
                         })
 
@@ -131,7 +131,7 @@ class AllKidsAdapter internal constructor(val activity: KidsListActivity) : Recy
                             if (cardNumberInput.text.isEmpty()){
                                 Toast.makeText(activity, "Card Number cannot be empty", LENGTH_LONG).show()
                             }else{
-                                cardNumberGiven = cardNumberInput.text.toString().toInt()
+                                cardNumberGiven = cardNumberInput.text.toString()
                                 checkInChild = true
                                 dialog.dismiss()
                             }
@@ -152,11 +152,11 @@ class AllKidsAdapter internal constructor(val activity: KidsListActivity) : Recy
 
                                 val kidAttendance  = Kid.Atendance()
                                 kidAttendance.cardNumber = cardNumberGiven.toString()
-                                kidAttendance.checkedIn = 1
+                                kidAttendance.checkedIn = "1"
                                 kidAttendance.service = selectedService
 
                                 kid.attendance = kidAttendance
-                                kid.checkedIn = 1
+                                kid.checkedIn = "1"
 
                                 GlobalScope.launch (Dispatchers.IO) {
                                     kidViewModel.checkingInChild(kid)
