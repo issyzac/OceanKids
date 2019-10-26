@@ -1,5 +1,6 @@
 package apps.issy.com.oceankids.repositories
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
@@ -27,6 +28,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
+import kotlin.collections.ArrayList
 
 class KidsRepository(private val kidDao: KidDao){
 
@@ -57,6 +59,7 @@ class KidsRepository(private val kidDao: KidDao){
         kidDao.InsertKid(kid)
     }
 
+    @SuppressLint("CheckResult")
     suspend fun  loadAllKids(){
 
         val kidsList : ArrayList<Kid> = ArrayList()
@@ -70,12 +73,63 @@ class KidsRepository(private val kidDao: KidDao){
                 .subscribe({
                     if (it.exists()) {
                         for (data in it.children) {
+
+                            val firstName = data.child("firstName").value
+                            val lastName = data.child("lastName").value
+                            val nationality = data.child("nationality").value
+                            val dob = data.child("dob").value
+                            val allergies = data.child("allergies").value
+                            val gender = data.child("gender").value
+                            val checkedIn = data.child("checkedIn").value
+
+                            //parents= {0={relationship=Mother, id=-LPVy0XuL02yjX7M-1Pm}},
+                            val parentId = data.child("parents").child("0").child("id").value
+                            val parentRelationship = data.child("parents").child("0").child("relationship").value
+
+                            //attendance={checkedIn=0, service=0, cardNumber=},
+                            val attendanceCardNumber = data.child("attendance").child("cardNumber").value
+                            val attendanceCheckedIn = data.child("attendance").child("checkedIn").value
+                            val attendanceService = data.child("attendance").child("service").value
+
+                            val child = Kid()
+
+                            child.firstName = firstName.toString()
+                            child.lastName = lastName.toString()
+                            child.allergies = allergies.toString()
+                            child.checkedIn = checkedIn.toString()
+                            child.gender = gender.toString()
+                            child.nationality = nationality.toString()
+
+                            if (dob != null)
+                                child.dob = dob.toString().toLong()
+                            else
+                                child.dob = 0
+
+                            val attendance : Kid.Atendance = Kid.Atendance()
+                            attendance.service = attendanceService.toString()
+                            attendance.cardNumber = attendanceCardNumber.toString()
+                            attendance.checkedIn = attendanceCheckedIn.toString()
+
+                            val parent: Kid.Parent = Kid.Parent()
+                            parent.id = parentId.toString()
+                            parent.relationship = parentRelationship.toString()
+
+                            val parents = ArrayList<Kid.Parent>()
+                            parents.add(parent)
+
+                            child.attendance = attendance
+                            child.parents = parents
+
+                            kidsList.add(child)
+
+                            /*
                             val currentChild: Kid = data.getValue<Kid>(Kid::class.java).let {
                                 it
                             } ?: continue //Continue with the looping if this child is null
 
                             currentChild.id = data.key.toString()
                             kidsList.add(currentChild)
+                             */
                         }
 
                         GlobalScope.launch(IO){
@@ -86,6 +140,7 @@ class KidsRepository(private val kidDao: KidDao){
 
                     }
                 }){
+                    Log.e("ASFORME", it.message)
 
                 }
 
@@ -164,12 +219,12 @@ class KidsRepository(private val kidDao: KidDao){
 
     fun checkoutChildAttendance(kid: Kid){
 
-        val kidService : Int = kid.attendance.service
+        val kidService = kid.attendance.service
 
         kid.attendance.cardNumber = ""
-        kid.attendance.service = 0
-        kid.attendance.checkedIn = 0
-        kid.checkedIn = 0
+        kid.attendance.service = "0"
+        kid.attendance.checkedIn = "0"
+        kid.checkedIn = "0"
 
         //Update local DB
         kidDao.updateChild(kid)
