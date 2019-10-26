@@ -11,11 +11,14 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
 import androidx.annotation.LayoutRes
+import androidx.lifecycle.ViewModelProviders
 import apps.issy.com.oceankids.Base.BaseActivity
 import apps.issy.com.oceankids.data.Child
 import apps.issy.com.oceankids.data.Parent
+import apps.issy.com.oceankids.database.entities.Kid
 import apps.issy.com.oceankids.util.Constants.Companion.genderFemale
 import apps.issy.com.oceankids.util.Constants.Companion.genderMale
+import apps.issy.com.oceankids.viewmodels.KidViewModel
 import com.afollestad.materialdialogs.MaterialDialog
 import com.github.angads25.toggle.widget.LabeledSwitch
 import com.google.firebase.database.DatabaseReference
@@ -38,6 +41,7 @@ import kotlinx.android.synthetic.main.activity_register_child.*
 import kotlinx.android.synthetic.main.individual_child_register.*
 import kotlinx.android.synthetic.main.kid_list_item.view.*
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.contentView
@@ -76,6 +80,8 @@ class RegisterChildActivity : BaseActivity(){
     var cm: ConnectivityManager? = null
     var activeNetwork: NetworkInfo? = null
 
+    private lateinit var kidViewModel : KidViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_child)
@@ -88,6 +94,7 @@ class RegisterChildActivity : BaseActivity(){
         levelList.add("Pre-teen")
         levelList.add("Youth")
 
+        kidViewModel = ViewModelProviders.of(this).get(KidViewModel::class.java)
 
         date_of_birth.setOnClickListener(object : View.OnClickListener{
             override fun onClick(p0: View?) {
@@ -263,6 +270,11 @@ class RegisterChildActivity : BaseActivity(){
             val parent : Child.Parent = parents.get(0)
             it.parents.add(parent)
             firebaseData.child("kids").child("kids_list").child(it.id).setValue(it)
+
+            GlobalScope.launch(IO) {
+                saveChildLocally(it)
+            }
+
         }
 
         MaterialDialog(this).show {
@@ -278,6 +290,32 @@ class RegisterChildActivity : BaseActivity(){
 
             }
         }
+    }
+
+    suspend fun saveChildLocally(child: Child){
+
+        val kid = Kid()
+        kid.id = child.id
+        kid.dob = child.dob
+        kid.firstName = child.firstName
+        kid.lastName = child.lastName
+        kid.nationality = child.nationality
+        kid.gender = child.gender
+        kid.allergies = child.allergies
+        kid.aggregatePoints = child.aggregatePoints
+        kid.checkedIn = "0"
+
+        val attendance : Kid.Atendance = Kid.Atendance()
+        attendance.checkedIn = child.attendance.checkedIn.toString()
+        attendance.cardNumber = child.attendance.cardNumber
+        attendance.service = child.attendance.service.toString()
+
+        val parent : Kid.Parent = Kid.Parent()
+        parent.id = child.parents.get(0).id
+        parent.relationship = child.parents.get(0).relationship
+
+        kidViewModel.insertKid(kid)
+
     }
 
     fun clearFields(){
