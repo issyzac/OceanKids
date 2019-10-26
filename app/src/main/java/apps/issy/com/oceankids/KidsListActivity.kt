@@ -2,6 +2,8 @@ package apps.issy.com.oceankids
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -141,6 +143,34 @@ class KidsListActivity : BaseActivity() {
             }
         })
 
+        register_button.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(p0: View?) {
+                val intent  = Intent(this@KidsListActivity, RegisterChildActivity::class.java)
+                startActivity(intent)
+            }
+        })
+
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId){
+            R.id.logout -> {
+                auth?.signOut()
+                val intent  = Intent(this@KidsListActivity, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+
 
 }
