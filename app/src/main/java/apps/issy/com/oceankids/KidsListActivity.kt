@@ -1,5 +1,6 @@
 package apps.issy.com.oceankids
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
@@ -11,6 +12,7 @@ import apps.issy.com.oceankids.database.entities.Kid
 import apps.issy.com.oceankids.util.Constants
 import apps.issy.com.oceankids.util.SharedPreferencesHelper
 import apps.issy.com.oceankids.viewmodels.KidViewModel
+import com.google.firebase.auth.FirebaseAuth
 import com.mcxiaoke.koi.Const
 import com.mcxiaoke.koi.ext.onTextChange
 
@@ -36,12 +38,19 @@ class KidsListActivity : BaseActivity() {
 
     var searchAdapter : AllKidsAdapter = AllKidsAdapter(this)
 
+    private val auth : FirebaseAuth? = FirebaseAuth.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.class_list_activity)
 
         setSupportActionBar(toolbar)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        if (auth?.currentUser == null){
+            val intent  = Intent(this@KidsListActivity, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         val sharedPreferences : SharedPreferencesHelper = SharedPreferencesHelper(this)
         kids_list_message_text.setText(Constants.KIDS_LIST_DEFAULT_MESSAGE)
