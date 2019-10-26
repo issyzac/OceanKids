@@ -27,26 +27,30 @@ class Kid : Serializable {
     var id : String = ""
 
     var firstName : String = ""
+
     var lastName : String = ""
+
     var gender : String = ""
+
     var nationality : String = ""
+
     var dob : Long = 0
 
     @TypeConverters (AttendanceTypeConverter::class)
     var attendance : Atendance = Atendance()
+
     var aggregatePoints: Int = 0
+
     var parents : List<Parent> = emptyList()
+
     var allergies: String = ""
 
-    var checkedIn : Int = 0
+    var checkedIn: String = "0"
 
     constructor()
 
     class Parent {
-        //Parent ID in the parents Node
         var id : String = ""
-
-        //Relationship of the parent with the child
         var relationship : String = ""
     }
 
@@ -55,8 +59,8 @@ class Kid : Serializable {
      */
     class Atendance {
         var cardNumber : String = ""
-        var service : Int = 0
-        var checkedIn : Int = 0
+        var service : String = "0"
+        var checkedIn : String = "0"
     }
 
 }
