@@ -120,7 +120,7 @@ class LoginActivity : BaseActivity(){
 
     fun updateUI(user: FirebaseUser?){
         if(user != null){
-            this@LoginActivity.startActivity<MainActivity>()
+            this@LoginActivity.startActivity<KidsListActivity>()
             finish()
         }
     }
