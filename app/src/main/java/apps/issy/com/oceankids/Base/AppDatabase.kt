@@ -6,12 +6,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import apps.issy.com.oceankids.database.daos.KidDao
+import apps.issy.com.oceankids.database.daos.UserDao
 import apps.issy.com.oceankids.database.entities.Kid
+import apps.issy.com.oceankids.database.entities.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [Kid::class], version = 1 )
+@Database(entities = [Kid::class, User::class], version = 1 )
 abstract class AppDatabase : RoomDatabase() {
 
     companion object {
@@ -41,6 +43,8 @@ abstract class AppDatabase : RoomDatabase() {
     }
 
     abstract fun kidDao() : KidDao
+
+    abstract fun userDao() : UserDao
 
     private class AppDatabaseCallback(
             private val scope: CoroutineScope
