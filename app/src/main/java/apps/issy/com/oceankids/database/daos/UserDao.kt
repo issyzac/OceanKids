@@ -12,7 +12,7 @@ import apps.issy.com.oceankids.database.entities.User
 interface UserDao {
 
     @Query("select * from user where id = :userId")
-    fun getUserById(userId : String)
+    fun getUserById(userId : String) : User
 
     @Insert(onConflict = REPLACE)
     fun insertUser(user: User?)
