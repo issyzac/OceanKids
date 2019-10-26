@@ -1,6 +1,7 @@
 package apps.issy.com.oceankids.database.entities
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.io.Serializable
 
 /**
@@ -10,6 +11,7 @@ import java.io.Serializable
 @Entity(tableName = "user")
 class User: Serializable {
 
+    @PrimaryKey
     var id : String = ""
     var email : String = ""
     var role : Int = 0
