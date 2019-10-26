@@ -24,16 +24,17 @@
 
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".KidsListActivity"
+            android:windowSoftInputMode="stateHidden|adjustNothing"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".KidsListActivity"
-            android:windowSoftInputMode="stateHidden|adjustNothing"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"/>
 
         <activity android:name=".ChildDetailsActivity"
             android:parentActivityName=".MainActivity"
