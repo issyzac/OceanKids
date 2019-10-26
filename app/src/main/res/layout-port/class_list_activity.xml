@@ -20,6 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
+            android:layout_marginRight="0dp"
+            android:paddingRight="0dp"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <RelativeLayout
@@ -33,7 +35,18 @@
                     android:layout_height="30dp"
                     android:layout_centerVertical="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/logo"/>
+                    android:id="@+id/app_logo"
+                    android:src="@mipmap/ic_logo"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="cean Kids"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/google_sans_regular"
+                    android:layout_toRightOf="@id/app_logo"/>
 
                 <TextView
                     android:layout_width="70dp"
@@ -57,17 +70,17 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:paddingLeft="8dp"
-            android:paddingRight="8dp"
+            android:layout_marginRight="16dp"
             android:layout_marginBottom="10dp"
             android:id="@+id/section_title"
             android:orientation="horizontal">
 
             <EditText
                 android:layout_width="0dp"
-                android:layout_weight="7"
+                android:layout_weight="5"
                 android:layout_height="50dp"
                 android:paddingLeft="8dp"
-                android:paddingRight="5dp"
+                android:paddingRight="16dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:textSize="16sp"
@@ -77,9 +90,15 @@
                 android:textColor="@color/card_grid_tex"
                 android:inputType="textCapWords"
                 android:hint="Search Names"
-                android:drawableRight="@mipmap/ic_search"
+                android:drawableLeft="@mipmap/ic_search"
+                android:drawableTint="@color/card_shadow"
                 android:fontFamily="@font/google_sans_regular"
                 android:textColorHint="@color/card_grid_tex"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="2"/>
 
             <LinearLayout
                 android:layout_width="0dp"
