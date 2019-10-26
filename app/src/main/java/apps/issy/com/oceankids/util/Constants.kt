@@ -14,6 +14,22 @@ class Constants{
         //SharedPreferences Keys
         val CHECKING_IN = "CHEKING_IN"
 
+    }
 
+    class databaseConstants {
+
+        companion object {
+            val NURSERY_ROLE : Int = 1
+            val PRESCHOOL_ROLE : Int = 2
+            val PRIMARY_ROLE : Int = 3
+        }
+    }
+
+    class  CALENDAR {
+        companion object {
+            val TEN_YEARS_AGO : Long = 315569260000
+            val SIX_YEARS_AGO : Long = 189341556000
+            val THREE_YEARS_AGO : Long = 94670778000
+        }
     }
 }
