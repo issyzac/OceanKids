@@ -13,6 +13,7 @@ import kotlin.coroutines.CoroutineContext
 
 class KidViewModel(application: Application) : AndroidViewModel(application) {
 
+    //Create a parent job corouting scope
     private var parentJob = Job()
     private val coroutineContext : CoroutineContext get() = parentJob + Dispatchers.Main
     private val scope = CoroutineScope(coroutineContext)
@@ -43,8 +44,8 @@ class KidViewModel(application: Application) : AndroidViewModel(application) {
         kidRepository.insert(kid)
     }
 
-    suspend fun loadAllKids() = scope.launch (Dispatchers.IO){
-        kidRepository.loadAllKids()
+    suspend fun loadAllKids(userRole : Int) = scope.launch (Dispatchers.IO){
+        kidRepository.loadAllKids(userRole)
     }
 
     /**
