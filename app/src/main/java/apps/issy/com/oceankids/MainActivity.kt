@@ -168,7 +168,7 @@ class MainActivity : BaseActivity() {
         })
 
         //Classes Actions
-        nursery_card.setOnClickListener(object : View.OnClickListener{
+        /*nursery_card.setOnClickListener(object : View.OnClickListener{
             override fun onClick(p0: View?) {
                 val intent  = Intent(this@MainActivity, NurseryKidsActivity::class.java)
                 startActivity(intent)
@@ -187,7 +187,7 @@ class MainActivity : BaseActivity() {
                 val intent  = Intent(this@MainActivity, PrimaryKidsActivity::class.java)
                 startActivity(intent)
             }
-        })
+        }) */
 
     }
 
