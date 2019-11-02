@@ -188,7 +188,7 @@ class KidsRepository(private val kidDao: KidDao){
 
         if (role == 3){
             //Role is primary class
-            start = todayInMilliseconds - Constants.CALENDAR.TEN_YEARS_AGO
+            start = todayInMilliseconds - Constants.CALENDAR.TWELVE_YEARS_AGO
             end = todayInMilliseconds - Constants.CALENDAR.SIX_YEARS_AGO
         }else {
             //Role is preschool and Nursery checkin
