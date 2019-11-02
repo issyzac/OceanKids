@@ -27,6 +27,7 @@ class Constants{
 
     class  CALENDAR {
         companion object {
+            val TWELVE_YEARS_AGO : Long = 378683112000
             val TEN_YEARS_AGO : Long = 315569260000
             val SIX_YEARS_AGO : Long = 189341556000
             val THREE_YEARS_AGO : Long = 94670778000
