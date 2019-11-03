@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OceanKids</string>
+    <string name="app_name">Ocean Kids</string>
 
     <string name="message">This is my first Kotlin App</string>
     <string name="prayer_thanks_giving_title"><![CDATA[Prayer & Thanks Giving]]></string>
